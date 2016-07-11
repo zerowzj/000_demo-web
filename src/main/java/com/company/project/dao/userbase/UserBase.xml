@@ -12,9 +12,6 @@
         <result property="ubBeginTime" column="UB_BEGIN_TIME"/>
         <result property="ubPrId" column="PR_PR_ID"/>
     </resultMap>
-    <resultMap id="userBaseVO" type="com.company.project.dao.userbase.UserBaseVO" extends="userBaseEO">
-        <result property="prName" column="PR_NAME"/>
-    </resultMap>
     <sql id="Base_Column_List">
         UB.UB_ID,
         UB.UB_LOGIN_NAME,
@@ -95,22 +92,4 @@
         WHERE UB.UB_LOGIN_NAME = #{ubLoginName}
     </select>
 
-    <select id="getUserPageLt" parameterType="java.util.Map" resultMap="userBaseVO">
-        SELECT <include refid="Base_Column_List"/>,
-                PR.PR_NAME
-        FROM USER_BASE UB
-        JOIN POPEDOM_ROLE PR ON UB.UB_PR_ID = PR.PR_ID
-        <where>
-            <if test="ubLoginName != null">
-                UB.UB_LOGIN_NAME = #{ubLoginName}
-            </if>
-        </where>
-        ORDER BY UB.UB_ID DESC
-    </select>
-
-    <select id="getUserLt" parameterType="java.util.Map" resultMap="userBaseEO">
-        SELECT <include refid="Base_Column_List"/>
-        FROM USER_BASE UB
-        WHERE UB.UB_LOGIN_NAME = #{ubLoginName}
-    </select>
 </mapper>

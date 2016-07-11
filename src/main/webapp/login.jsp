@@ -1,9 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" buffer="128kb" %>
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <title>用户登录</title>
     <link href="static/css/login.css" type="text/css" rel="stylesheet"/>
 </head>
@@ -12,7 +11,7 @@
     <div class="login">
         <h1>用户登录</h1>
         <form method="post" action="index.html">
-            <p><input type="text" name="login" value="" placeholder="邮箱"></p>
+            <p><input type="text" name="login" value="" placeholder="用户名"></p>
 
             <p><input type="password" name="password" value="" placeholder="密码"></p>
 
