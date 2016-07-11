@@ -1,11 +1,8 @@
-package com.company.project.auth;
+package com.company.project.auth.user;
 
-import com.company.project.web.SessionUserInfo;
-import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import java.util.Collection;
 import java.util.List;
 
 /**
@@ -22,8 +19,6 @@ public class CustomUserDetails implements UserDetails {
     /** 授权 */
     private List<SimpleGrantedAuthority> grantedAuthLt = null;
 
-    /** 用户信息 */
-    private SessionUserInfo userInfo = null;
 
     public CustomUserDetails(String loginName, String loginPwd, List<SimpleGrantedAuthority> grantedAuthLt) {
         this.loginName = loginName;
@@ -66,11 +61,4 @@ public class CustomUserDetails implements UserDetails {
         return true;
     }
 
-    public SessionUserInfo getUserInfo() {
-        return userInfo;
-    }
-
-    public void setUserInfo(SessionUserInfo userInfo) {
-        this.userInfo = userInfo;
-    }
 }

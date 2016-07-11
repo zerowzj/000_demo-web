@@ -32,7 +32,7 @@
         <property name="userDetailsService" ref="userDetailsService"/>
         <property name="passwordEncoder" ref="md5PasswordEncoder"/>
     </bean>
-    <bean id="userDetailsService" class="com.company.project.auth.CustomUserDetailsService"></bean>
+    <bean id="userDetailsService" class="com.company.project.auth.user.CustomUserDetailsService"></bean>
     <bean id="md5PasswordEncoder" class="org.springframework.security.authentication.encoding.Md5PasswordEncoder">
         <property name="encodeHashAsBase64" value="true"/>
     </bean>

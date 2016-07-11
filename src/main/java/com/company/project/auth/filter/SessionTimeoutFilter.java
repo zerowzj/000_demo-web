@@ -1,6 +1,5 @@
 package com.company.project.auth.filter;
 
-import com.company.project.common.util.ServletUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.filter.OncePerRequestFilter;
@@ -30,7 +29,7 @@ public class SessionTimeoutFilter extends OncePerRequestFilter {
         //
         Object target = request.getSession().getAttribute("PPP");
         if (target != null) {
-            ServletUtil.sendRedirect(response, "/login.jsp?msg=session_timeout");
+//            ServletUtil.sendRedirect(response, "/login.jsp?msg=session_timeout");
             return;
         }
         //

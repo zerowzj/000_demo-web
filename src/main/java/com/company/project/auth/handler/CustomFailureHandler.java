@@ -1,6 +1,5 @@
 package com.company.project.auth.handler;
 
-import com.company.project.common.util.ServletUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -29,10 +28,10 @@ public class CustomFailureHandler extends SimpleUrlAuthenticationFailureHandler 
         logger.warn("登录失败...");
        if(exception instanceof UsernameNotFoundException || exception instanceof BadCredentialsException){
             logger.error("用户名/密码错误");
-           ServletUtil.setSessionObj(request, "msg", "用户名/密码错误！");
+//           ServletUtil.setSessionObj(request, "msg", "用户名/密码错误！");
         } else {
             logger.error("未知错误");
-           ServletUtil.setSessionObj(request, "msg", "未知错误，请联系系统管理员！");
+//           ServletUtil.setSessionObj(request, "msg", "未知错误，请联系系统管理员！");
         }
         super.onAuthenticationFailure(request, response, exception);
     }
