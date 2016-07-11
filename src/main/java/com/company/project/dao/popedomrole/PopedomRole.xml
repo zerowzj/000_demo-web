@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.company.project.dao.popedomrole">
+	<resultMap id="popedomRoleEO" type="PopedomRoleEO">
+		<result property="prId"     column="PR_ID" />
+        <result property="prName"   column="PR_NAME" />
+        <result property="prStatus" column="PR_STATUS" />
+        <result property="prType"   column="PR_TYPE" />
+        <result property="prBeginTime" column="PR_BEGIN_TIME" />
+        <result property="prDesc"   column="PR_DESC" />
+	</resultMap>
+    <sql id="Base_Column_List">
+        PR.PR_ID, PR.PR_NAME, PR.PR_STATUS, PR.PR_TYPE, PR.PR_BEGIN_TIME, PR.PR_DESC
+    </sql>
+
+	<insert id="insert" useGeneratedKeys="true" keyProperty="prId"  parameterType="PopedomRoleEO">
+    	INSERT INTO POPEDOM_ROLE (PR_NAME
+            <if test="prStatus != null">
+                ,PR_STATUS
+            </if>
+            <if test="prType != null">
+                ,PR_TYPE
+            </if>
+            <if test="prBeginTime != null">
+                ,PR_BEGIN_TIME
+            </if>
+            <if test="prDesc != null">
+                ,PR_DESC
+            </if>
+            ) VALUES (#{prName}
+            <if test="prStatus != null">
+                ,#{prStatus}
+            </if>
+            <if test="prType != null">
+                ,#{prType}
+            </if>
+            <if test="prBeginTime != null">
+              ,#{prBeginTime}
+            </if>
+            <if test="prDesc != null">
+                ,#{prDesc}
+            </if>
+        )
+        <selectKey keyProperty="prId" resultType="java.lang.Long" order="AFTER">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+	</insert>
+
+    <update id="update" parameterType="PopedomRoleEO">
+         UPDATE POPEDOM_ROLE
+         <set>
+             <if test="prName != null">
+                 PR_NAME = #{prName},
+             </if>
+             <if test="prStatus != null">
+                 PR_STATUS = #{prStatus},
+             </if>
+             <if test="prDesc != null">
+                 PR_DESC = #{prDesc}
+             </if>
+         </set>
+          WHERE PR_ID = #{prId}
+	</update>
+
+    <delete id="delete" parameterType="java.lang.Long">
+	    DELETE
+          FROM POPEDOM_ROLE
+         WHERE PR_ID = #{prId}
+	</delete>
+
+    <select id="get" parameterType="java.lang.Long" resultMap="popedomRoleEO">
+        SELECT <include refid="Base_Column_List" />
+          FROM POPEDOM_ROLE PR
+         WHERE PR.PR_ID = #{prId}
+	</select>
+
+    <select id="getRolePageLt" parameterType="java.util.Map" resultMap="popedomRoleEO">
+        SELECT <include refid="Base_Column_List" />
+          FROM POPEDOM_ROLE PR
+        <where>
+            <if test="prName != null">
+              PR.PR_NAME = #{prName}
+            </if>
+        </where>
+        ORDER BY PR.PR_ID DESC
+    </select>
+
+    <select id="getRoleLt" parameterType="java.util.Map" resultMap="popedomRoleEO">
+        SELECT <include refid="Base_Column_List" />
+        FROM POPEDOM_ROLE PR
+        <where>
+            <if test="prName != null">
+                PR.PR_NAME = #{prName}
+            </if>
+            <if test="prStatus != null">
+                AND PR.PR_STATUS = #{prStatus}
+            </if>
+        </where>
+        ORDER BY PR.PR_ID DESC
+    </select>
+</mapper>

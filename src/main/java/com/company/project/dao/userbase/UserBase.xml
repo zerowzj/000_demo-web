@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.company.project.dao.userbase">
+    <resultMap id="userBaseEO" type="UserBaseEO">
+        <result property="ubId" column="UB_ID"/>
+        <result property="ubLoginName" column="UB_LOGIN_NAME"/>
+        <result property="ubLoginPwd" column="UB_LOGIN_PWD"/>
+        <result property="ubType" column="UB_TYPE"/>
+        <result property="ubStatus" column="UB_STATUS"/>
+        <result property="ubName" column="UB_NAME"/>
+        <result property="ubBeginTime" column="UB_BEGIN_TIME"/>
+        <result property="ubPrId" column="PR_PR_ID"/>
+    </resultMap>
+    <resultMap id="userBaseVO" type="com.company.project.dao.userbase.UserBaseVO" extends="userBaseEO">
+        <result property="prName" column="PR_NAME"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        UB.UB_ID,
+        UB.UB_LOGIN_NAME,
+        UB.UB_LOGIN_PWD,
+        UB_TYPE,
+        UB.UB_STATUS,
+        UB.UB_NAME,
+        UB.UB_BEGIN_TIME,
+        UB.UB_PR_ID
+    </sql>
+
+    <insert id="insert" useGeneratedKeys="true" keyProperty="ubId" parameterType="UserBaseEO">
+        INSERT INTO USER_BASE (UB_LOGIN_NAME, UB_LOGIN_PWD
+        <if test="ubType != null">
+            ,UB_TYPE
+        </if>
+        <if test="ubStatus != null">
+            ,UB_STATUS
+        </if>
+        <if test="ubName != null">
+            ,UB_NAME
+        </if>
+        <if test="ubBeginTime != null">
+            ,UB_BEGIN_TIME
+        </if>
+        <if test="ubPrId != null">
+            ,UB_PR_ID
+        </if>
+        ) VALUES (#{ubLoginName}, #{ubLoginPwd}
+        <if test="ubType != null">
+            ,#{ubType}
+        </if>
+        <if test="ubStatus != null">
+            ,#{ubStatus}
+        </if>
+        <if test="ubName != null">
+            ,#{ubName}
+        </if>
+        <if test="ubBeginTime != null">
+            ,#{ubBeginTime}
+        </if>
+        <if test="ubPrId != null">
+            ,#{ubPrId}
+        </if>
+        )
+        <selectKey keyProperty="ubId" resultType="java.lang.Long" order="AFTER">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+    </insert>
+
+    <update id="update" parameterType="UserBaseEO">
+        UPDATE USER_BASE
+        <set>
+            <if test="ubLoginPwd != null">
+                UB_LOGIN_PWD = #{ubLoginPwd},
+            </if>
+        </set>
+        WHERE UB_ID = #{ubId}
+    </update>
+
+    <delete id="delete" parameterType="java.lang.Long">
+	    DELETE
+          FROM USER_BASE
+         WHERE UB_ID = #{ubId}
+	</delete>
+
+    <select id="get" parameterType="java.lang.Long" resultMap="userBaseEO">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM USER_BASE UB
+        WHERE UB.UB_ID = #{ubId}
+    </select>
+
+    <select id="getUserByLoginName" parameterType="java.lang.String" resultMap="userBaseEO">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM USER_BASE UB
+        WHERE UB.UB_LOGIN_NAME = #{ubLoginName}
+    </select>
+
+    <select id="getUserPageLt" parameterType="java.util.Map" resultMap="userBaseVO">
+        SELECT <include refid="Base_Column_List"/>,
+                PR.PR_NAME
+        FROM USER_BASE UB
+        JOIN POPEDOM_ROLE PR ON UB.UB_PR_ID = PR.PR_ID
+        <where>
+            <if test="ubLoginName != null">
+                UB.UB_LOGIN_NAME = #{ubLoginName}
+            </if>
+        </where>
+        ORDER BY UB.UB_ID DESC
+    </select>
+
+    <select id="getUserLt" parameterType="java.util.Map" resultMap="userBaseEO">
+        SELECT <include refid="Base_Column_List"/>
+        FROM USER_BASE UB
+        WHERE UB.UB_LOGIN_NAME = #{ubLoginName}
+    </select>
+</mapper>
