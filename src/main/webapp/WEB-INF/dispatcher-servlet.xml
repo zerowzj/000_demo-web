@@ -31,7 +31,8 @@
 	<!-- =================== -->
 	<!--     异常解析器    -->
 	<!-- =================== -->
-	<bean class="com.noriental.jobweb.manage.web.extend.CustomHandlerExceptionResolver"/>
+
+
 	<!-- =================== -->
 	<!--     视图解析器      -->
 	<!-- =================== -->

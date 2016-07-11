@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -9,20 +9,21 @@
 <body>
 <section class="container">
     <div class="login">
-        <h1>用户登录</h1>
-        <form method="post" action="index.html">
-            <p><input type="text" name="login" value="" placeholder="用户名"></p>
+        <h3>用户登录</h3>
 
-            <p><input type="password" name="password" value="" placeholder="密码"></p>
+        <form action="login.html" method="post">
+            <p><input type="text" name="loginName" value="" placeholder="用户名"></p>
+
+            <p><input type="password" name="loginPwd" value="" placeholder="密码"></p>
 
             <p class="remember_me">
                 <label>
-                    <input type="checkbox" name="remember_me" id="remember_me">
+                    <input type="checkbox" name="remember_me">
                     记住密码
                 </label>
             </p>
 
-            <p class="submit"><input type="submit" name="commit" value="登录"></p>
+            <p class="submit"><input type="submit" value="登录"></p>
         </form>
     </div>
     <div class="login-help">
