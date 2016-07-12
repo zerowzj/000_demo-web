@@ -3,33 +3,28 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <title><sitemesh:write property='title'/></title>
+    <title>用户登录</title>
 </head>
 <body>
 
+<div class="ui-layout-center">Center
+</div>
 <div class="ui-layout-north">
     North
 </div>
-
-<div class="ui-layout-west">
-    <a href="/user/list">角色列表</a>
-</div>
-
-<div class="ui-layout-center">
-    <sitemesh:write property='body'/>
-</div>
-
-<div class="ui-layout-east">
-    East
-</div>
-
 <div class="ui-layout-south">
     South
 </div>
+<div class="ui-layout-east">
+    East
+</div>
+<div class="ui-layout-west">
+    West<a href="http://www.sohu.com">角色列表</a>
+</div>
 
-<script type="text/javascript" src="/static/lib/jquery.min.js"></script>
-<script type="text/javascript" src="/static/layout/jquery-ui.min.js"></script>
-<script type="text/javascript" src="/static/layout/jquery.layout-latest.js"></script>
+<script type="text/javascript" src="static/lib/jquery.min.js"></script>
+<script type="text/javascript" src="static/layout/jquery-ui.min.js"></script>
+<script type="text/javascript" src="static/layout/jquery.layout-latest.js"></script>
 <script type="text/javascript">
     $(document).ready(function () {
         $('body').layout({

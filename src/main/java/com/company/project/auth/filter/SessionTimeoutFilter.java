@@ -19,19 +19,6 @@ public class SessionTimeoutFilter extends OncePerRequestFilter {
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
-        String url = request.getRequestURI();
-        logger.info(url);
-        if(url.startsWith("/static") || url.startsWith("/view") || url.startsWith("/")){
-            //
-            filterChain.doFilter(request, response);
-            return;
-        }
-        //
-        Object target = request.getSession().getAttribute("PPP");
-        if (target != null) {
-//            ServletUtil.sendRedirect(response, "/login.jsp?msg=session_timeout");
-            return;
-        }
         //
         filterChain.doFilter(request, response);
     }
