@@ -4,7 +4,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <title>用户登录</title>
-    <link href="/static/css/login.css" type="text/css" rel="stylesheet"/>
+    <link href="<%=request.getContextPath()%>/static/css/login.css" type="text/css" rel="stylesheet"/>
 </head>
 <body>
 <section class="container">
