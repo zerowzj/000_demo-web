@@ -14,7 +14,6 @@ public class RoleController {
     @RequestMapping("/list")
     public ModelAndView list(){
 
-
         return new ModelAndView("/role/roleList");
     }
 }

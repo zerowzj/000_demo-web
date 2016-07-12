@@ -14,7 +14,6 @@ public class UserController {
     @RequestMapping("/list")
     public ModelAndView list(){
 
-
         return new ModelAndView("/user/userList");
     }
 }
