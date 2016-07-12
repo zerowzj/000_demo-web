@@ -9,7 +9,7 @@
 <body>
 
 <div class="ui-layout-north">
-    North
+    北
 </div>
 
 <div class="ui-layout-west">
@@ -22,11 +22,11 @@
 </div>
 
 <div class="ui-layout-east">
-    East
+    东
 </div>
 
 <div class="ui-layout-south">
-    South
+    南
 </div>
 
 <script type="text/javascript" src="/static/lib/jquery.min.js"></script>
