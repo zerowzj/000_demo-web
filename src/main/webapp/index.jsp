@@ -8,23 +8,24 @@
 </head>
 <body>
 
+<!-- 北部 -->
 <div class="ui-layout-north">
     北
 </div>
-
+<!-- 西部 -->
 <div class="ui-layout-west">
     <a href="/user/list">用户列表</a>
     <a href="/role/list">角色列表</a>
 </div>
-
+<!-- 中部 -->
 <div class="ui-layout-center">
     <sitemesh:write property='body'/>
 </div>
-
+<!-- 东部 -->
 <div class="ui-layout-east">
     东
 </div>
-
+<!-- 南部 -->
 <div class="ui-layout-south">
     南
 </div>
