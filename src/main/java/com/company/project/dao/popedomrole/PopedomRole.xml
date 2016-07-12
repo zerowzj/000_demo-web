@@ -85,18 +85,4 @@
         </where>
         ORDER BY PR.PR_ID DESC
     </select>
-
-    <select id="getRoleLt" parameterType="java.util.Map" resultMap="popedomRoleEO">
-        SELECT <include refid="Base_Column_List" />
-        FROM POPEDOM_ROLE PR
-        <where>
-            <if test="prName != null">
-                PR.PR_NAME = #{prName}
-            </if>
-            <if test="prStatus != null">
-                AND PR.PR_STATUS = #{prStatus}
-            </if>
-        </where>
-        ORDER BY PR.PR_ID DESC
-    </select>
 </mapper>
