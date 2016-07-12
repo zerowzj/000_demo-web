@@ -49,12 +49,12 @@
         <property name="authenticationFailureHandler" ref="failureHandler"/>
     </bean>
     <!-- 登录成功 -->
-    <bean id="successHandler" class="com.company.project.auth.handler.CustomSuccessHandler">
+    <bean id="successHandler" class="com.company.project.auth.handler.LoginSuccessHandler">
         <property name="defaultTargetUrl" value="/index.jsp"/>
         <property name="alwaysUseDefaultTargetUrl" value="true"/>
     </bean>
     <!-- 登录失败 -->
-    <bean id="failureHandler" class="com.company.project.auth.handler.CustomFailureHandler">
+    <bean id="failureHandler" class="com.company.project.auth.handler.LoginFailureHandler">
         <property name="defaultFailureUrl" value="/login.jsp?msg=login_failure"/>
     </bean>
     <!-- ==================== -->
