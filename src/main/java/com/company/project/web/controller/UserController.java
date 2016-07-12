@@ -15,6 +15,6 @@ public class UserController {
     public ModelAndView list(){
 
 
-        return new ModelAndView("user/userList");
+        return new ModelAndView("/user/userList");
     }
 }
