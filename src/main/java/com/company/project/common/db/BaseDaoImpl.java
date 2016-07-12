@@ -51,15 +51,6 @@ public abstract class BaseDaoImpl<E extends BaseEO> extends SqlSessionDaoSupport
     }
 
     /**
-     * 获取sqlId
-     */
-//    protected final String getSqlId() {
-//        StackTraceElement[] stackTraceArr = Thread.currentThread().getStackTrace();
-//        String methodName = stackTraceArr[2].getMethodName();
-//        return getNamespace()+"."+methodName;
-//    }
-
-    /**
      * 获取命名空间
      */
     protected final String getNamespace() {
