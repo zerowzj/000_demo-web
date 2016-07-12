@@ -13,7 +13,8 @@
 </div>
 
 <div class="ui-layout-west">
-    <a href="/user/list">角色列表</a>
+    <a href="/user/list">用户列表</a>
+    <a href="/role/list">角色列表</a>
 </div>
 
 <div class="ui-layout-center">

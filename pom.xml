@@ -209,11 +209,11 @@
             <artifactId>mirror</artifactId>
             <version>1.6.1</version>
         </dependency>
-        <!-- ===== 反射 ===== -->
+        <!-- ===== SiteMesh ===== -->
         <dependency>
             <groupId>org.sitemesh</groupId>
             <artifactId>sitemesh</artifactId>
-            <version>3.0.0</version>
+            <version>3.0.1</version>
         </dependency>
     </dependencies>
 
