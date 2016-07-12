@@ -2,6 +2,7 @@
 <sitemesh>
     <mapping decorator="/index.jsp"/>
 
+    <mapping path="*" exclue="true"/>
     <mapping path="/static/*" exclue="true"/>
     <mapping path="/login.jsp*" exclue="true"/>
     <mapping path="/index.jsp*" exclue="true"/>

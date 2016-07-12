@@ -4,12 +4,12 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <title>用户登录</title>
-    <link href="static/css/login.css" type="text/css" rel="stylesheet"/>
+    <link href="/static/css/login.css" type="text/css" rel="stylesheet"/>
 </head>
 <body>
 <section class="container">
     <div class="login">
-        <h1>用户登录</h1    >
+        <h1>用户登录</h1>
 
         <form action="login.html" method="post">
             <p><input type="text" name="loginName" value="" placeholder="用户名"></p>
