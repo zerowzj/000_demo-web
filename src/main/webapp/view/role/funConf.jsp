@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title>角色列表</title>
-    <link type="text/css" href="<%=request.getContextPath()%>/static/ztree/css/zTreeStyle/zTreeStyle.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/static/ztree/css/zTreeStyle/zTreeStyle.css"/>
     <script type="text/javascript" src="<%=request.getContextPath()%>/static/ztree/jquery.ztree.core.min.js"></script>
     <script type="text/javascript" src="<%=request.getContextPath()%>/static/ztree/jquery.ztree.excheck.min.js"></script>
     <script type="text/javascript">
@@ -16,9 +16,8 @@
             },
             check: {
                 enable: true,
-               chkStyle: "checkbox"
-
-                    }
+                chkStyle: "checkbox"
+            }
         };
         var zNodes = [
             {
@@ -88,7 +87,8 @@
     </script>
 </head>
 <body>
-<div id="tree" class="ztree" >
+
+<div id="tree" class="ztree">
 </div>
 
 </body>
