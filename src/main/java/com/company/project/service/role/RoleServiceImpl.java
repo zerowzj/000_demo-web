@@ -16,4 +16,9 @@ public class RoleServiceImpl implements RoleService {
     public PageList<PopedomRoleEO> getRolePageLt(String prName, int pageNo, int pageSize) {
         return popedomRoleDao.getRolePageLt(prName, pageNo, pageSize);
     }
+
+    @Override
+    public void addRole(PopedomRoleEO prEO) {
+
+    }
 }

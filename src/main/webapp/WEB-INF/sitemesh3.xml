@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <sitemesh>
-    <mapping decorator="/index.jsp"/>
+    <mapping path="/*" decorator="/index.jsp"/>
 
-    <mapping path="*" exclue="true"/>
+    <mapping path="/" exclue="true"/>
     <mapping path="/static/*" exclue="true"/>
-    <mapping path="/login.jsp*" exclue="true"/>
-    <mapping path="/index.jsp*" exclue="true"/>
+    <mapping path="/login.jsp" exclue="true"/>
+    <mapping path="/index.jsp" exclue="true"/>
 </sitemesh>
