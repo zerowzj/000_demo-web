@@ -47,4 +47,10 @@ public class RoleController {
     public ModelAndView add(HttpServletRequest request, HttpServletResponse response, PopedomRoleEO prEO) {
         return new ModelAndView("/role/roleList");
     }
+
+    @RequestMapping("/toFunConf")
+    public ModelAndView toFunConf(HttpServletRequest request, HttpServletResponse response) {
+        return new ModelAndView("/role/funConf");
+    }
+
 }
