@@ -19,9 +19,17 @@ public class PopedomRoleEO extends BaseEO {
 
     /** 角色状态 */
     private String prStatus = null;
+    /** 角色状态 - 启用 */
+    public static final String PR_STATUS_YES = "Y";
+    /** 角色状态 - 停用 */
+    public static final String PR_STATUS_NO = "N";
 
     /** 角色类型 */
     private String prType = null;
+    /** 角色类型 - 超级 */
+    public static final String PR_TYPE_SUPER = "S";
+    /** 角色类型 - 普通 */
+    public static final String PR_TYPE_NORMAL = "N";
 
     /** 创建时间 */
     private Date prBeginTime = null;
