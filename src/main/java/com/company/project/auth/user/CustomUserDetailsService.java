@@ -31,7 +31,6 @@ public class CustomUserDetailsService implements UserDetailsService {
         }
         //生成用户详情
         CustomUserDetails userDetails = new CustomUserDetails(username, ubEO.getUbLoginPwd(), null);
-
         return userDetails;
     }
 }
