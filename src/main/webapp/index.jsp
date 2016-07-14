@@ -16,6 +16,7 @@
 </div>
 <!-- 西部 -->
 <div class="ui-layout-west">
+    <a href="/role/toAdd">用户列表</a><br>
     <a href="/user/list">用户列表</a><br>
     <a href="/role/toList">角色列表</a><br>
     <a href="/role/toConfFun">权限配置</a><br>

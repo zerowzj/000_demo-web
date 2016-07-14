@@ -50,8 +50,16 @@ public class RoleController {
     }
 
     @RequestMapping("/add")
-    public ModelAndView add(HttpServletRequest request, HttpServletResponse response, PopedomRoleEO prEO) {
-        return new ModelAndView("/role/roleList");
+    @ResponseBody
+    public Map<String, Object> add(HttpServletRequest request, HttpServletResponse response, PopedomRoleEO prEO) {
+        Map<String, Object> model = new HashMap();
+        try {
+            Thread.currentThread().sleep(5*1000);
+        } catch (Exception ex) {}
+
+
+        model.put("success", "okkkkkkkkkkkk");
+        return model;
     }
 
     @RequestMapping("/toConfFun")
