@@ -24,24 +24,11 @@
 </form>
 <script type="text/javascript" src="/static/form/jquery.form.min.js"></script>
 <script type="text/javascript" src="/static/layer/layer.js"></script>
+<script type="text/javascript" src="/static/js/global.js"></script>
+<script type="text/javascript" src="/static/js/role.js"></script>
 <script type="text/javascript">
     $(document).ready(function () {
-        var loading;
-        var ajaxOptions = {
-            target: '',
-            url: '/role/add',
-            type: 'POST',
-            clearForm: false,
-            beforeSubmit: function (formData, jqForm, options) {
-                loading = layer.load(2);
-                return true;
-            },
-            success: function (responseText, statusText, xhr, $form) {
-                layer.close(loading);
-                layer.msg('成功', {icon: 1});
-            }
-        };
-        $('#_form').ajaxForm(ajaxOptions);
+        latte.role.add();
     });
 </script>
 </body>
