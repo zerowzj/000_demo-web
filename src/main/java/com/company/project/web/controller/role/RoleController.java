@@ -26,6 +26,12 @@ public class RoleController {
     @Autowired
     private RoleService roleService = null;
 
+    @RequestMapping("/toList")
+    public ModelAndView toList(HttpServletRequest request, HttpServletResponse response){
+        //
+        return new ModelAndView("/role/roleList");
+    }
+
     @RequestMapping("/list")
     @ResponseBody
     public Map<String, Object> list(HttpServletRequest request, HttpServletResponse response) {

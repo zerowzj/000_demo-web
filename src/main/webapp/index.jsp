@@ -17,7 +17,7 @@
 <!-- 西部 -->
 <div class="ui-layout-west">
     <a href="/user/list">用户列表</a>
-    <a href="/role/list">角色列表</a>
+    <a href="/role/toList">角色列表</a>
     <a href="/role/toFunConf">权限配置</a>
     <a href="/view/role/funConf.jsp">权限配置2</a>
 </div>
@@ -25,15 +25,16 @@
 <div class="ui-layout-center">
     <sitemesh:write property='body'/>
 </div>
-<!-- 东部 -->
+<!-- 东部
 <div class="ui-layout-east">
     东
 </div>
-<!-- 南部 -->
+-->
+<!-- 南部
 <div class="ui-layout-south">
     南
 </div>
-
+-->
 
 <script type="text/javascript" src="/static/layout/jquery-ui.min.js"></script>
 <script type="text/javascript" src="/static/layout/jquery.layout-latest.js"></script>

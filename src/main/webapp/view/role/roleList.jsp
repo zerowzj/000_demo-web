@@ -9,7 +9,7 @@
 
 <div class="div_search">
             <span>
-                <form id="_form" action="/role/list" method="post">
+                <form id="_form" action="#" method="post">
                     角色名称：<input type="text" name="prName" value="${prName}" style="width: 120px;">
                     <input value="查询" type="submit"/>
                     <input type="hidden" id="_pageNo" name="pageNo">
@@ -39,10 +39,10 @@
 </div>
 <script type="text/javascript" src="/static/lib/jquery.min.js"></script>
 <script type="text/javascript" src="/static/jsrender/jsrender.min.js"></script>
-<script id="templ" type="text/x-jsrender">
+<script id="dataList" type="text/x-jsrender">
  {{for dataLt}}
         <tr>
-            <td>{{:prName}}</td>
+            <td>{{:prId}}</td>
             <td>{{:prName}}</td>
             <td>{{:prName}}</td>
             <td>{{:prName}}</td>
@@ -52,9 +52,35 @@
 {{/for}}
 </script>
 <script>
-    var dataLt = ${dataLt};
-    var templ = $.template("#templ");
-    $("#movieList").html(templ.render(dataLt));
+    $(document).ready(function(){
+        var formParam = $("#_form").serialize();//序列化表格内容为字符串
+        $.ajax({
+            type: 'post',
+            url: '/role/list',
+            data: formParam,
+            cache: false,
+            dataType: 'json',
+            success: function (data) {
+                var dataList = $.templates("#dataList");
+                $("#list").html(dataList.render(data));
+            }
+        });
+    });
+
+    $("#_form").submit(function(e){
+        var formParam = $("#_form").serialize();//序列化表格内容为字符串
+        $.ajax({
+            type: 'post',
+            url: '/role/list',
+            data: formParam,
+            cache: false,
+            dataType: 'json',
+            success: function (data) {
+                var dataList = $.templates("#dataList");
+                $("#list").html(dataList.render(data));
+            }
+        });
+    });
 </script>
 </body>
 </html>

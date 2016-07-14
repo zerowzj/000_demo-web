@@ -80,16 +80,29 @@
 
         ];
 
+        var zTreeObj;
         $(document).ready(function () {
-            $.fn.zTree.init($("#tree"), setting, zNodes);
+            zTreeObj = $.fn.zTree.init($("#tree"), setting, zNodes);
+
+            $("#s").click(function(){
+                var nodes = zTreeObj.getCheckedNodes(true);
+                var msg = "name--id--pid\n";
+                for (var i = 0; i < nodes.length; i++) {
+                    msg += nodes[i].name+"--"+nodes[i].id+"--"+nodes[i].pId+"\n";
+                }
+                alert(msg);
+            });
         });
+
+
         //-->
     </script>
 </head>
 <body>
-
+<form action="#">
 <div id="tree" class="ztree">
 </div>
-
+    <input id="s" type="submit" value="提交">
+</form>
 </body>
 </html>
