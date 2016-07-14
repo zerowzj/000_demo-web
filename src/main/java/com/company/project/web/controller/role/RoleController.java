@@ -54,9 +54,15 @@ public class RoleController {
         return new ModelAndView("/role/roleList");
     }
 
-    @RequestMapping("/toFunConf")
-    public ModelAndView toFunConf(HttpServletRequest request, HttpServletResponse response) {
+    @RequestMapping("/toConfFun")
+    public ModelAndView toConfFun(HttpServletRequest request, HttpServletResponse response) {
         return new ModelAndView("/role/funConf");
     }
 
+    @RequestMapping("/confFun")
+    public Map<String, Object> confFun(HttpServletRequest request, HttpServletResponse response) {
+        Map<String, Object> model = new HashMap();
+
+        return model;
+    }
 }

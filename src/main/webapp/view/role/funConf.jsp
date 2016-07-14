@@ -99,10 +99,27 @@
     </script>
 </head>
 <body>
-<form action="#">
+<form id="_form" action="#" method="post">
 <div id="tree" class="ztree">
 </div>
     <input id="s" type="submit" value="提交">
 </form>
+<script type="text/javascript">
+    $(document).ready(function(){
+        $("#_form").submit(function(){
+            var formParam = $("#_form").serialize();//序列化表格内容为字符串
+            $.ajax({
+                type: 'post',
+                url: '/role/confFun',
+                data: formParam,
+                cache: false,
+                dataType: 'json',
+                success: function (data) {
+                    alert(data);
+                }
+            });
+        });
+    });
+</script>
 </body>
 </html>
