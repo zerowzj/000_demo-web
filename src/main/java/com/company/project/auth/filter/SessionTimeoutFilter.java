@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
+ * 会话过期过滤器
+ *
  * @author wangzhj
  */
 public class SessionTimeoutFilter extends OncePerRequestFilter {

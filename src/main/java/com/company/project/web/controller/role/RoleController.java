@@ -56,7 +56,7 @@ public class RoleController {
 
     @RequestMapping("/toConfFun")
     public ModelAndView toConfFun(HttpServletRequest request, HttpServletResponse response) {
-        return new ModelAndView("/role/funConf");
+        return new ModelAndView("/role/funConf2");
     }
 
     @RequestMapping("/confFun")
