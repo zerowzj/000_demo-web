@@ -60,6 +60,7 @@ public class RoleController {
     }
 
     @RequestMapping("/confFun")
+    @ResponseBody
     public Map<String, Object> confFun(HttpServletRequest request, HttpServletResponse response) {
         Map<String, Object> model = new HashMap();
 

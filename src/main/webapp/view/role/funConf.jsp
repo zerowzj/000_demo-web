@@ -79,7 +79,6 @@
             {name: "父节点3 - 没有子节点", isParent: true}
 
         ];
-
         var zTreeObj;
         $(document).ready(function () {
             zTreeObj = $.fn.zTree.init($("#tree"), setting, zNodes);
@@ -90,11 +89,9 @@
                 for (var i = 0; i < nodes.length; i++) {
                     msg += nodes[i].name+"--"+nodes[i].id+"--"+nodes[i].pId+"\n";
                 }
-                alert(msg);
+                //alert(msg);
             });
         });
-
-
         //-->
     </script>
 </head>
@@ -102,12 +99,13 @@
 <form id="_form" action="#" method="post">
 <div id="tree" class="ztree">
 </div>
-    <input id="s" type="submit" value="提交">
+    <input type="submit" value="提交">
 </form>
 <script type="text/javascript">
     $(document).ready(function(){
         $("#_form").submit(function(){
             var formParam = $("#_form").serialize();//序列化表格内容为字符串
+            alert(formParam);
             $.ajax({
                 type: 'post',
                 url: '/role/confFun',
