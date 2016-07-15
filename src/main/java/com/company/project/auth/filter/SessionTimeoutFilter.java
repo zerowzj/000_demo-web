@@ -20,6 +20,7 @@ public class SessionTimeoutFilter extends OncePerRequestFilter {
 
     private static final Logger logger = LoggerFactory.getLogger(SessionTimeoutFilter.class);
 
+    /** Session Key列表 */
     private List<String> keyLt = null;
 
     @Override
@@ -33,5 +34,12 @@ public class SessionTimeoutFilter extends OncePerRequestFilter {
         for (String key : keyLt) {
 
         }
+
+        //
+        filterChain.doFilter(request, response);
+    }
+
+    public void setKeyLt(List<String> keyLt) {
+        this.keyLt = keyLt;
     }
 }
