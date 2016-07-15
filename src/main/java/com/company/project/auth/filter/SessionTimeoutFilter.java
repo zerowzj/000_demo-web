@@ -9,6 +9,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.List;
 
 /**
  * 会话过期过滤器
@@ -19,11 +20,18 @@ public class SessionTimeoutFilter extends OncePerRequestFilter {
 
     private static final Logger logger = LoggerFactory.getLogger(SessionTimeoutFilter.class);
 
+    private List<String> keyLt = null;
+
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
+        logger.info("======>" + request.getRequestURI());
+        if (keyLt == null || keyLt.isEmpty()) {
+            //
+            filterChain.doFilter(request, response);
+            return;
+        }
+        for (String key : keyLt) {
 
-        logger.info("======>"+request.getRequestURI());
-        //
-        filterChain.doFilter(request, response);
+        }
     }
 }
