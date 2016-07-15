@@ -1,6 +1,7 @@
 (function (P) {
     var $this = null;
     $this = P.role = {
+        //新增
         add: function () {
             var loading;
             var ajaxOptions = {
@@ -15,9 +16,7 @@
                 },
                 success: function (responseText, statusText, xhr, $form) {
                     layer.close(loading);
-                    layer.msg('成功', {
-                        offset: 0
-                    });
+                    layer.msg('成功', {offset: 0});
                 }
             };
             $('#_form').ajaxForm(ajaxOptions);
