@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.company.project.dao.popedomfunction">
+	<resultMap id="popedomFuntionEO" type="PopedomFunctionEO">
+		<result property="pfId"        column="PF_ID" />
+		<result property="pfParentId" column="PF_PARENT_ID" />
+        <result property="pfName"     column="PF_NAME" />
+        <result property="pfLevel"    column="PF_LEVEL" />
+        <result property="pfUrl"    column="PF_URL" />
+        <association property="children" column="PF_ID" select="getChildren" />
+	</resultMap>
+    <sql id="Base_Column_List">
+        PF.PF_ID, PF.PF_PARENT_ID, PF.PF_NAME, PF.PF_LEVEL, PF.PF_URL
+    </sql>
+    <select id="getChildren" parameterType="int" resultMap="popedomFuntionEO">
+        SELECT <include refid="Base_Column_List" />
+        FROM POPEDOM_FUNCTION PF
+        WHERE  PF.PF_PARENT_ID = #{PF_ID}
+    </select>
+
+    <select id="getFunctionLt" parameterType="java.util.Map" resultMap="popedomFuntionEO">
+        SELECT <include refid="Base_Column_List" />
+        FROM POPEDOM_FUNCTION PF
+        <where>
+            <if test="prLevel != null">
+                PF.PF_LEVEL = #{prLevel}
+            </if>
+        </where>
+    </select>
+
+    <select id="getRoleFunctionLt" parameterType="java.util.Map" resultMap="popedomFuntionEO">
+        SELECT <include refid="Base_Column_List" />
+        FROM POPEDOM_FUNCTION PF
+        INNER JOIN POPEDOM_ROLE_FUNCTION PRF ON PF.PF_ID = PRF.PRF_PF_ID
+        <where>
+            <if test="prId != null">
+                PRF.PRF_PR_ID = #{prId}
+            </if>
+        </where>
+    </select>
+</mapper>
