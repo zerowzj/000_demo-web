@@ -26,9 +26,8 @@ public class SessionTimeoutFilter extends OncePerRequestFilter {
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
         logger.info("======>" + request.getRequestURI());
-        if (sessionKeyLt == null || sessionKeyLt.isEmpty()) {
+        if (sessionKeyLt != null && !sessionKeyLt.isEmpty()) {
             //
-            filterChain.doFilter(request, response);
             return;
         }
         for (String key : sessionKeyLt) {
@@ -39,4 +38,7 @@ public class SessionTimeoutFilter extends OncePerRequestFilter {
         filterChain.doFilter(request, response);
     }
 
+    public void setSessionKeyLt(List<String> sessionKeyLt) {
+        this.sessionKeyLt = sessionKeyLt;
+    }
 }

@@ -74,7 +74,7 @@
     <!--     自定义过滤器     -->
     <!-- ==================== -->
     <bean id="sessionTimeoutFilter" class="com.company.project.auth.filter.SessionTimeoutFilter">
-        <property name="keyLt">
+        <property name="sessionKeyLt">
             <list>
             </list>
         </property>

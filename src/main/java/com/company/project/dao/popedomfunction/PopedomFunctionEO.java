@@ -2,8 +2,6 @@ package com.company.project.dao.popedomfunction;
 
 import com.company.project.common.db.BaseEO;
 
-import java.util.List;
-
 /**
  * 功能信息EO
  *
@@ -25,6 +23,51 @@ public class PopedomFunctionEO extends BaseEO {
     /** 功能路径 */
     private String pfPath = null;
 
-    /**  */
-    private List<PopedomFunctionEO> children = null;
+    public Long getPfId() {
+        return pfId;
+    }
+
+    public void setPfId(Long pfId) {
+        this.pfId = pfId;
+    }
+
+    public Long getPfParentId() {
+        return pfParentId;
+    }
+
+    public void setPfParentId(Long pfParentId) {
+        this.pfParentId = pfParentId;
+    }
+
+    public String getPfName() {
+        return pfName;
+    }
+
+    public void setPfName(String pfName) {
+        this.pfName = pfName;
+    }
+
+    public String getPfStatus() {
+        return pfStatus;
+    }
+
+    public void setPfStatus(String pfStatus) {
+        this.pfStatus = pfStatus;
+    }
+
+    public Integer getPfLevel() {
+        return pfLevel;
+    }
+
+    public void setPfLevel(Integer pfLevel) {
+        this.pfLevel = pfLevel;
+    }
+
+    public String getPfPath() {
+        return pfPath;
+    }
+
+    public void setPfPath(String pfPath) {
+        this.pfPath = pfPath;
+    }
 }
