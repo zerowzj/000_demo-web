@@ -2,14 +2,17 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+    <%
+        String baseUrl = request.getContextPath();
+    %>
     <title>角色列表</title>
-    <link rel="stylesheet" type="text/css"
-          href="<%=request.getContextPath()%>/static/jstree/themes/default/style.min.css"/>
-    <script type="text/javascript" src="<%=request.getContextPath()%>/static/jstree/jstree.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="<%=baseUrl%>/static/jstree/themes/default/style.min.css"/>
+    <script type="text/javascript" src="<%=baseUrl%>/static/jstree/jstree.min.js"></script>
     <script type="text/javascript">
         <!--
         $(document).ready(function () {
-            var jsTree = $('#tree').jstree({ 'plugins': ["wholerow", "checkbox"],
+            var jsTree = $('#tree').jstree({
+                'plugins': ["wholerow", "checkbox"],
                 'core': {
                     'data': [
                         {"id": "1", "parent": "#", "text": "角色管理"},
@@ -21,11 +24,8 @@
                     ]
                 }
             });
-            jsTree.on("changed.jstree", function (e, data) {
-                var i, j;
-                for (i = 0, j = data.selected.length; i < j; i++) {
-                    alert(data.instance.get_node(data.selected[i]).text);
-                }
+            jsTree.on("enable_checkbox.jstree", function (e, data) {
+                alert(data.node.id);
             });
         });
         //-->

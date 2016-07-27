@@ -5,14 +5,21 @@
 	<resultMap id="popedomFuntionEO" type="PopedomFunctionEO">
 		<result property="pfId"        column="PF_ID" />
 		<result property="pfParentId" column="PF_PARENT_ID" />
-        <result property="pfName"     column="PF_NAME" />
-        <result property="pfLevel"    column="PF_LEVEL" />
-        <result property="pfUrl"    column="PF_URL" />
+        <result property="pfName"      column="PF_NAME" />
+        <result property="pfStatus"    column="PF_STATUS" />
+        <result property="pfLevel"     column="PF_LEVEL" />
+        <result property="pfPath"      column="PF_PATH" />
         <association property="children" column="PF_ID" select="getChildren" />
 	</resultMap>
     <sql id="Base_Column_List">
-        PF.PF_ID, PF.PF_PARENT_ID, PF.PF_NAME, PF.PF_LEVEL, PF.PF_URL
+        PF.PF_ID,
+        PF.PF_PARENT_ID,
+        PF.PF_NAME,
+        PF.PF_STATUS,
+        PF.PF_LEVEL,
+        PF.PF_PATH
     </sql>
+
     <select id="getChildren" parameterType="int" resultMap="popedomFuntionEO">
         SELECT <include refid="Base_Column_List" />
         FROM POPEDOM_FUNCTION PF
