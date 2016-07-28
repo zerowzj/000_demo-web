@@ -11,22 +11,27 @@
     <script type="text/javascript">
         <!--
         $(document).ready(function () {
+            var data = ${tree};
             var jsTree = $('#tree').jstree({
-                'plugins': ["wholerow", "checkbox"],
+                'plugins': ["checkbox", "changed"],
                 'core': {
-                    'data': [
-                        {"id": "1", "parent": "#", "text": "角色管理"},
-                        {"id": "2", "parent": "#", "text": "用户管理"},
-                        {"id": "3", "parent": "1", "text": "新增角色"},
-                        {"id": "4", "parent": "1", "text": "角色列表"},
-                        {"id": "5", "parent": "2", "text": "注册用户"},
-                        {"id": "6", "parent": "2", "text": "用户列表"},
-                    ]
+                    'data': data
                 }
             });
-            jsTree.on("enable_checkbox.jstree", function (e, data) {
-                alert(data.node.id);
+
+            jsTree.on("changed.jstree", function (e, data) {
+                alert(jsTree.get_checked(true));
+                alert("node: "+data.node.id + " = " + data.node.text);
             });
+            /*jsTree.on("enable_node.jstree", function (selected,e, data) {
+                alert("enable_node: "+data.node.id);
+            });
+            jsTree.on("activate_node.jstree", function (e, data) {
+                alert("activate_node: "+data.node.id);
+            });
+            jsTree.on("check_node.jstree", function (selected, e, data) {
+                alert("check_node: "+data.node.id);
+            });*/
         });
         //-->
     </script>

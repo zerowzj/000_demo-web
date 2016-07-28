@@ -28,14 +28,4 @@
             </if>
         </where>
     </select>
-    <select id="getRoleFunctionLt" parameterType="java.util.Map" resultMap="popedomFuntionEO">
-        SELECT <include refid="Base_Column_List" />
-        FROM POPEDOM_FUNCTION PF
-        INNER JOIN POPEDOM_ROLE_FUNCTION PRF ON PF.PF_ID = PRF.PRF_PF_ID
-        <where>
-            <if test="prId != null">
-                PRF.PRF_PR_ID = #{prId}
-            </if>
-        </where>
-    </select>
 </mapper>

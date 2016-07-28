@@ -8,6 +8,7 @@
     <typeAliases>
         <typeAlias type="com.company.project.dao.userbase.UserBaseEO" alias="UserBaseEO"/>
         <typeAlias type="com.company.project.dao.popedomrole.PopedomRoleEO" alias="PopedomRoleEO"/>
+        <typeAlias type="com.company.project.dao.popedomfunction.PopedomFunctionEO" alias="PopedomFunctionEO"/>
     </typeAliases>
     <!-- ===================== -->
     <!--        插件           -->
@@ -23,5 +24,6 @@
     <mappers>
         <mapper resource="com/company/project/dao/userbase/UserBase.xml"/>
         <mapper resource="com/company/project/dao/popedomrole/PopedomRole.xml"/>
+        <mapper resource="com/company/project/dao/popedomfunction/PopedomFunction.xml"/>
     </mappers>
 </configuration>

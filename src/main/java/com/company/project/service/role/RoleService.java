@@ -22,6 +22,7 @@ public interface RoleService {
 
     /**
      * 新增角色
+     *
      * @param prEO 角色信息
      */
     public void addRole(PopedomRoleEO prEO);

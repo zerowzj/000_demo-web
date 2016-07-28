@@ -1,7 +1,10 @@
 package com.company.project.web.controller.role;
 
+import com.company.project.dao.popedomfunction.PopedomFunctionEO;
 import com.company.project.dao.popedomrole.PopedomRoleEO;
+import com.company.project.service.function.FunctionService;
 import com.company.project.service.role.RoleService;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.miemiedev.mybatis.paginator.domain.PageList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,7 +14,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -25,9 +30,11 @@ public class RoleController {
 
     @Autowired
     private RoleService roleService = null;
+    @Autowired
+    private FunctionService functionService = null;
 
     @RequestMapping("/toList")
-    public ModelAndView toList(HttpServletRequest request, HttpServletResponse response){
+    public ModelAndView toList(HttpServletRequest request, HttpServletResponse response) {
         //
         return new ModelAndView("/role/roleList");
     }
@@ -54,8 +61,9 @@ public class RoleController {
     public Map<String, Object> add(HttpServletRequest request, HttpServletResponse response, PopedomRoleEO prEO) {
         Map<String, Object> model = new HashMap();
         try {
-            Thread.currentThread().sleep(5*1000);
-        } catch (Exception ex) {}
+            Thread.currentThread().sleep(5 * 1000);
+        } catch (Exception ex) {
+        }
 
 
         model.put("success", "okkkkkkkkkkkk");
@@ -64,7 +72,37 @@ public class RoleController {
 
     @RequestMapping("/toConfFun")
     public ModelAndView toConfFun(HttpServletRequest request, HttpServletResponse response) {
-        return new ModelAndView("/role/funConf2");
+        //
+        Map<String, Object> model = new HashMap<>();
+
+        List<PopedomFunctionEO> pfEOLt = functionService.getFunctionLt();
+        List<FunctionTree> treeLt = new ArrayList<>();
+        FunctionTree tree = null;
+        for (PopedomFunctionEO pfEO : pfEOLt) {
+            tree = new FunctionTree();
+
+            Long id = pfEO.getPfId();
+            tree.setId(String.valueOf(id));
+            Long parentId = pfEO.getPfParentId();
+            if (parentId == null) {
+                tree.setParent("#");
+            } else {
+                tree.setParent(String.valueOf(parentId));
+            }
+
+            tree.setText(pfEO.getPfName());
+
+            treeLt.add(tree);
+        }
+
+        ObjectMapper mapper = new ObjectMapper();
+
+        try {
+            model.put("tree", mapper.writeValueAsString(treeLt));
+        } catch (Exception ex) {
+        }
+
+        return new ModelAndView("/role/funConf2", model);
     }
 
     @RequestMapping("/confFun")
