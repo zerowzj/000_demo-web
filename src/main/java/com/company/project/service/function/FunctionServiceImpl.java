@@ -23,4 +23,9 @@ public class FunctionServiceImpl implements FunctionService {
     public List<RoleFunctionConfVO> getRoleFunctionConfLt(Long prId) {
         return popedomFunctionDao.getRoleFunctionConfLt(prId);
     }
+
+    @Override
+    public List<PopedomFunctionEO> getRoleFunctionLt(Long prId) {
+        return popedomFunctionDao.getRoleFunctionLt(prId);
+    }
 }
