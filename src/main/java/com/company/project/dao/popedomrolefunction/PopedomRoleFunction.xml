@@ -30,14 +30,4 @@
 			</if>
 		</where>
 	</delete>
-
-	<select id="getRoleFunctionLt" parameterType="java.util.Map" resultMap="popedomRoleFunctionEO">
-		SELECT <include refid="Base_Column_List" />
-		FROM POPEDOM_ROLE_FUNCTION PRF
-		<where>
-			<if test="prId != null">
-				PRF.PRF_PR_ID = #{prId}
-			</if>
-		</where>
-	</select>
 </mapper>

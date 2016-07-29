@@ -1,12 +1,7 @@
 package com.company.project.web.controller.function;
 
 import com.company.project.dao.popedomfunction.PopedomFunctionEO;
-import com.company.project.dao.popedomrole.PopedomRoleEO;
 import com.company.project.service.function.FunctionService;
-import com.company.project.service.role.RoleService;
-import com.company.project.web.controller.role.FunctionTree;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.github.miemiedev.mybatis.paginator.domain.PageList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,7 +10,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;

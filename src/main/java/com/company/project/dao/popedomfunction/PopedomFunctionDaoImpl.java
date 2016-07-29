@@ -16,4 +16,11 @@ public class PopedomFunctionDaoImpl extends BaseDaoImpl<PopedomFunctionEO> imple
         params.put("prLevel", prLevel);
         return getSqlSession().selectList(getSqlId("getFunctionLt"), params);
     }
+
+    @Override
+    public List<RoleFunctionConfVO> getRoleFunctionConfLt(Long prId) {
+        Map<String, Object> params = new HashMap<>();
+        params.put("prId", prId);
+        return getSqlSession().selectList(getSqlId("getRoleFunctionConfLt"), params);
+    }
 }

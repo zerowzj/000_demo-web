@@ -11,7 +11,6 @@ public class PopedomRoleFunctionEO extends BaseEO {
 
     /** 角色编号 */
     private Long prfPrId = null;
-
     /** 功能编号 */
     private Long prfPfId = null;
 

@@ -1,6 +1,7 @@
 package com.company.project.service.function;
 
 import com.company.project.dao.popedomfunction.PopedomFunctionEO;
+import com.company.project.dao.popedomfunction.RoleFunctionConfVO;
 
 import java.util.List;
 
@@ -16,4 +17,6 @@ public interface FunctionService {
      * @return List<PopedomFunctionEO>
      */
     public List<PopedomFunctionEO> getFunctionLt();
+
+    public List<RoleFunctionConfVO> getRoleFunctionConfLt(Long prId);
 }

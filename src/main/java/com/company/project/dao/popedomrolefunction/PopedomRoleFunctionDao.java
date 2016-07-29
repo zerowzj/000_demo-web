@@ -27,6 +27,4 @@ public interface PopedomRoleFunctionDao extends BaseDao<PopedomRoleFunctionEO> {
      * @return int
      */
     public int deleteBatch(Long prfPrId, Long prfPfId);
-
-    public List<PopedomRoleFunctionEO> getRoleFunctionLt(Long prId);
 }

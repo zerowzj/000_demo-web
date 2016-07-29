@@ -1,6 +1,7 @@
 package com.company.project.web.controller.role;
 
-import com.company.project.dao.popedomfunction.PopedomFunctionEO;
+import com.company.project.common.tree.JSTree;
+import com.company.project.dao.popedomfunction.RoleFunctionConfVO;
 import com.company.project.dao.popedomrole.PopedomRoleEO;
 import com.company.project.service.function.FunctionService;
 import com.company.project.service.role.RoleService;
@@ -74,24 +75,30 @@ public class RoleController {
         //
         Map<String, Object> model = new HashMap<>();
 
-        List<PopedomFunctionEO> pfEOLt = functionService.getFunctionLt();
-        List<FunctionTree> treeLt = new ArrayList<>();
-        FunctionTree tree = null;
-        for (PopedomFunctionEO pfEO : pfEOLt) {
-            tree = new FunctionTree();
+        List<RoleFunctionConfVO> confVOLt = functionService.getRoleFunctionConfLt(1L);
+        List<JSTree> treeLt = new ArrayList<>();
+        JSTree jsTree = null;
+        for (RoleFunctionConfVO confVO : confVOLt) {
+            jsTree = new JSTree();
 
-            Long id = pfEO.getPfId();
-            tree.setId(String.valueOf(id));
-            Long parentId = pfEO.getPfParentId();
-            if (parentId == null) {
-                tree.setParent("#");
-            } else {
-                tree.setParent(String.valueOf(parentId));
+            Long c = confVO.getPrfPfId();
+            if(c != null){
+                Map<String, Boolean> state = new HashMap<>();
+                state.put("selected", true);
+                jsTree.setState(state);
             }
 
-            tree.setText(pfEO.getPfName());
+            Long id = confVO.getPfId();
+            jsTree.setId(String.valueOf(id));
+            Long parentId = confVO.getPfParentId();
+            if (parentId == null) {
+                jsTree.setParent("#");
+            } else {
+                jsTree.setParent(String.valueOf(parentId));
+            }
+            jsTree.setText(confVO.getPfName());
 
-            treeLt.add(tree);
+            treeLt.add(jsTree);
         }
 
         ObjectMapper mapper = new ObjectMapper();

@@ -2,14 +2,14 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.company.project.dao.popedomfunction">
-	<resultMap id="popedomFuntionEO" type="PopedomFunctionEO">
-		<result property="pfId"        column="PF_ID" />
-		<result property="pfParentId" column="PF_PARENT_ID" />
-        <result property="pfName"      column="PF_NAME" />
-        <result property="pfStatus"    column="PF_STATUS" />
-        <result property="pfLevel"     column="PF_LEVEL" />
-        <result property="pfPath"      column="PF_PATH" />
-	</resultMap>
+    <resultMap id="popedomFuntionEO" type="PopedomFunctionEO">
+        <result property="pfId" column="PF_ID"/>
+        <result property="pfParentId" column="PF_PARENT_ID"/>
+        <result property="pfName" column="PF_NAME"/>
+        <result property="pfStatus" column="PF_STATUS"/>
+        <result property="pfLevel" column="PF_LEVEL"/>
+        <result property="pfPath" column="PF_PATH"/>
+    </resultMap>
     <sql id="Base_Column_List">
         PF.PF_ID,
         PF.PF_PARENT_ID,
@@ -18,14 +18,28 @@
         PF.PF_LEVEL,
         PF.PF_PATH
     </sql>
-
+    <resultMap id="roleFuntionConfVO" type="com.company.project.dao.popedomfunction.RoleFunctionConfVO"
+               extends="popedomFuntionEO">
+        <result property="prfPfId" column="PRF_PF_ID"/>
+    </resultMap>
     <select id="getFunctionLt" parameterType="java.util.Map" resultMap="popedomFuntionEO">
-        SELECT <include refid="Base_Column_List" />
+        SELECT
+        <include refid="Base_Column_List"/>
         FROM POPEDOM_FUNCTION PF
         <where>
             <if test="prLevel != null">
                 PF.PF_LEVEL = #{prLevel}
             </if>
         </where>
+    </select>
+    <select id="getRoleFunctionConfLt" parameterType="java.util.Map" resultMap="roleFuntionConfVO">
+        SELECT
+        <include refid="Base_Column_List"/>,
+        PRF.PRF_PF_ID
+        FROM POPEDOM_FUNCTION PF
+        LEFT JOIN (SELECT PRF_PF_ID
+        FROM POPEDOM_ROLE_FUNCTION
+        WHERE PRF_PR_ID = #{prId} )PRF
+        ON PRF.PRF_PF_ID = PF.PF_ID
     </select>
 </mapper>

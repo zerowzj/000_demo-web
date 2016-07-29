@@ -25,11 +25,4 @@ public class PopedomRoleFunctionDaoImpl extends BaseDaoImpl<PopedomRoleFunctionE
         params.put("prfPfId", prfPfId);
         return getSqlSession().delete(getSqlId("deleteBatch"), params);
     }
-
-    @Override
-    public List<PopedomRoleFunctionEO> getRoleFunctionLt(Long prId) {
-        Map<String, Object> params = new HashMap();
-        params.put("prId", prId);
-        return getSqlSession().selectList(getSqlId("getRoleFunctionLt"), params);
-    }
 }
