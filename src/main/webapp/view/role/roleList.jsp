@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -36,6 +37,7 @@
                 <td>${prEO.prStatus}</td>
                 <td>${prEO.prStatus}</td>
                 <td>${prEO.prStatus}</td>
+                <td><a href="#" role-id="${prEO.prId}" role-name="${prEO.prName}">分配功能</a></td>
             </tr>
         </c:forEach>
         </tbody>
@@ -47,52 +49,31 @@
     </table>
 </div>
 <script type="text/javascript" src="/static/lib/jquery.min.js"></script>
-<script type="text/javascript" src="/static/jsrender/jsrender.min.js"></script>
-<script id="dataList" type="text/x-jsrender">
- {{for dataLt}}
-        <tr>
-            <td>{{:prId}}</td>
-            <td>{{:prName}}</td>
-            <td>{{:prName}}</td>
-            <td>{{:prName}}</td>
-            <td>{{:prName}}</td>
-            <td>{{:prName}}</td>
-        </tr>
-{{/for}}
+<script type="text/javascript" src="/static/layer/layer.js"></script>
+<script src="/static/jsrender/jsrender.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
 
+        $("a[href='#']").on('click', function (event) {
+            /* layer.open({
+             type: 2,
+             title: '档案图片',
+             shadeClose: false, //点击遮罩关闭层
+             area: ['100%', '100%'],
+             content: '/archivePic/show?abId=' + $(this).attr("id")
+             });*/
 
-
-</script>
-<script>
-   /* $(document).ready(function () {
-        var formParam = $("#_form").serialize();//序列化表格内容为字符串
-        $.ajax({
-            type: 'post',
-            url: '/role/list',
-            data: formParam,
-            cache: false,
-            dataType: 'json',
-            success: function (data) {
-                var dataList = $.templates("#dataList");
-                $("#list").html(dataList.render(data));
-            }
+            layer.open({
+                type: 2,
+                title: [$(this).attr("role-name"), 'font-size:16px;'],
+                shadeClose: true, //点击遮罩关闭层
+                area: ['500px', '530px'],
+                fix: false, //不固定
+                maxmin: true,
+                content: '/role/toConf?prId=' + $(this).attr("id")
+            });
         });
     });
-
-    $("#_form").submit(function (e) {
-        var formParam = $("#_form").serialize();//序列化表格内容为字符串
-        $.ajax({
-            type: 'post',
-            url: '/role/list',
-            data: formParam,
-            cache: false,
-            dataType: 'json',
-            success: function (data) {
-                var dataList = $.templates("#dataList");
-                $("#list").html(dataList.render(data));
-            }
-        });
-    });*/
 </script>
 </body>
 </html>

@@ -69,7 +69,7 @@ public class RoleController {
         return model;
     }
 
-    @RequestMapping("/toConfFun")
+    @RequestMapping("/toConf")
     public ModelAndView toConfFun(HttpServletRequest request, HttpServletResponse response) {
         //
         Map<String, Object> model = new HashMap<>();

@@ -32,17 +32,10 @@ public class FunctionController {
     @Autowired
     private FunctionService functionService = null;
 
-    @RequestMapping("/toList")
-    public ModelAndView toList(HttpServletRequest request, HttpServletResponse response) {
-        //
-        return new ModelAndView("/function/functionList");
-    }
-
     @RequestMapping("/list")
     @ResponseBody
     public ModelAndView list(HttpServletRequest request, HttpServletResponse response) {
         Map<String, Object> model = new HashMap();
-
 
         List<PopedomFunctionEO> functionLt = functionService.getFunctionLt();
         //

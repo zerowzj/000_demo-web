@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.company.project.dao.popedomrolefunction">
+	<resultMap id="popedomRoleFunctionEO" type="PopedomRoleFunctionEO">
+		<result property="prfPrId" column="PRF_PR_ID" />
+        <result property="prfPfId" column="PRF_PF_ID" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		PRF.PRF_PR_ID, PRF.PRF_PF_ID
+	</sql>
+
+	<insert id="insertBatch" parameterType="java.util.List">
+    	INSERT INTO POPEDOM_ROLE_FUNCTION (PRF_PR_ID, PRF_PF_ID)
+		      VALUES
+    	      <foreach collection="list" item="item" index="index" open="" close="" separator=",">
+                  (#{item.prfPrId}, #{item.prfPfId})
+              </foreach>
+	</insert>
+
+	<delete id="deleteBatch" parameterType="java.util.Map">
+		DELETE
+		  FROM POPEDOM_ROLE_FUNCTION
+		<where>
+			<if test="prfPrId != null">
+				PRF_PR_ID = #{prfPrId}
+			</if>
+			<if test="prfPfId != null">
+				AND PRF_PF_ID = #{prfPfId}
+			</if>
+		</where>
+	</delete>
+
+	<select id="getRoleFunctionLt" parameterType="java.util.Map" resultMap="popedomRoleFunctionEO">
+		SELECT <include refid="Base_Column_List" />
+		FROM POPEDOM_ROLE_FUNCTION PRF
+		<where>
+			<if test="prId != null">
+				PRF.PRF_PR_ID = #{prId}
+			</if>
+		</where>
+	</select>
+</mapper>
