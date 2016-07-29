@@ -70,7 +70,7 @@
                 area: ['500px', '530px'],
                 fix: false, //不固定
                 maxmin: true,
-                content: '/role/toConf?prId=' + $(this).attr("id")
+                content: '/role/toConf?prId=' + $(this).attr("role-id")
             });
         });
     });

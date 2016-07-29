@@ -60,12 +60,6 @@ public class RoleController {
     @ResponseBody
     public Map<String, Object> add(HttpServletRequest request, HttpServletResponse response, PopedomRoleEO prEO) {
         Map<String, Object> model = new HashMap();
-        try {
-            Thread.currentThread().sleep(5 * 1000);
-        } catch (Exception ex) {
-        }
-
-
         model.put("success", "okkkkkkkkkkkk");
         return model;
     }
@@ -75,24 +69,12 @@ public class RoleController {
         //
         Map<String, Object> model = new HashMap<>();
 
-        List<RoleFunctionConfVO> confVOLt = functionService.getRoleFunctionConfLt(1L);
+        String prId = request.getParameter("prId");
+        List<RoleFunctionConfVO> confVOLt = functionService.getRoleFunctionConfLt(Long.valueOf(prId));
         List<JSTree> treeLt = new ArrayList<>();
         JSTree jsTree = null;
         for (RoleFunctionConfVO confVO : confVOLt) {
             jsTree = new JSTree();
-
-            Long c = confVO.getPrfPfId();
-            JSTree.State state = jsTree.new State();
-            if(c != null){
-                state.setSelected(true);
-                state.setOpened(true);
-                state.setDisabled(true);
-            } else {
-                state.setSelected(false);
-                state.setOpened(false);
-                state.setDisabled(false);
-            }
-            jsTree.setState(state);
 
             Long id = confVO.getPfId();
             jsTree.setId(String.valueOf(id));
@@ -103,6 +85,19 @@ public class RoleController {
                 jsTree.setParent(String.valueOf(parentId));
             }
             jsTree.setText(confVO.getPfName());
+
+            Long c = confVO.getPrfPfId();
+            JSTree.State state = new JSTree.State();
+            if(c != null){
+                state.setSelected(true);
+                state.setOpened(true);
+//                state.setDisabled(true);
+            } else {
+                state.setSelected(false);
+                state.setOpened(false);
+                state.setDisabled(false);
+            }
+            jsTree.setState(state);
 
             treeLt.add(jsTree);
         }

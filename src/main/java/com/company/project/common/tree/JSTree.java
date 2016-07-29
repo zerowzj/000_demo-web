@@ -22,7 +22,7 @@ public class JSTree implements Serializable {
 
     }
 
-    public class State {
+    public static class State {
 
         private boolean opened;
 
