@@ -71,6 +71,11 @@
         </constructor-arg>
     </bean>
     <!-- ==================== -->
+    <!--      授权过滤器      -->
+    <!-- ==================== -->
+
+
+    <!-- ==================== -->
     <!--     自定义过滤器     -->
     <!-- ==================== -->
     <bean id="sessionTimeoutFilter" class="com.company.project.auth.filter.SessionTimeoutFilter">
