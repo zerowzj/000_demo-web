@@ -20,6 +20,7 @@
     <a href="/user/list">用户列表</a><br>
     <a href="/role/toList">角色列表</a><br>
     <a href="/role/toConfFun">权限配置</a><br>
+    <a href="/function/list">功能列表</a><br>
 </div>
 <!-- 中部 -->
 <div class="ui-layout-center">

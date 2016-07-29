@@ -1,4 +1,5 @@
-import com.fasterxml.jackson.databind.util.JSONPObject;
+import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;
 import org.junit.Test;
 
 /**
@@ -8,6 +9,12 @@ public class MyTest {
 
     @Test
     public void test(){
-//        JSONObject result = new JSONObject();
+        JSONObject json = new JSONObject();
+
+        json.put("key1", "sdfsdf");
+        json.put("key2", 12);
+
+        System.out.println(json.toString());
+
     }
 }

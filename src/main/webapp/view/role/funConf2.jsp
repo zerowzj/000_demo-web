@@ -20,8 +20,11 @@
             });
 
             jsTree.on("changed.jstree", function (e, data) {
-                alert(jsTree.get_checked(true));
+                alert(data.selected);
                 alert("node: "+data.node.id + " = " + data.node.text);
+            });
+            jsTree.on("ready.jstree", function (e, data) {
+                data.instance.open_all();
             });
             /*jsTree.on("enable_node.jstree", function (selected,e, data) {
                 alert("enable_node: "+data.node.id);

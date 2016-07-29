@@ -1,4 +1,4 @@
-package com.company.project.web;
+package com.company.project.common;
 
 /**
  * Session用户信息
