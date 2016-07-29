@@ -19,7 +19,7 @@ import java.util.List;
  *
  * @author wangzhj
  */
-public class FunctionMapFactoryBean implements FactoryBean<LinkedHashMap<RequestMatcher, Collection<ConfigAttribute>>>{
+public class FunctionMapFactoryBean implements FactoryBean<LinkedHashMap<RequestMatcher, Collection<ConfigAttribute>>> {
 
     @Autowired
     private PopedomFunctionDao popedomFunctionDao = null;
@@ -32,20 +32,20 @@ public class FunctionMapFactoryBean implements FactoryBean<LinkedHashMap<Request
         //生成映射
         AntPathRequestMatcher matcher = null;
         List<ConfigAttribute> configAttrLt = null;
-        for(PopedomFunctionEO pfEO : pfEOLt){
+        for (PopedomFunctionEO pfEO : pfEOLt) {
             //
             Integer pfLevel = pfEO.getPfLevel();
-            if(pfLevel == 1){
+            if (pfLevel == 1) {
                 continue;
             }
             //
             String pfPath = pfEO.getPfPath();
-            if(pfPath == null || "".equals(pfPath)){
+            if (pfPath == null || "".equals(pfPath)) {
                 continue;
             }
 
             //匹配器
-            matcher = new AntPathRequestMatcher(pfPath);
+            matcher = new AntPathRequestMatcher(pfPath + "*");
             //配置属性
             configAttrLt = new ArrayList<>();
             configAttrLt.add(new SecurityConfig(pfPath));

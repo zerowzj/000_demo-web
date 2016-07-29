@@ -13,9 +13,13 @@
         <security:intercept-url pattern="/login.jsp*" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
         <security:intercept-url pattern="/static/**" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
         <security:intercept-url pattern="/**" access="IS_AUTHENTICATED_FULLY"/>
+
         <security:custom-filter ref="customLoginFilter" before="FORM_LOGIN_FILTER"/>
         <security:custom-filter ref="customLogoutFilter" before="LOGOUT_FILTER"/>
         <security:custom-filter ref="sessionTimeoutFilter" after="FORM_LOGIN_FILTER"/>
+
+        <security:custom-filter ref="customFilterSecurityInterceptor" before="FILTER_SECURITY_INTERCEPTOR" />
+        <security:access-denied-handler ref="accessDeniedHandler"/>
     </security:http>
     <!-- 登录入口 -->
     <bean id="loginEntryPoint" class="org.springframework.security.web.authentication.LoginUrlAuthenticationEntryPoint">
@@ -74,11 +78,7 @@
     <!-- ==================== -->
     <!--      授权过滤器      -->
     <!-- ==================== -->
-    <!--
-            授权拦截器
-        -->
-    <bean id="customFilterSecurityInterceptor"
-          class="org.springframework.security.web.access.intercept.FilterSecurityInterceptor">
+    <bean id="customFilterSecurityInterceptor" class="org.springframework.security.web.access.intercept.FilterSecurityInterceptor">
         <property name="authenticationManager" ref="authenticationManager"/>
         <property name="accessDecisionManager" ref="accessDecisionManager"/>
         <property name="securityMetadataSource" ref="defaultSecurityMetadataSource"/>
