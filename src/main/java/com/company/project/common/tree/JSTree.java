@@ -1,10 +1,8 @@
 package com.company.project.common.tree;
 
 import java.io.Serializable;
-import java.util.Map;
 
 /**
- *
  * @author wangzhj
  */
 public class JSTree implements Serializable {
@@ -18,21 +16,48 @@ public class JSTree implements Serializable {
     /**  */
     private String icon = null;
     /**  */
-//    private State state = null;
+    private State state = null;
 
-    private Map<String, Boolean> state = null;
+    public JSTree() {
 
+    }
 
- /*   public class State {
-        *//**  *//*
+    public class State {
+
         private boolean opened;
-        *//**  *//*
+
         private boolean disabled;
-        *//**  *//*
+
         private boolean selected;
 
-        public State(){};
-    }*/
+        public State() {
+
+        }
+
+        public boolean isOpened() {
+            return opened;
+        }
+
+        public void setOpened(boolean opened) {
+            this.opened = opened;
+        }
+
+        public boolean isDisabled() {
+            return disabled;
+        }
+
+        public void setDisabled(boolean disabled) {
+            this.disabled = disabled;
+        }
+
+        public boolean isSelected() {
+            return selected;
+        }
+
+        public void setSelected(boolean selected) {
+            this.selected = selected;
+        }
+    }
 
     public String getId() {
         return id;
@@ -66,11 +91,11 @@ public class JSTree implements Serializable {
         this.icon = icon;
     }
 
-    public Map<String, Boolean> getState() {
+    public State getState() {
         return state;
     }
 
-    public void setState(Map<String, Boolean> state) {
+    public void setState(State state) {
         this.state = state;
     }
 }

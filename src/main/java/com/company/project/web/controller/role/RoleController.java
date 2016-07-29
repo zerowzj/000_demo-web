@@ -82,11 +82,17 @@ public class RoleController {
             jsTree = new JSTree();
 
             Long c = confVO.getPrfPfId();
+            JSTree.State state = jsTree.new State();
             if(c != null){
-                Map<String, Boolean> state = new HashMap<>();
-                state.put("selected", true);
-                jsTree.setState(state);
+                state.setSelected(true);
+                state.setOpened(true);
+                state.setDisabled(true);
+            } else {
+                state.setSelected(false);
+                state.setOpened(false);
+                state.setDisabled(false);
             }
+            jsTree.setState(state);
 
             Long id = confVO.getPfId();
             jsTree.setId(String.valueOf(id));
@@ -102,7 +108,6 @@ public class RoleController {
         }
 
         ObjectMapper mapper = new ObjectMapper();
-
         try {
             model.put("tree", mapper.writeValueAsString(treeLt));
         } catch (Exception ex) {
