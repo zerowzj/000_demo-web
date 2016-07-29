@@ -1,5 +1,6 @@
 package com.company.project.auth.user;
 
+import com.company.project.common.SessionUserInfo;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -19,11 +20,21 @@ public class CustomUserDetails implements UserDetails {
     /** 授权 */
     private List<SimpleGrantedAuthority> grantedAuthLt = null;
 
+    /** 授权 */
+    private SessionUserInfo userInfo = null;
 
     public CustomUserDetails(String loginName, String loginPwd, List<SimpleGrantedAuthority> grantedAuthLt) {
         this.loginName = loginName;
         this.loginPwd = loginPwd;
         this.grantedAuthLt = grantedAuthLt;
+    }
+
+    public SessionUserInfo getUserInfo() {
+        return userInfo;
+    }
+
+    public void setUserInfo(SessionUserInfo userInfo) {
+        this.userInfo = userInfo;
     }
 
     @Override

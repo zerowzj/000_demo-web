@@ -1,6 +1,7 @@
 package com.company.project.auth.handler;
 
 import com.company.project.auth.user.CustomUserDetails;
+import com.company.project.common.SessionUserInfo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -26,7 +27,9 @@ public class LoginSuccessHandler extends SavedRequestAwareAuthenticationSuccessH
         //获取认证信息
         UsernamePasswordAuthenticationToken token = (UsernamePasswordAuthenticationToken) authentication;
         CustomUserDetails userDetails = (CustomUserDetails) token.getPrincipal();
-
+        //
+        SessionUserInfo userInfo = userDetails.getUserInfo();
+        request.getSession().setAttribute("", userInfo);
 
         //执行父逻辑
         super.onAuthenticationSuccess(request, response, authentication);

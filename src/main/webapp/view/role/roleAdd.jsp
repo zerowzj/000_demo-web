@@ -2,8 +2,11 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+    <%
+        String baseUrl = request.getContextPath();
+    %>
     <title>角色列表</title>
-    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/static/layer/skin/layer.css"/>
+    <link rel="stylesheet" type="text/css" href="<%=baseUrl %>/static/layer/skin/layer.css"/>
 </head>
 <body>
 <form id="_form" action="#">
@@ -22,6 +25,7 @@
         </tr>
     </table>
 </form>
+
 <script type="text/javascript" src="/static/form/jquery.form.min.js"></script>
 <script type="text/javascript" src="/static/layer/layer.js"></script>
 <script type="text/javascript" src="/static/js/global.js"></script>

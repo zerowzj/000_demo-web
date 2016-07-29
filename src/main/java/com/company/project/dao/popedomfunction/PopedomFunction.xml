@@ -42,4 +42,15 @@
         WHERE PRF_PR_ID = #{prId} )PRF
         ON PRF.PRF_PF_ID = PF.PF_ID
     </select>
+    <select id="getRoleFunctionLt" parameterType="java.util.Map" resultMap="popedomFuntionEO">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM POPEDOM_FUNCTION PF
+        INNER JOIN POPEDOM_ROLE_FUNCTION PRF ON PRF.PRF_PF_ID = PF.PF_ID
+        <where>
+            <if test="prId != null">
+                PR.PR_ID = #{prId}
+            </if>
+        </where>
+    </select>
 </mapper>
