@@ -58,8 +58,8 @@ public class CustomUserDetailsService implements UserDetailsService {
         List<SimpleGrantedAuthority> grantedLt = new ArrayList<>();
         SimpleGrantedAuthority granted = null;
         for(PopedomFunctionEO pfEO : pfEOLt){
-            granted = new SimpleGrantedAuthority(null);
-
+            String path = pfEO.getPfPath();
+            granted = new SimpleGrantedAuthority(path);
             grantedLt.add(granted);
         }
         return grantedLt;
