@@ -20,7 +20,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * 角色信息控制器
+ * 角色控制器
  *
  * @author wangzhj
  */
@@ -40,15 +40,14 @@ public class RoleController {
     }
 
     @RequestMapping("/list")
-    @ResponseBody
-    public Map<String, Object> list(HttpServletRequest request, HttpServletResponse response) {
+    public ModelAndView list(HttpServletRequest request, HttpServletResponse response) {
         Map<String, Object> model = new HashMap();
         PageList<PopedomRoleEO> pageLt = roleService.getRolePageLt(null, 1, 10);
         //
         model.put("dataLt", pageLt);
         model.put("page", pageLt.getPaginator());
         //
-        return model;
+        return new ModelAndView("role/roleList", model);
     }
 
     @RequestMapping("/toAdd")

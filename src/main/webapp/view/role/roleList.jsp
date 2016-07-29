@@ -9,7 +9,7 @@
 
 <div class="div_search">
             <span>
-                <form id="_form" action="#" method="post">
+                <form id="_form" action="/role/list" method="post">
                     角色名称：<input type="text" name="prName" value="${prName}" style="width: 120px;">
                     <input value="查询" type="submit"/>
                     <input type="hidden" id="_pageNo" name="pageNo">
@@ -28,7 +28,16 @@
             <td align="center">操作</td>
         </tr>
         </thead>
-        <tbody id="list">
+        <tbody>
+        <c:forEach items="${dataLt}" var="prEO">
+            <tr>
+                <td>${prEO.prId}</td>
+                <td>${prEO.prName}</td>
+                <td>${prEO.prStatus}</td>
+                <td>${prEO.prStatus}</td>
+                <td>${prEO.prStatus}</td>
+            </tr>
+        </c:forEach>
         </tbody>
         <tr>
             <td colspan="20" style="text-align: center;">
@@ -50,9 +59,12 @@
             <td>{{:prName}}</td>
         </tr>
 {{/for}}
+
+
+
 </script>
 <script>
-    $(document).ready(function(){
+   /* $(document).ready(function () {
         var formParam = $("#_form").serialize();//序列化表格内容为字符串
         $.ajax({
             type: 'post',
@@ -67,7 +79,7 @@
         });
     });
 
-    $("#_form").submit(function(e){
+    $("#_form").submit(function (e) {
         var formParam = $("#_form").serialize();//序列化表格内容为字符串
         $.ajax({
             type: 'post',
@@ -80,7 +92,7 @@
                 $("#list").html(dataList.render(data));
             }
         });
-    });
+    });*/
 </script>
 </body>
 </html>
