@@ -65,7 +65,7 @@ public class RoleController {
     }
 
     @RequestMapping("/toConf")
-    public ModelAndView toConfFun(HttpServletRequest request, HttpServletResponse response) {
+    public ModelAndView toConf(HttpServletRequest request, HttpServletResponse response) {
         //
         Map<String, Object> model = new HashMap<>();
 
@@ -111,9 +111,9 @@ public class RoleController {
         return new ModelAndView("/role/funConf2", model);
     }
 
-    @RequestMapping("/confFun")
+    @RequestMapping("/conf")
     @ResponseBody
-    public Map<String, Object> confFun(HttpServletRequest request, HttpServletResponse response) {
+    public Map<String, Object> conf(HttpServletRequest request, HttpServletResponse response) {
         Map<String, Object> model = new HashMap();
 
         return model;
