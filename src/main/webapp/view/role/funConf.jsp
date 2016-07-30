@@ -3,19 +3,19 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title>角色列表</title>
-<%--    <link rel="stylesheet" type="text/css"
-          href="<%=request.getContextPath()%>/static/ztree/css/zTreeStyle/zTreeStyle.css"/>--%>
+    <link rel="stylesheet" type="text/css" href="/static/layer/skin/layer.css"/>
 </head>
 <body>
 <form id="_form" action="#" method="post">
-    <div id="func_tree" class="ztree">
+    <div id="fun_tree" class="ztree">
     </div>
     <input type="button" id="_submit" value="提交">
 </form>
 <%--<script type="text/javascript" src="<%=request.getContextPath()%>/static/ztree/jquery.ztree.core.min.js"></script>
 <script type="text/javascript" src="<%=request.getContextPath()%>/static/ztree/jquery.ztree.excheck.min.js"></script>--%>
+<script type="text/javascript" src="/static/layer/layer.js"></script>
 <script type="text/javascript">
-    var func_tree_setting = {
+    var funTreeSetting = {
         data: {
             simpleData: {
                 enable: true
@@ -38,10 +38,10 @@
         }
     };
     var prId = ${prId};
-    var funcTreeNodes = ${tree};
+    var funTreeNode = ${tree};
     $(document).ready(function () {
         //生成树
-        var zTreeObj = $.fn.zTree.init($("#func_tree"), func_tree_setting, funcTreeNodes);
+        var zTreeObj = $.fn.zTree.init($("#fun_tree"), funTreeSetting, funTreeNode);
         //提交
         $("#_submit").click(function () {
             var nodes = zTreeObj.getCheckedNodes(true);
@@ -57,8 +57,11 @@
                 contentType: "application/json",
                 dataType: 'json',
                 success: function (data, textStatus) {
-                    alert(data);
-                    alert(textStatus);
+                    if(textStatus == 'success'){
+                        layer.msg('成功', {offset: 0});
+                    } else {
+
+                    }
                 }
             });
         });

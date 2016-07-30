@@ -20,7 +20,7 @@
 </div>
 <!-- 西部 -->
 <div class="ui-layout-west">
-    <ul id="menu_tree" class="ztree"></ul>
+    <ul id="menu_ztree" class="ztree"></ul>
 </div>
 <!-- 中部 -->
 <div class="ui-layout-center">
@@ -40,7 +40,7 @@
 <script type="text/javascript" src="<%=baseUrl%>/static/layout/jquery-ui.min.js"></script>
 <script type="text/javascript" src="<%=baseUrl%>/static/layout/jquery.layout-latest.js"></script>
 <script type="text/javascript">
-    var setting = {
+    var menuZTreeSetting = {
         data: {
             simpleData: {
                 enable: true
@@ -51,11 +51,11 @@
             fontCss: {'font-size':'20'}
         }
     };
-    var zNodes = ${SESSION_USER_INFO};
+    var menuZTreeNode = ${SESSION_USER_INFO};
 
     $(document).ready(function () {
         //菜单
-        $.fn.zTree.init($("#menu_tree"), setting, zNodes);
+        $.fn.zTree.init($("#menu_ztree"), menuZTreeSetting, menuZTreeNode);
         //布局
         $('body').layout({
             applyDefaultStyles: true,
