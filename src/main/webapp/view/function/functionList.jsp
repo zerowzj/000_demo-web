@@ -26,6 +26,7 @@
             <td>功能级别</td>
             <td>功能状态</td>
             <td>功能路径</td>
+            <td>功能描述</td>
         </tr>
         </thead>
         <tbody>
@@ -34,6 +35,7 @@
                 <td>${pfEO.pfName}</td>
                 <td>${pfEO.pfLevel}</td>
                 <td>${pfEO.pfStatus}</td>
+                <td>${pfEO.pfPath}</td>
                 <td>${pfEO.pfPath}</td>
             </tr>
         </c:forEach>
@@ -45,7 +47,6 @@
         </tr>
     </table>
 </div>
-<script type="text/javascript" src="/static/lib/jquery.min.js"></script>
 <script type="text/javascript" src="/static/treetable/jquery.treetable.js"></script>
 <script type="text/javascript">
     $(document).ready(function () {

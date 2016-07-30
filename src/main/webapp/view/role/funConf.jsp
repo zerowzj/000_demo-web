@@ -57,11 +57,15 @@
                 contentType: "application/json",
                 dataType: 'json',
                 success: function (data, textStatus) {
-                    if(textStatus == 'success'){
+                    if (textStatus == 'success') {
                         layer.msg('成功', {offset: 0});
                     } else {
-
+                        alert(data);
+                        alert(textStatus);
                     }
+                },
+                error: function (error) {
+                    alert("ajax错误码:" + error.status);
                 }
             });
         });
