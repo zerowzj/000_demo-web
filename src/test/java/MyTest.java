@@ -16,5 +16,8 @@ public class MyTest {
 
         System.out.println(json.toString());
 
+        Long l = 1200L;
+        System.out.println(l/1000);
+
     }
 }

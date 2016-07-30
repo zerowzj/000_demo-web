@@ -31,17 +31,28 @@ public class RoleServiceImpl implements RoleService {
 
     @Override
     public void addFunction(Long prId, List<Long> pfIdLt) {
-        //
+        //删除
         popedomRoleFunctionDao.deleteBatch(prId, null);
-        //
+        //生成
+        List<Long> rootIdLt = new ArrayList<>();
         List<PopedomRoleFunctionEO> prfEOLt = new ArrayList<>();
         PopedomRoleFunctionEO prfEO = null;
-        for(Long pfId : pfIdLt){
+        for (Long pfId : pfIdLt) {
             prfEO = new PopedomRoleFunctionEO();
-
             prfEO.setPrfPrId(prId);
             prfEO.setPrfPfId(pfId);
+            prfEOLt.add(prfEO);
 
+            Long t = (pfId / 1000) * 1000;
+            if (!rootIdLt.contains(t)) {
+                rootIdLt.add(t);
+            }
+        }
+
+        for (Long rootId : rootIdLt) {
+            prfEO = new PopedomRoleFunctionEO();
+            prfEO.setPrfPrId(prId);
+            prfEO.setPrfPfId(rootId);
             prfEOLt.add(prfEO);
         }
 
