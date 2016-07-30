@@ -32,8 +32,8 @@ public interface RoleService {
     /**
      * 添加功能
      *
-     * @param prId 角色信息
-     * @param pfIdLt 角色信息
+     * @param prId 角色编号
+     * @param pfIdLt 功能编号
      */
     public void addFunction(Long prId, List<Long> pfIdLt);
 }
