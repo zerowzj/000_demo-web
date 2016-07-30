@@ -3,6 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title>角色列表</title>
+    <link type="text/css" href="/static/ztree/css/zTreeStyle/zTreeStyle.css" rel="stylesheet"/>
     <link rel="stylesheet" type="text/css" href="/static/layer/skin/layer.css"/>
 </head>
 <body>
@@ -13,6 +14,9 @@
 </form>
 <%--<script type="text/javascript" src="<%=request.getContextPath()%>/static/ztree/jquery.ztree.core.min.js"></script>
 <script type="text/javascript" src="<%=request.getContextPath()%>/static/ztree/jquery.ztree.excheck.min.js"></script>--%>
+<script type="text/javascript" src="/static/lib/jquery.min.js"></script>
+<script type="text/javascript" src="/static/ztree/jquery.ztree.core.min.js"></script>
+<script type="text/javascript" src="/static/ztree/jquery.ztree.excheck.min.js"></script>
 <script type="text/javascript" src="/static/layer/layer.js"></script>
 <script type="text/javascript">
     var funTreeSetting = {

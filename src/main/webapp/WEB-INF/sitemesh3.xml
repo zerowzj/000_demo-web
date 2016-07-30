@@ -4,5 +4,5 @@
     <mapping path="/role/*" decorator="/index.jsp"/>
     <mapping path="/function/*" decorator="/index.jsp"/>
 
-    <mapping path="/static/*" exclue="true" />
+    <mapping path="/role/toConf*" exclue="true" />
 </sitemesh>
