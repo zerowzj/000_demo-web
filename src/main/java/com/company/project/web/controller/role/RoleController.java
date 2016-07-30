@@ -1,6 +1,7 @@
 package com.company.project.web.controller.role;
 
 import com.company.project.common.tree.JSTree;
+import com.company.project.common.tree.ZTree;
 import com.company.project.dao.popedomfunction.RoleFunctionConfVO;
 import com.company.project.dao.popedomrole.PopedomRoleEO;
 import com.company.project.service.function.FunctionService;
@@ -71,6 +72,45 @@ public class RoleController {
 
         String prId = request.getParameter("prId");
         List<RoleFunctionConfVO> confVOLt = functionService.getRoleFunctionConfLt(Long.valueOf(prId));
+        List<ZTree> treeLt = new ArrayList<>();
+        ZTree zTree = null;
+        for (RoleFunctionConfVO confVO : confVOLt) {
+            zTree = new ZTree();
+
+            Long id = confVO.getPfId();
+            zTree.setId(id);
+            Long parentId = confVO.getPfParentId();
+            if (parentId != null) {
+                zTree.setpId(parentId);
+            } else {
+                zTree.setNocheck(true);
+            }
+            zTree.setName(confVO.getPfName());
+
+            Long c = confVO.getPrfPfId();
+            if(c != null){
+                zTree.setChecked(true);
+
+            }
+            treeLt.add(zTree);
+        }
+
+        ObjectMapper mapper = new ObjectMapper();
+        try {
+            model.put("tree", mapper.writeValueAsString(treeLt));
+        } catch (Exception ex) {
+        }
+        model.put("prId", prId);
+        return new ModelAndView("/role/funConf", model);
+    }
+
+    @RequestMapping("/toConf2")
+    public ModelAndView toConf2(HttpServletRequest request, HttpServletResponse response) {
+        //
+        Map<String, Object> model = new HashMap<>();
+
+        String prId = request.getParameter("prId");
+        List<RoleFunctionConfVO> confVOLt = functionService.getRoleFunctionConfLt(Long.valueOf(prId));
         List<JSTree> treeLt = new ArrayList<>();
         JSTree jsTree = null;
         for (RoleFunctionConfVO confVO : confVOLt) {
@@ -113,8 +153,13 @@ public class RoleController {
 
     @RequestMapping("/conf")
     @ResponseBody
-    public Map<String, Object> conf(HttpServletRequest request, HttpServletResponse response) {
+    public Map<String, Object> conf(HttpServletRequest request, Map<String, Object> params) {
         Map<String, Object> model = new HashMap();
+        //
+        String prId = request.getParameter("prId");
+        String[] pfIdArr = request.getParameterValues("pfIds[]");
+
+        roleService.addFunction(Long.valueOf(prId), pfIdArr);
 
         return model;
     }

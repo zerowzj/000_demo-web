@@ -36,7 +36,7 @@
                 <td>${prEO.prName}</td>
                 <td>${prEO.prStatus}</td>
                 <td>${prEO.prStatus}</td>
-                <td>${prEO.prStatus}</td>
+                <td>${prEO.prDesc}</td>
                 <td><a href="#" role-id="${prEO.prId}" role-name="${prEO.prName}">分配功能</a></td>
             </tr>
         </c:forEach>
@@ -53,16 +53,7 @@
 <script src="/static/jsrender/jsrender.min.js"></script>
 <script type="text/javascript">
     $(document).ready(function () {
-
         $("a[href='#']").on('click', function (event) {
-            /* layer.open({
-             type: 2,
-             title: '档案图片',
-             shadeClose: false, //点击遮罩关闭层
-             area: ['100%', '100%'],
-             content: '/archivePic/show?abId=' + $(this).attr("id")
-             });*/
-
             layer.open({
                 type: 2,
                 title: [$(this).attr("role-name"), 'font-size:16px;'],

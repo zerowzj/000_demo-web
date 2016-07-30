@@ -26,4 +26,12 @@ public interface RoleService {
      * @param prEO 角色信息
      */
     public void addRole(PopedomRoleEO prEO);
+
+    /**
+     * 添加功能
+     *
+     * @param prId 角色信息
+     * @param pfIdArr 角色信息
+     */
+    public void addFunction(Long prId, String[] pfIdArr);
 }
