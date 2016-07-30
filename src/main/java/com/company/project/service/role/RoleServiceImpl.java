@@ -30,17 +30,17 @@ public class RoleServiceImpl implements RoleService {
     }
 
     @Override
-    public void addFunction(Long prId, String[] pfIdArr) {
+    public void addFunction(Long prId, List<Long> pfIdLt) {
         //
         popedomRoleFunctionDao.deleteBatch(prId, null);
         //
         List<PopedomRoleFunctionEO> prfEOLt = new ArrayList<>();
         PopedomRoleFunctionEO prfEO = null;
-        for(String pfId : pfIdArr){
+        for(Long pfId : pfIdLt){
             prfEO = new PopedomRoleFunctionEO();
 
             prfEO.setPrfPrId(prId);
-            prfEO.setPrfPfId(Long.valueOf(pfId));
+            prfEO.setPrfPfId(pfId);
 
             prfEOLt.add(prfEO);
         }

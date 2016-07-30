@@ -33,5 +33,5 @@ public interface PopedomFunctionDao extends BaseDao<PopedomFunctionEO> {
      * @param prId 角色编号
      * @return List<RoleFunctionConfVO>
      */
-    public List<PopedomFunctionEO> getRoleFunctionLt(Long prId);
+    public List<PopedomFunctionEO> getRoleFunctionLt(Long prId, Integer[] pfLevelArr);
 }

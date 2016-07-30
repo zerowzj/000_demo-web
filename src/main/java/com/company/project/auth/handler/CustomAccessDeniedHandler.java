@@ -2,6 +2,7 @@ package com.company.project.auth.handler;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.apache.zookeeper.common.IOUtils;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.web.WebAttributes;
 import org.springframework.security.web.access.AccessDeniedHandler;
@@ -11,6 +12,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.PrintWriter;
 
 /**
  * @author wangzhj
@@ -37,9 +39,22 @@ public class CustomAccessDeniedHandler implements AccessDeniedHandler {
             request.setAttribute(WebAttributes.ACCESS_DENIED_403, accessDeniedException);
             // Set the 403 status code.
             response.setStatus(HttpServletResponse.SC_FORBIDDEN);
-            // forward to error page.
+            PrintWriter out = null;
+            try {
+                out = response.getWriter();
+//                out.println("<html>");
+                out.println("<script>");
+                out.println("alert('1111111')");
+                out.println("</script>");
+//                out.println("</html>");
+                return;
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            } finally {
+            }
+       /*     // forward to error page.
             RequestDispatcher dispatcher = request.getRequestDispatcher(errorPage);
-            dispatcher.forward(request, response);
+            dispatcher.forward(request, response);*/
         }
     }
 

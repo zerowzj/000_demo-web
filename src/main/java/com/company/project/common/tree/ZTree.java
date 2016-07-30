@@ -5,18 +5,22 @@ package com.company.project.common.tree;
  */
 public class ZTree {
 
-    /**  */
+    /** 节点编号 */
     private Long id = null;
-    /**  */
+    /** 节点父编号 */
     private Long pId = null;
-    /**  */
+    /** 节点名称 */
     private String name = null;
 
+    private String url = null;
 
+    private String target = "_self";
+
+    /** 是否展开 */
     private boolean open = true;
-
+    /** 是否不可选 */
     private boolean nocheck = false;
-
+    /** 是否选中 */
     private boolean checked = false;
 
     public boolean isChecked() {
@@ -65,5 +69,21 @@ public class ZTree {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    public String getTarget() {
+        return target;
+    }
+
+    public void setTarget(String target) {
+        this.target = target;
     }
 }

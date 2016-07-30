@@ -3,6 +3,8 @@ package com.company.project.service.role;
 import com.company.project.dao.popedomrole.PopedomRoleEO;
 import com.github.miemiedev.mybatis.paginator.domain.PageList;
 
+import java.util.List;
+
 /**
  * 角色服务
  *
@@ -31,7 +33,7 @@ public interface RoleService {
      * 添加功能
      *
      * @param prId 角色信息
-     * @param pfIdArr 角色信息
+     * @param pfIdLt 角色信息
      */
-    public void addFunction(Long prId, String[] pfIdArr);
+    public void addFunction(Long prId, List<Long> pfIdLt);
 }

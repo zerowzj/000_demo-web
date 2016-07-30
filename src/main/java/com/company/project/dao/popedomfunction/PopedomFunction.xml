@@ -51,6 +51,12 @@
             <if test="prId != null">
                 PR.PR_ID = #{prId}
             </if>
+            <if test="pfLevelArr != null">
+                AND PF.PF_LEVEL IN
+                <foreach collection="pfLevelArr" item="item" open="(" separator="," close=")">
+                    #{item}
+                </foreach>
+            </if>
         </where>
     </select>
 </mapper>

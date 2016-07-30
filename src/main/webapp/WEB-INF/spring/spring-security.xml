@@ -106,7 +106,7 @@
     </bean>
 
     <!-- 访问拒绝处理器 -->
-    <bean id="accessDeniedHandler" class="org.springframework.security.web.access.AccessDeniedHandlerImpl">
+    <bean id="accessDeniedHandler" class="com.company.project.auth.handler.CustomAccessDeniedHandler">
         <property name="errorPage" value="/accessDenied.jsp"/>
     </bean>
 

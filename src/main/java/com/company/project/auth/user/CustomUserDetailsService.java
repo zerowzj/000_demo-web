@@ -38,9 +38,9 @@ public class CustomUserDetailsService implements UserDetailsService {
             throw new UsernameNotFoundException("用户名/密码错误");
         }
 
-        //获取用户功能权限
+        //角色功能列表
         Long prId = ubEO.getUbPrId();
-        List<PopedomFunctionEO> pfEOLt = popedomFunctionDao.getRoleFunctionLt(prId);
+        List<PopedomFunctionEO> pfEOLt = popedomFunctionDao.getRoleFunctionLt(prId, new Integer[]{1, 2});
 
         //生成用户详情
         CustomUserDetails userDetails = new CustomUserDetails(username, ubEO.getUbLoginPwd(), this.toGrantedAuthority(pfEOLt));
@@ -48,6 +48,7 @@ public class CustomUserDetailsService implements UserDetailsService {
         SessionUserInfo userInfo = new SessionUserInfo();
         userInfo.setUbId(ubEO.getUbId());     //用户编号
         userInfo.setUbName(ubEO.getUbName()); //用户姓名
+        userInfo.setUserFuncLt(pfEOLt);       //用户功能列表
         userDetails.setUserInfo(userInfo);
 
         //返回
@@ -57,7 +58,7 @@ public class CustomUserDetailsService implements UserDetailsService {
     private List<SimpleGrantedAuthority> toGrantedAuthority(List<PopedomFunctionEO> pfEOLt) {
         List<SimpleGrantedAuthority> grantedLt = new ArrayList<>();
         SimpleGrantedAuthority granted = null;
-        for(PopedomFunctionEO pfEO : pfEOLt){
+        for (PopedomFunctionEO pfEO : pfEOLt) {
             String path = pfEO.getPfPath();
             granted = new SimpleGrantedAuthority(path);
             grantedLt.add(granted);

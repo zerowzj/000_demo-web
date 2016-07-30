@@ -10,6 +10,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.miemiedev.mybatis.paginator.domain.PageList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
@@ -153,13 +154,13 @@ public class RoleController {
 
     @RequestMapping("/conf")
     @ResponseBody
-    public Map<String, Object> conf(HttpServletRequest request, Map<String, Object> params) {
+    public Map<String, Object> conf(HttpServletRequest request, @RequestBody Map<String, Object> params) {
         Map<String, Object> model = new HashMap();
         //
-        String prId = request.getParameter("prId");
-        String[] pfIdArr = request.getParameterValues("pfIds[]");
+        String prId = params.get("prId").toString();
+        List<Long> pfIdLt = (List) params.get("pfIds");
 
-        roleService.addFunction(Long.valueOf(prId), pfIdArr);
+        roleService.addFunction(Long.valueOf(prId), pfIdLt);
 
         return model;
     }

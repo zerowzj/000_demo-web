@@ -4,6 +4,8 @@
 <head>
     <title><sitemesh:write property='title'/></title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" type="text/css"
+          href="<%=request.getContextPath()%>/static/ztree/css/zTreeStyle/zTreeStyle.css"/>
     <script type="text/javascript" src="/static/lib/jquery.min.js"></script>
     <sitemesh:write property='head'/>
 </head>
@@ -16,9 +18,10 @@
 </div>
 <!-- 西部 -->
 <div class="ui-layout-west">
-    <a href="/role/toAdd">新增角色</a><br>
+    <ul id="tree" class="ztree"></ul>
+<%--    <a href="/role/toAdd">新增角色</a><br>
     <a href="/role/list">角色列表</a><br>
-    <a href="/function/list">功能列表</a><br>
+    <a href="/function/list">功能列表</a><br>--%>
 </div>
 <!-- 中部 -->
 <div class="ui-layout-center">
@@ -36,9 +39,24 @@
 -->
 
 <script type="text/javascript" src="/static/layout/jquery-ui.min.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath()%>/static/ztree/jquery.ztree.core.min.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath()%>/static/ztree/jquery.ztree.excheck.min.js"></script>
 <script type="text/javascript" src="/static/layout/jquery.layout-latest.js"></script>
 <script type="text/javascript">
+    var setting = {
+        data: {
+            simpleData: {
+                enable: true
+            }
+        },
+        view: {
+            showIcon: false
+        }
+    };
+    var zNodes = ${SESSION_USER_INFO};
     $(document).ready(function () {
+
+        //布局
         $('body').layout({
             applyDefaultStyles: true,
             scrollToBookmarkOnLoad: true,
@@ -63,6 +81,9 @@
                 sliderTip: "Slide Open Contents"
             }
         });
+
+        //菜单
+        $.fn.zTree.init($("#tree"), setting, zNodes);
     });
 </script>
 </body>
