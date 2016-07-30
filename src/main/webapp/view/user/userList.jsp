@@ -16,8 +16,6 @@
     </thead>
     <tbody id="movieList"></tbody>
 </table>
-
-<script type="text/javascript" src="/static/lib/jquery.min.js"></script>
 <script type="text/javascript" src="/static/jsrender/jsrender.min.js"></script>
 <script id="movieTemplate" type="text/x-jsrender">
 	<tr>

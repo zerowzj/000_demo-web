@@ -20,7 +20,7 @@ public class CustomUserDetails implements UserDetails {
     /** 授权 */
     private List<SimpleGrantedAuthority> grantedAuthLt = null;
 
-    /** 授权 */
+    /** 用户信息 */
     private SessionUserInfo userInfo = null;
 
     public CustomUserDetails(String loginName, String loginPwd, List<SimpleGrantedAuthority> grantedAuthLt) {

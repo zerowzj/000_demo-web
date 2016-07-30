@@ -38,12 +38,13 @@ public class CustomUserDetailsService implements UserDetailsService {
             throw new UsernameNotFoundException("用户名/密码错误");
         }
 
-        //角色功能列表
+        //获取角色功能列表
         Long prId = ubEO.getUbPrId();
-        List<PopedomFunctionEO> pfEOLt = popedomFunctionDao.getRoleFunctionLt(prId, new Integer[]{1, 2});
+        List<PopedomFunctionEO> pfEOLt = popedomFunctionDao.getRoleFunctionLt(prId, null);
 
         //生成用户详情
         CustomUserDetails userDetails = new CustomUserDetails(username, ubEO.getUbLoginPwd(), this.toGrantedAuthority(pfEOLt));
+
         //设置SessionUserInfo
         SessionUserInfo userInfo = new SessionUserInfo();
         userInfo.setUbId(ubEO.getUbId());     //用户编号

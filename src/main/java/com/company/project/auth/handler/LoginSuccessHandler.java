@@ -32,7 +32,8 @@ public class LoginSuccessHandler extends SavedRequestAwareAuthenticationSuccessH
         //获取认证信息
         UsernamePasswordAuthenticationToken token = (UsernamePasswordAuthenticationToken) authentication;
         CustomUserDetails userDetails = (CustomUserDetails) token.getPrincipal();
-        //
+
+        //设置菜单
         SessionUserInfo userInfo = userDetails.getUserInfo();
         request.getSession().setAttribute("SESSION_USER_INFO", JsonUtil.toJson(toMenu(userInfo.getUserFuncLt())));
 
@@ -47,6 +48,11 @@ public class LoginSuccessHandler extends SavedRequestAwareAuthenticationSuccessH
         List<ZTree> zTreeLt= new ArrayList<>();
         ZTree zTree = null;
         for(PopedomFunctionEO pfEO : pfEOLt){
+            //过滤掉非1 2级功能
+            int pfLevel = pfEO.getPfLevel();
+            if(pfLevel != 1 && pfLevel != 2){
+                continue;
+            }
             zTree = new ZTree();
 
             zTree.setId(pfEO.getPfId());
@@ -56,7 +62,6 @@ public class LoginSuccessHandler extends SavedRequestAwareAuthenticationSuccessH
 
             zTreeLt.add(zTree);
         }
-
         return zTreeLt;
     }
 }

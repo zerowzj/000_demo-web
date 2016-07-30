@@ -2,6 +2,7 @@ package com.company.project.web.controller.role;
 
 import com.company.project.common.tree.JSTree;
 import com.company.project.common.tree.ZTree;
+import com.company.project.common.util.JsonUtil;
 import com.company.project.dao.popedomfunction.RoleFunctionConfVO;
 import com.company.project.dao.popedomrole.PopedomRoleEO;
 import com.company.project.service.function.FunctionService;
@@ -96,11 +97,7 @@ public class RoleController {
             treeLt.add(zTree);
         }
 
-        ObjectMapper mapper = new ObjectMapper();
-        try {
-            model.put("tree", mapper.writeValueAsString(treeLt));
-        } catch (Exception ex) {
-        }
+        model.put("tree", JsonUtil.toJson(treeLt));
         model.put("prId", prId);
         return new ModelAndView("/role/funConf", model);
     }
@@ -156,12 +153,17 @@ public class RoleController {
     @ResponseBody
     public Map<String, Object> conf(HttpServletRequest request, @RequestBody Map<String, Object> params) {
         Map<String, Object> model = new HashMap();
-        //
+        //获取参数
         String prId = params.get("prId").toString();
-        List<Long> pfIdLt = (List) params.get("pfIds");
+        List<Integer> pfIdLt = (List) params.get("pfIds");
+        List<Long> ids = new ArrayList<>();
+        for(Integer i : pfIdLt){
+            ids.add(Long.parseLong(i.toString()));
+        }
 
-        roleService.addFunction(Long.valueOf(prId), pfIdLt);
-
+        //
+        roleService.addFunction(Long.valueOf(prId), ids);
+        //
         return model;
     }
 }

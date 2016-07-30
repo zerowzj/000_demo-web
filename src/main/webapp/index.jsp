@@ -2,26 +2,25 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+    <%
+        String baseUrl = request.getContextPath();
+    %>
     <title><sitemesh:write property='title'/></title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <link rel="stylesheet" type="text/css"
-          href="<%=request.getContextPath()%>/static/ztree/css/zTreeStyle/zTreeStyle.css"/>
-    <script type="text/javascript" src="/static/lib/jquery.min.js"></script>
+    <link type="text/css" href="<%=baseUrl%>/static/ztree/css/zTreeStyle/zTreeStyle.css" rel="stylesheet"/>
+    <script type="text/javascript" src="<%=baseUrl%>/static/lib/jquery.min.js"></script>
+    <script type="text/javascript" src="<%=baseUrl%>/static/ztree/jquery.ztree.core.min.js"></script>
+    <script type="text/javascript" src="<%=baseUrl%>/static/ztree/jquery.ztree.excheck.min.js"></script>
     <sitemesh:write property='head'/>
 </head>
 <body>
-
-
 <!-- 北部 -->
 <div class="ui-layout-north">
     北
 </div>
 <!-- 西部 -->
 <div class="ui-layout-west">
-    <ul id="tree" class="ztree"></ul>
-<%--    <a href="/role/toAdd">新增角色</a><br>
-    <a href="/role/list">角色列表</a><br>
-    <a href="/function/list">功能列表</a><br>--%>
+    <ul id="menu_tree" class="ztree"></ul>
 </div>
 <!-- 中部 -->
 <div class="ui-layout-center">
@@ -38,10 +37,8 @@
 </div>
 -->
 
-<script type="text/javascript" src="/static/layout/jquery-ui.min.js"></script>
-<script type="text/javascript" src="<%=request.getContextPath()%>/static/ztree/jquery.ztree.core.min.js"></script>
-<script type="text/javascript" src="<%=request.getContextPath()%>/static/ztree/jquery.ztree.excheck.min.js"></script>
-<script type="text/javascript" src="/static/layout/jquery.layout-latest.js"></script>
+<script type="text/javascript" src="<%=baseUrl%>/static/layout/jquery-ui.min.js"></script>
+<script type="text/javascript" src="<%=baseUrl%>/static/layout/jquery.layout-latest.js"></script>
 <script type="text/javascript">
     var setting = {
         data: {
@@ -50,12 +47,15 @@
             }
         },
         view: {
-            showIcon: false
+            showIcon: true,
+            fontCss: {'font-size':'20'}
         }
     };
     var zNodes = ${SESSION_USER_INFO};
-    $(document).ready(function () {
 
+    $(document).ready(function () {
+        //菜单
+        $.fn.zTree.init($("#menu_tree"), setting, zNodes);
         //布局
         $('body').layout({
             applyDefaultStyles: true,
@@ -81,9 +81,6 @@
                 sliderTip: "Slide Open Contents"
             }
         });
-
-        //菜单
-        $.fn.zTree.init($("#tree"), setting, zNodes);
     });
 </script>
 </body>

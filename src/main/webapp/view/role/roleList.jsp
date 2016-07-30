@@ -48,9 +48,7 @@
         </tr>
     </table>
 </div>
-<script type="text/javascript" src="/static/lib/jquery.min.js"></script>
 <script type="text/javascript" src="/static/layer/layer.js"></script>
-<script src="/static/jsrender/jsrender.min.js"></script>
 <script type="text/javascript">
     $(document).ready(function () {
         $("a[href='#']").on('click', function (event) {
