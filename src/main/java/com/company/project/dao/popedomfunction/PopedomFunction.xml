@@ -49,7 +49,7 @@
         INNER JOIN POPEDOM_ROLE_FUNCTION PRF ON PRF.PRF_PF_ID = PF.PF_ID
         <where>
             <if test="prId != null">
-                PR.PR_ID = #{prId}
+                PRF.PRF_PR_ID = #{prId}
             </if>
             <if test="pfLevelArr != null">
                 AND PF.PF_LEVEL IN

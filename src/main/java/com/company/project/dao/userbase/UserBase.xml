@@ -10,7 +10,7 @@
         <result property="ubStatus" column="UB_STATUS"/>
         <result property="ubName" column="UB_NAME"/>
         <result property="ubBeginTime" column="UB_BEGIN_TIME"/>
-        <result property="ubPrId" column="PR_PR_ID"/>
+        <result property="ubPrId" column="UB_PR_ID"/>
     </resultMap>
     <sql id="Base_Column_List">
         UB.UB_ID,
