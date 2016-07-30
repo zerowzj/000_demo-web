@@ -6,7 +6,7 @@ import com.github.miemiedev.mybatis.paginator.domain.PageList;
 import java.util.List;
 
 /**
- * 角色服务
+ * 角色信息服务
  *
  * @author wangzhj
  */

@@ -6,7 +6,7 @@ import com.company.project.dao.popedomfunction.RoleFunctionConfVO;
 import java.util.List;
 
 /**
- * 功能服务
+ * 功能信息服务
  *
  * @author wangzhj
  */
