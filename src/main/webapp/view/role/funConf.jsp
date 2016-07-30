@@ -52,12 +52,13 @@
             var json = {prId: prId, pfIds: ids};
             $.ajax({
                 url: '/role/conf',
-                type: 'get',
-                data: json,
+                type: 'post',
+                data: JSON.stringify(json),
                 contentType: "application/json",
                 dataType: 'json',
-                success: function (data) {
-                    console.log("ssssssssss");
+                success: function (data, textStatus) {
+                    alert(data);
+                    alert(textStatus);
                 }
             });
         });
