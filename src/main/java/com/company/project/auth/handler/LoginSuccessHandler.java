@@ -17,6 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 /**
  * 认证成功处理器
@@ -36,6 +37,7 @@ public class LoginSuccessHandler extends SavedRequestAwareAuthenticationSuccessH
         //设置菜单
         SessionUserInfo userInfo = userDetails.getUserInfo();
         request.getSession().setAttribute("SESSION_USER_INFO", JsonUtil.toJson(toMenu(userInfo.getUserFuncLt())));
+        request.getSession().setAttribute("PERMISSION_ID", getPermissionIdLt(userInfo.getUserFuncLt()));
 
         //执行父逻辑
         super.onAuthenticationSuccess(request, response, authentication);
@@ -61,6 +63,13 @@ public class LoginSuccessHandler extends SavedRequestAwareAuthenticationSuccessH
             zTree.setUrl(pfEO.getPfPath());
 
             zTreeLt.add(zTree);
+        }
+        return zTreeLt;
+    }
+    private List<Long>  getPermissionIdLt(List<PopedomFunctionEO> pfEOLt){
+        List<Long> zTreeLt= new ArrayList<>();
+        for(PopedomFunctionEO pfEO : pfEOLt){
+            zTreeLt.add(pfEO.getPfId());
         }
         return zTreeLt;
     }

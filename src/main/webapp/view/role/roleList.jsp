@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="p" uri="http://www.company.com/tag" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -37,7 +38,7 @@
                 <td>${prEO.prStatus}</td>
                 <td>${prEO.prStatus}</td>
                 <td>${prEO.prDesc}</td>
-                <td><a href="#" role-id="${prEO.prId}" role-name="${prEO.prName}">分配功能</a></td>
+                <td><p:permission pId="1210"><a href="#" role-id="${prEO.prId}" role-name="${prEO.prName}">分配功能</a></p:permission></td>
             </tr>
         </c:forEach>
         </tbody>
