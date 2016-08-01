@@ -1,4 +1,4 @@
-package com.company.project.common.tag;
+package com.company.project.common.web.tag;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

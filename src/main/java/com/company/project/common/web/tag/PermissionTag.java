@@ -1,4 +1,4 @@
-package com.company.project.common.tag;
+package com.company.project.common.web.tag;
 
 import javax.servlet.jsp.JspException;
 import java.util.List;
@@ -10,7 +10,7 @@ import java.util.List;
  */
 public class PermissionTag extends BaseTag {
 
-    /** 授权ID */
+    /** 许可ID */
     private Long pId = null;
 
     @Override

@@ -1,6 +1,6 @@
 package com.company.project.auth.user;
 
-import com.company.project.common.SessionUserInfo;
+import com.company.project.common.web.SessionUserInfo;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 

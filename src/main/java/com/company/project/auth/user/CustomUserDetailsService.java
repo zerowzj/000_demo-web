@@ -1,6 +1,6 @@
 package com.company.project.auth.user;
 
-import com.company.project.common.SessionUserInfo;
+import com.company.project.common.web.SessionUserInfo;
 import com.company.project.dao.popedomfunction.PopedomFunctionDao;
 import com.company.project.dao.popedomfunction.PopedomFunctionEO;
 import com.company.project.dao.userbase.UserBaseDao;
