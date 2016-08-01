@@ -9,6 +9,7 @@
     <!-- ==================== -->
     <!--    认证及授权入口    -->
     <!-- ==================== -->
+
     <security:http entry-point-ref="loginEntryPoint">
         <security:intercept-url pattern="/login.jsp*" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
         <security:intercept-url pattern="/static/**" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
@@ -20,6 +21,10 @@
 
         <security:custom-filter ref="customFilterSecurityInterceptor" before="FILTER_SECURITY_INTERCEPTOR" />
         <security:access-denied-handler ref="accessDeniedHandler"/>
+
+        <security:session-management invalid-session-url="/login.jsp?msg=session_invalid">
+            <security:concurrency-control max-sessions="1" error-if-maximum-exceeded="true" />
+        </security:session-management>
     </security:http>
     <!-- 登录入口 -->
     <bean id="loginEntryPoint" class="org.springframework.security.web.authentication.LoginUrlAuthenticationEntryPoint">
@@ -101,10 +106,8 @@
             <ref bean="functionMap"/>
         </constructor-arg>
     </bean>
-    <!-- 功能映射 -->
     <bean id="functionMap" class="com.company.project.auth.FunctionMapFactoryBean">
     </bean>
-
     <!-- 访问拒绝处理器 -->
     <bean id="accessDeniedHandler" class="com.company.project.auth.handler.CustomAccessDeniedHandler">
         <property name="errorPage" value="/accessDenied.jsp"/>
