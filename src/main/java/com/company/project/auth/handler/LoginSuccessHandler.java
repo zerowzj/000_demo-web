@@ -1,9 +1,10 @@
 package com.company.project.auth.handler;
 
 import com.company.project.auth.user.CustomUserDetails;
-import com.company.project.common.web.SessionUserInfo;
 import com.company.project.common.tree.ZTree;
 import com.company.project.common.util.JsonUtil;
+import com.company.project.common.web.session.SessionUserInfo;
+import com.company.project.common.web.session.SessionUtil;
 import com.company.project.dao.popedomfunction.PopedomFunctionEO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -33,10 +34,13 @@ public class LoginSuccessHandler extends SavedRequestAwareAuthenticationSuccessH
         UsernamePasswordAuthenticationToken token = (UsernamePasswordAuthenticationToken) authentication;
         CustomUserDetails userDetails = (CustomUserDetails) token.getPrincipal();
 
-        //设置菜单
+        //获取
         SessionUserInfo userInfo = userDetails.getUserInfo();
-        request.getSession().setAttribute("SESSION_USER_INFO", JsonUtil.toJson(toMenu(userInfo.getUserFuncLt())));
-        request.getSession().setAttribute("PERMISSION_ID", getPermissionIdLt(userInfo.getUserFuncLt()));
+        List<PopedomFunctionEO> pfEOLt = userInfo.getUserFuncLt();
+
+        SessionUtil.setSessionUserInfo(request, userInfo);
+        SessionUtil.setPermissionIdLt(request, getPermissionIdLt(pfEOLt));
+        request.getSession().setAttribute("SESSION_USER_INFO", JsonUtil.toJson(toMenu(pfEOLt)));
 
         //执行父逻辑
         super.onAuthenticationSuccess(request, response, authentication);
@@ -45,13 +49,13 @@ public class LoginSuccessHandler extends SavedRequestAwareAuthenticationSuccessH
     /**
      * 转换成菜单
      */
-    private List<ZTree> toMenu(List<PopedomFunctionEO> pfEOLt){
-        List<ZTree> zTreeLt= new ArrayList<>();
+    private List<ZTree> toMenu(List<PopedomFunctionEO> pfEOLt) {
+        List<ZTree> zTreeLt = new ArrayList<>();
         ZTree zTree = null;
-        for(PopedomFunctionEO pfEO : pfEOLt){
+        for (PopedomFunctionEO pfEO : pfEOLt) {
             //过滤掉非1 2级功能
             int pfLevel = pfEO.getPfLevel();
-            if(pfLevel != 1 && pfLevel != 2){
+            if (pfLevel != 1 && pfLevel != 2) {
                 continue;
             }
             zTree = new ZTree();
@@ -65,11 +69,12 @@ public class LoginSuccessHandler extends SavedRequestAwareAuthenticationSuccessH
         }
         return zTreeLt;
     }
-    private List<Long>  getPermissionIdLt(List<PopedomFunctionEO> pfEOLt){
-        List<Long> zTreeLt= new ArrayList<>();
-        for(PopedomFunctionEO pfEO : pfEOLt){
-            zTreeLt.add(pfEO.getPfId());
+
+    private List<Long> getPermissionIdLt(List<PopedomFunctionEO> pfEOLt) {
+        List<Long> permissionIdLt = new ArrayList<>();
+        for (PopedomFunctionEO pfEO : pfEOLt) {
+            permissionIdLt.add(pfEO.getPfId());
         }
-        return zTreeLt;
+        return permissionIdLt;
     }
 }

@@ -10,8 +10,11 @@ import java.util.List;
  */
 public abstract class SessionUtil {
 
-    private static final String SESSION_USER_INFO = "SESSION_USER_INFO";
+    public static final String SESSION_ = "";
 
+    /**  */
+    private static final String SESSION_USER_INFO = "SESSION_USER_INFO";
+    /**  */
     private static final String SESSION_PERMISSION_ID_LIST = "SESSION_PERMISSION_ID_LIST";
 
     /**
