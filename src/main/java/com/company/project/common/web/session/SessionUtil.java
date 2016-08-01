@@ -12,7 +12,7 @@ public abstract class SessionUtil {
 
     private static final String SESSION_USER_INFO = "SESSION_USER_INFO";
 
-    private static final String SESSION_PERMISSION_ID = "SESSION_USER_INFO";
+    private static final String SESSION_PERMISSION_ID_LIST = "SESSION_PERMISSION_ID_LIST";
 
     /**
      * 设置用户信息
@@ -36,22 +36,22 @@ public abstract class SessionUtil {
 
 
     /**
-     * 设置许可ID
+     * 设置许可编号列表
      *
      * @param request
      * @return SessionUserInfo
      */
     public static void setPermissionIdLt(HttpServletRequest request, List<Long> permissionIdLt) {
-        request.getSession().setAttribute(SESSION_USER_INFO, permissionIdLt);
+        request.getSession().setAttribute(SESSION_PERMISSION_ID_LIST, permissionIdLt);
     }
     /**
-     * 获取用户信息
+     * 获取许可编号列表
      *
      * @param request
      * @return List<Long>
      */
     public static List<Long> getPermissionIdLt(HttpServletRequest request) {
-        List<Long> permissionIdLt = (List<Long>) request.getSession().getAttribute(SESSION_USER_INFO);
+        List<Long> permissionIdLt = (List<Long>) request.getSession().getAttribute(SESSION_PERMISSION_ID_LIST);
         return permissionIdLt;
     }
 }
