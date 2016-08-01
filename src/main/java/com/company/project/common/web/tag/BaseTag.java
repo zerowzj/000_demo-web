@@ -15,6 +15,11 @@ public abstract class BaseTag extends TagSupport {
 
     private PageContext pageContext;
 
+    /**
+     *
+     *
+     * @param msg
+     */
     public void write(String msg) {
         try {
             pageContext.getOut().write(msg);
@@ -23,15 +28,22 @@ public abstract class BaseTag extends TagSupport {
         }
     }
 
-    public HttpServletRequest getHttpServletRequest(){
+    /**
+     * 获取HttpServletRequest
+     */
+    protected HttpServletRequest getHttpServletRequest(){
         return (HttpServletRequest)pageContext.getRequest();
     }
-
-    public HttpServletResponse getHttpServletResponse(){
+    /**
+     * 获取HttpServletResponse
+     */
+    protected HttpServletResponse getHttpServletResponse(){
         return (HttpServletResponse)pageContext.getResponse();
     }
-
-    public HttpSession getHttpSession(){
+    /**
+     * 获取HttpSession
+     */
+    protected HttpSession getHttpSession(){
         return pageContext.getSession();
     }
 

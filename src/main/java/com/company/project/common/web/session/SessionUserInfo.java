@@ -1,4 +1,4 @@
-package com.company.project.common.web;
+package com.company.project.common.web.session;
 
 import com.company.project.dao.popedomfunction.PopedomFunctionDao;
 import com.company.project.dao.popedomfunction.PopedomFunctionEO;

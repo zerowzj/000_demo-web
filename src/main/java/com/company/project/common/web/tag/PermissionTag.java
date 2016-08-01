@@ -1,5 +1,7 @@
 package com.company.project.common.web.tag;
 
+import com.company.project.common.web.session.SessionUtil;
+
 import javax.servlet.jsp.JspException;
 import java.util.List;
 
@@ -15,8 +17,8 @@ public class PermissionTag extends BaseTag {
 
     @Override
     public int doStartTag() throws JspException {
-        List<Long> permissinIdLt = (List) getHttpSession().getAttribute("PERMISSION_ID");
-        if (permissinIdLt.contains(pId)) {
+        List<Long> permissionIdLt = SessionUtil.getPermissionIdLt(getHttpServletRequest());
+        if (permissionIdLt.contains(pId)) {
 
             return EVAL_BODY_INCLUDE;
         } else {
