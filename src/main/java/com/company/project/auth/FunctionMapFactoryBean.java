@@ -10,6 +10,7 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.springframework.security.web.util.matcher.RequestMatcher;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -26,34 +27,36 @@ public class FunctionMapFactoryBean implements FactoryBean<LinkedHashMap<Request
 
     @Override
     public LinkedHashMap<RequestMatcher, Collection<ConfigAttribute>> getObject() throws Exception {
-        LinkedHashMap<RequestMatcher, Collection<ConfigAttribute>> funcMap = new LinkedHashMap<>();
+        //初始化
+        LinkedHashMap<RequestMatcher, Collection<ConfigAttribute>> funMap = new LinkedHashMap<>();
+
         //获取受保护功能列表
         List<PopedomFunctionEO> pfEOLt = popedomFunctionDao.getFunctionLt(null);
+
         //生成映射
         AntPathRequestMatcher matcher = null;
         List<ConfigAttribute> configAttrLt = null;
         for (PopedomFunctionEO pfEO : pfEOLt) {
-            //
+            //过滤掉1级
             Integer pfLevel = pfEO.getPfLevel();
             if (pfLevel == 1) {
                 continue;
             }
-            //
+
             String pfPath = pfEO.getPfPath();
             if (pfPath == null || "".equals(pfPath)) {
                 continue;
             }
-
             //匹配器
             matcher = new AntPathRequestMatcher(pfPath + "*");
             //配置属性
             configAttrLt = new ArrayList<>();
             configAttrLt.add(new SecurityConfig(pfPath));
 
-            funcMap.put(matcher, configAttrLt);
+            funMap.put(matcher, configAttrLt);
         }
 
-        return funcMap;
+        return funMap;
     }
 
     @Override

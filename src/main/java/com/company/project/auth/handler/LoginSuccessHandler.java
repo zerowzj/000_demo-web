@@ -40,7 +40,7 @@ public class LoginSuccessHandler extends SavedRequestAwareAuthenticationSuccessH
 
         SessionUtil.setSessionUserInfo(request, userInfo);
         SessionUtil.setPermissionIdLt(request, getPermissionIdLt(pfEOLt));
-        request.getSession().setAttribute("SESSION_USER_INFO", JsonUtil.toJson(toMenu(pfEOLt)));
+        SessionUtil.set(request, "SESSION_USER_INFO", JsonUtil.toJson(toMenu(pfEOLt)));
 
         //执行父逻辑
         super.onAuthenticationSuccess(request, response, authentication);
