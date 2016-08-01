@@ -18,13 +18,35 @@ public abstract class SessionUtil {
     private static final String SESSION_PERMISSION_ID_LIST = "SESSION_PERMISSION_ID_LIST";
 
     /**
+     * 设置信息
+     *
+     * @param request
+     * @param key
+     * @param obj
+     */
+    public static <T> void set(HttpServletRequest request, String key, T obj){
+        request.getSession().setAttribute(key, obj);
+    }
+    /**
+     * 获取信息
+     *
+     * @param request
+     * @param key
+     * @return T
+     */
+    public static <T> T get(HttpServletRequest request, String key){
+        T obj = (T) request.getSession().getAttribute(key);
+        return obj;
+    }
+
+    /**
      * 设置用户信息
      *
      * @param request
      * @param userInfo
      */
     public static void setSessionUserInfo(HttpServletRequest request, SessionUserInfo userInfo) {
-        request.getSession().setAttribute(SESSION_USER_INFO, userInfo);
+        set(request, SESSION_USER_INFO, userInfo);
     }
     /**
      * 获取用户信息
@@ -33,7 +55,7 @@ public abstract class SessionUtil {
      * @return SessionUserInfo
      */
     public static SessionUserInfo getSessionUserInfo(HttpServletRequest request) {
-        SessionUserInfo userInfo = (SessionUserInfo) request.getSession().getAttribute(SESSION_USER_INFO);
+        SessionUserInfo userInfo = get(request, SESSION_USER_INFO);
         return userInfo;
     }
 
@@ -45,7 +67,7 @@ public abstract class SessionUtil {
      * @return SessionUserInfo
      */
     public static void setPermissionIdLt(HttpServletRequest request, List<Long> permissionIdLt) {
-        request.getSession().setAttribute(SESSION_PERMISSION_ID_LIST, permissionIdLt);
+        set(request, SESSION_PERMISSION_ID_LIST, permissionIdLt);
     }
     /**
      * 获取许可编号列表
@@ -54,7 +76,7 @@ public abstract class SessionUtil {
      * @return List<Long>
      */
     public static List<Long> getPermissionIdLt(HttpServletRequest request) {
-        List<Long> permissionIdLt = (List<Long>) request.getSession().getAttribute(SESSION_PERMISSION_ID_LIST);
+        List<Long> permissionIdLt = get(request, SESSION_PERMISSION_ID_LIST);
         return permissionIdLt;
     }
 }
