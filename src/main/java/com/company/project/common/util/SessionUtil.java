@@ -1,10 +1,12 @@
-package com.company.project.common.web.session;
+package com.company.project.common.util;
+
+import com.company.project.common.web.session.SessionUserInfo;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 /**
- *
+ * Session Util
  *
  * @author wangzhj
  */

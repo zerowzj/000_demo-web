@@ -4,7 +4,7 @@ import com.company.project.auth.user.CustomUserDetails;
 import com.company.project.common.tree.ZTree;
 import com.company.project.common.util.JsonUtil;
 import com.company.project.common.web.session.SessionUserInfo;
-import com.company.project.common.web.session.SessionUtil;
+import com.company.project.common.util.SessionUtil;
 import com.company.project.dao.popedomfunction.PopedomFunctionEO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
