@@ -3,6 +3,8 @@ package com.company.project.common.util;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 /**
+ * Json Util
+ *
  * @author wangzhj
  */
 public abstract class JsonUtil {
