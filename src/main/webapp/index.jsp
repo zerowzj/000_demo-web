@@ -40,21 +40,20 @@
 <script type="text/javascript" src="<%=baseUrl%>/static/layout/jquery-ui.min.js"></script>
 <script type="text/javascript" src="<%=baseUrl%>/static/layout/jquery.layout-latest.js"></script>
 <script type="text/javascript">
-    var menuZTreeSetting = {
-        data: {
-            simpleData: {
-                enable: true
-            }
-        },
-        view: {
-            showIcon: true,
-            fontCss: {'font-size':'20'}
-        }
-    };
-    var menuZTreeNode = ${SESSION_USER_INFO};
-
     $(document).ready(function () {
         //菜单
+        var menuZTreeSetting = {
+            data: {
+                simpleData: {
+                    enable: true
+                }
+            },
+            view: {
+                showIcon: true,
+                fontCss: {'font-size':'20'}
+            }
+        };
+        var menuZTreeNode = ${SESSION_USER_INFO};
         $.fn.zTree.init($("#menu_ztree"), menuZTreeSetting, menuZTreeNode);
         //布局
         $('body').layout({
