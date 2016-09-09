@@ -12,12 +12,10 @@ import java.util.List;
  */
 public abstract class SessionUtil {
 
-    public static final String SESSION_ = "";
-
-    /**  */
+    /** 用户信息 Session Key */
     private static final String SESSION_USER_INFO = "SESSION_USER_INFO";
-    /**  */
-    private static final String SESSION_PERMISSION_ID_LIST = "SESSION_PERMISSION_ID_LIST";
+    /** 授权编号列表 Session Key */
+    private static final String SESSION_AUTH_ID_LT = "SESSION_AUTH_ID_LT";
 
     /**
      * 设置信息
@@ -61,24 +59,22 @@ public abstract class SessionUtil {
         return userInfo;
     }
 
-
     /**
-     * 设置许可编号列表
+     * 设置授权编号列表
      *
      * @param request
-     * @return SessionUserInfo
      */
-    public static void setPermissionIdLt(HttpServletRequest request, List<Long> permissionIdLt) {
-        set(request, SESSION_PERMISSION_ID_LIST, permissionIdLt);
+    public static void setAuthIdLt(HttpServletRequest request, List<Long> authIdLt) {
+        set(request, SESSION_AUTH_ID_LT, authIdLt);
     }
     /**
-     * 获取许可编号列表
+     * 获取授权编号列表
      *
      * @param request
      * @return List<Long>
      */
-    public static List<Long> getPermissionIdLt(HttpServletRequest request) {
-        List<Long> permissionIdLt = get(request, SESSION_PERMISSION_ID_LIST);
+    public static List<Long> getAuthIdLt(HttpServletRequest request) {
+        List<Long> permissionIdLt = get(request, SESSION_AUTH_ID_LT);
         return permissionIdLt;
     }
 }
