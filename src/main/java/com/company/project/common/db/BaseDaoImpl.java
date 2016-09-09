@@ -6,7 +6,12 @@ import org.mybatis.spring.support.SqlSessionDaoSupport;
 import javax.annotation.Resource;
 import java.io.Serializable;
 
-public abstract class BaseDaoImpl<E extends BaseEO> extends SqlSessionDaoSupport implements BaseDao<E>{
+/**
+ * 基础Dao实现
+ *
+ * @author wangzhj
+ */
+public abstract class BaseDaoImpl<E extends BaseEO> extends SqlSessionDaoSupport implements BaseDao<E> {
 
     @Override
     public final int insert(E entity) {
@@ -38,6 +43,9 @@ public abstract class BaseDaoImpl<E extends BaseEO> extends SqlSessionDaoSupport
 
     /**
      * 获取默认sqlId
+     *
+     * @param sqlType
+     * @return String
      */
     private String getDefaultSqlId(SqlType sqlType) {
         return getNamespace() + "." + sqlType.getValue();
@@ -45,15 +53,21 @@ public abstract class BaseDaoImpl<E extends BaseEO> extends SqlSessionDaoSupport
 
     /**
      * 获取sqlId
+     *
+     * @param sqlId
+     * @return String
      */
     protected final String getSqlId(String sqlId) {
-        return getNamespace()+"."+sqlId;
+        return getNamespace() + "." + sqlId;
     }
 
     /**
      * 获取命名空间
+     *
+     * @return String
      */
     protected final String getNamespace() {
+        //包名
         String packageName = this.getClass().getPackage().getName();
         return packageName;
     }
@@ -66,7 +80,7 @@ public abstract class BaseDaoImpl<E extends BaseEO> extends SqlSessionDaoSupport
 
     private enum SqlType {
 
-        INSERT("insert"), DELETE("delete"), UPDATE("update"), GET("get"), ;
+        INSERT("insert"), DELETE("delete"), UPDATE("update"), GET("get"),;
 
         private String value = null;
 
