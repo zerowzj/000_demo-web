@@ -11,9 +11,9 @@
 <body>
 <div class="div_search">
             <span>
-                <form id="_form" action="#" method="post">
+                <form id="_form" action="#">
                     登录名：<input type="text" name="ubLoginName" style="width: 120px;">
-                    <input value="查询" type="submit"/>
+                    <input value="查询" id="_button" type="button"/>
                 </form>
             </span>
 </div>
@@ -77,7 +77,7 @@
             jumpBtnText: '跳转',
             showPageSizes: true,
             pageSizeItems: [5, 10, 15, 20],
-            debug: false,
+            debug: true,
             remote: {
                 url: '/user/list',
                 params: $('form').serialize(),
@@ -92,6 +92,7 @@
                 totalName: 'totalCount',
                 traditional: false,
                 success: function (data) {
+                    //渲染数据
                     $("#dataLt").html($.templates("#theTmpl").render(data));
                 },
                 beforeSend: function () {
@@ -100,33 +101,14 @@
                 }
             }
         });
-        //
-        $('#_form').ajaxForm({
-            url: '/user/list',
-            type: 'post',
-            dataType: 'json',
-            target: '',
-            clearForm: false,
-            restForm: false,
-            timeout: 30000,
-            beforeSubmit: function (formData, jqForm, options) {
-                return true;
-            },
-            success: function (responseText, statusText, xhr, $form) {
-                //当前页
-                $("#page").pagination('setPageIndex', 0);
-                //页大小
-                $("#page").pagination('setPageSize', responseText.pageSize);
-                //渲染数据
-                $("#dataLt").html($("#theTmpl").render(responseText));
-                //重新分页
-                $("#page").pagination('render', responseText.totalCount);
-
-            },
-            error: function (xhr, statusText, error) {
-                var status = xhr.status;
-                layer.msg('系统异常[' + status + ']', {icon: 5});
-            }
+        //查询
+        $("#_button").click(function(){
+            //设置当前页
+            $("#page").pagination('setPageIndex', 0);
+            //设置参数
+            $("#page").pagination('setParams', $('form').serialize());
+            //
+            $("#page").pagination('remote');
         });
     });
 </script>
