@@ -17,7 +17,7 @@
 <script type="text/javascript" src="/static/ztree/jquery.ztree.excheck.min.js"></script>
 <script type="text/javascript" src="/static/layer/layer.js"></script>
 <script type="text/javascript">
-    var funTreeSetting = {
+    var fun_tree_setting = {
         data: {
             simpleData: {
                 enable: true
@@ -29,33 +29,36 @@
             chkboxType: {"Y": "p", "N": "s"}
         },
         callback: {
+            beforeCheck: function beforeCheck(treeId, treeNode) {
+                return (treeNode.doCheck !== false);
+            },
             onCheck: function (event, treeId, treeNode) {
             }
         },
         view: {
             showIcon: false,
-            fontCss: function (treeId, treeNode) {
-                return treeNode.checked ? {} : {};
+            fontCss: function getFont(treeId, treeNode) {
+                return !treeNode.doCheck? {'background-color':'black', 'color':'white'} : {};
             }
         }
     };
-    var prId = ${prId};
-    var funTreeNode = ${tree};
+    var pr_id = ${prId};
+    var fun_tree_node = ${tree};
     $(document).ready(function () {
         //生成树
-        var zTreeObj = $.fn.zTree.init($("#fun_tree"), funTreeSetting, funTreeNode);
+        var ztree_obj = $.fn.zTree.init($("#fun_tree"), fun_tree_setting, fun_tree_node);
         //提交
         $("#_submit").click(function () {
-            var nodes = zTreeObj.getCheckedNodes(true);
+            var nodes = ztree_obj.getCheckedNodes(true);
             var ids = new Array();
             for (var i = 0; i < nodes.length; i++) {
                 ids.push(nodes[i].id);
             }
-            var json = {prId: prId, pfIds: ids};
+            var params = {prId: pr_id, pfIds: ids};
             $.ajax({
                 url: '/role/conf',
                 type: 'post',
-                data: JSON.stringify(json),
+                data: JSON.stringify(params),
                 contentType: "application/json",
                 dataType: 'json',
                 success: function (data, textStatus) {

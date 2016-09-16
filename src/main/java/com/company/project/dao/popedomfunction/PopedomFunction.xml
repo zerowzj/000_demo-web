@@ -58,5 +58,6 @@
                 </foreach>
             </if>
         </where>
+        ORDER BY PF.PF_ID
     </select>
 </mapper>

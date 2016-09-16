@@ -98,7 +98,7 @@
         FROM USER_BASE UB
         <where>
             <if test="ubLoginName != null">
-                UB.UB_LOGIN_NAME = #{ubLoginName}
+                UB.UB_LOGIN_NAME LIKE CONCAT('%', #{ubLoginName}, '%')
             </if>
         </where>
         ORDER BY UB.UB_ID DESC

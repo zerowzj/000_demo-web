@@ -103,6 +103,10 @@ public class RoleController {
                 zTree.setChecked(true);
 
             }
+            if(id == 9001){
+                zTree.setChecked(true);
+                zTree.setDoCheck(false);
+            }
             treeLt.add(zTree);
         }
 

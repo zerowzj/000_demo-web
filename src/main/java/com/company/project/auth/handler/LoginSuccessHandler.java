@@ -1,10 +1,10 @@
 package com.company.project.auth.handler;
 
 import com.company.project.auth.user.CustomUserDetails;
-import com.company.project.common.tree.ZTree;
 import com.company.project.common.util.JsonUtil;
-import com.company.project.common.web.session.SessionUserInfo;
 import com.company.project.common.util.SessionUtil;
+import com.company.project.common.web.menu.Menu;
+import com.company.project.common.web.session.SessionUserInfo;
 import com.company.project.dao.popedomfunction.PopedomFunctionEO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -34,45 +34,45 @@ public class LoginSuccessHandler extends SavedRequestAwareAuthenticationSuccessH
         UsernamePasswordAuthenticationToken token = (UsernamePasswordAuthenticationToken) authentication;
         CustomUserDetails userDetails = (CustomUserDetails) token.getPrincipal();
 
-        //获取用户功能列表
+        //获取用户及功能列表
         SessionUserInfo userInfo = userDetails.getUserInfo();
         List<PopedomFunctionEO> pfEOLt = userInfo.getUserFuncLt();
-
+        //用户信息
         SessionUtil.setSessionUserInfo(request, userInfo);
         //授权编号列表
         SessionUtil.setSessionAuthIdLt(request, getAuthIdLt(pfEOLt));
-        //
-        SessionUtil.setSessionMenuInfo(request, JsonUtil.toJson(toMenu(pfEOLt)));
+        //菜单信息
+        SessionUtil.setSessionMenuInfo(request, transferMenuInfo(pfEOLt));
 
         //执行父逻辑
         super.onAuthenticationSuccess(request, response, authentication);
     }
 
     /**
-     * 转换成菜单
+     * 转换成菜单信息
      *
      * @param pfEOLt
-     * @return List<ZTree>
+     * @return String
      */
-    private List<ZTree> toMenu(List<PopedomFunctionEO> pfEOLt) {
-        List<ZTree> zTreeLt = new ArrayList<>();
-        ZTree zTree = null;
+    private String transferMenuInfo(List<PopedomFunctionEO> pfEOLt) {
+        List<Menu> menuLt = new ArrayList<>();
+        Menu menu = null;
         for (PopedomFunctionEO pfEO : pfEOLt) {
-            //过滤掉非1、2级功能
+            //过滤掉非1、2级
             int pfLevel = pfEO.getPfLevel();
             if (pfLevel != 1 && pfLevel != 2) {
                 continue;
             }
-            zTree = new ZTree();
+            menu = new Menu();
 
-            zTree.setId(pfEO.getPfId());
-            zTree.setpId(pfEO.getPfParentId());
-            zTree.setName(pfEO.getPfName());
-            zTree.setUrl(pfEO.getPfPath());
+            menu.setId(pfEO.getPfId());
+            menu.setpId(pfEO.getPfParentId());
+            menu.setName(pfEO.getPfName());
+            menu.setUrl(pfEO.getPfPath());
 
-            zTreeLt.add(zTree);
+            menuLt.add(menu);
         }
-        return zTreeLt;
+        return JsonUtil.toJson(menuLt);
     }
     /**
      * 获取授权编号列表

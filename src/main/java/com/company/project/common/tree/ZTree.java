@@ -23,6 +23,8 @@ public class ZTree {
     /** 是否选中 */
     private boolean checked = false;
 
+    private boolean doCheck = true;
+
     public boolean isChecked() {
         return checked;
     }
@@ -85,5 +87,13 @@ public class ZTree {
 
     public void setTarget(String target) {
         this.target = target;
+    }
+
+    public boolean isDoCheck() {
+        return doCheck;
+    }
+
+    public void setDoCheck(boolean doCheck) {
+        this.doCheck = doCheck;
     }
 }
