@@ -6,7 +6,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <link href="/static/pagination/mricode.pagination.css" rel="stylesheet"/>
-    <title>角色列表</title>
+    <title>用户列表</title>
 </head>
 <body>
 <div class="div_search">
@@ -92,8 +92,7 @@
                 totalName: 'totalCount',
                 traditional: false,
                 success: function (data) {
-                    var htmlOutput = $.templates("#theTmpl").render(data);
-                    $("#dataLt").html(htmlOutput);
+                    $("#dataLt").html($.templates("#theTmpl").render(data));
                 },
                 beforeSend: function () {
                 },
@@ -102,9 +101,6 @@
             }
         });
         //
-   /*     $('#_form').click(function(){
-            $("#page").pagination('remote');
-        });*/
         $('#_form').ajaxForm({
             url: '/user/list',
             type: 'post',
@@ -117,16 +113,15 @@
                 return true;
             },
             success: function (responseText, statusText, xhr, $form) {
-
                 //当前页
                 $("#page").pagination('setPageIndex', 0);
-                //重新分页
-                $("#page").pagination('render', responseText.totalCount);
+                //页大小
+                $("#page").pagination('setPageSize', responseText.pageSize);
                 //渲染数据
                 $("#dataLt").html($("#theTmpl").render(responseText));
-//                $("#page").pagination( 'destroy' )
-                /*//设置查询参数
-                $("#page").pagination('setParams', $('form').serialize());*/
+                //重新分页
+                $("#page").pagination('render', responseText.totalCount);
+
             },
             error: function (xhr, statusText, error) {
                 var status = xhr.status;

@@ -39,8 +39,10 @@ public class LoginSuccessHandler extends SavedRequestAwareAuthenticationSuccessH
         List<PopedomFunctionEO> pfEOLt = userInfo.getUserFuncLt();
 
         SessionUtil.setSessionUserInfo(request, userInfo);
+        //授权编号列表
         SessionUtil.setSessionAuthIdLt(request, getAuthIdLt(pfEOLt));
-        SessionUtil.set(request, "SESSION_USER_INFO", JsonUtil.toJson(toMenu(pfEOLt)));
+        //
+        SessionUtil.setSessionMenuInfo(request, JsonUtil.toJson(toMenu(pfEOLt)));
 
         //执行父逻辑
         super.onAuthenticationSuccess(request, response, authentication);
@@ -48,12 +50,15 @@ public class LoginSuccessHandler extends SavedRequestAwareAuthenticationSuccessH
 
     /**
      * 转换成菜单
+     *
+     * @param pfEOLt
+     * @return List<ZTree>
      */
     private List<ZTree> toMenu(List<PopedomFunctionEO> pfEOLt) {
         List<ZTree> zTreeLt = new ArrayList<>();
         ZTree zTree = null;
         for (PopedomFunctionEO pfEO : pfEOLt) {
-            //过滤掉非1 2级功能
+            //过滤掉非1、2级功能
             int pfLevel = pfEO.getPfLevel();
             if (pfLevel != 1 && pfLevel != 2) {
                 continue;
@@ -71,6 +76,9 @@ public class LoginSuccessHandler extends SavedRequestAwareAuthenticationSuccessH
     }
     /**
      * 获取授权编号列表
+     *
+     * @param pfEOLt
+     * @return List<Long>
      */
     private List<Long> getAuthIdLt(List<PopedomFunctionEO> pfEOLt) {
         List<Long> authIdLt = new ArrayList<>();

@@ -53,7 +53,7 @@
                 fontCss: {'font-size':'20'}
             }
         };
-        var menuZTreeNode = ${SESSION_USER_INFO};
+        var menuZTreeNode = ${SESSION_MENU_INFO};
         $.fn.zTree.init($("#menu_ztree"), menuZTreeSetting, menuZTreeNode);
         //布局
         $('body').layout({

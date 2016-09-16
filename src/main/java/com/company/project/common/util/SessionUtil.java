@@ -15,7 +15,9 @@ public abstract class SessionUtil {
     /** 用户信息 Session Key */
     private static final String SESSION_USER_INFO = "SESSION_USER_INFO";
     /** 授权编号列表 Session Key */
-    private static final String SESSION_AUTH_ID_LT = "SESSION_AUTH_ID_LT";
+    private static final String SESSION_AUTH_ID_LIST = "SESSION_AUTH_ID_LIST";
+    /** 授权编号列表 Session Key */
+    private static final String SESSION_MENU_INFO = "SESSION_MENU_INFO";
 
     /**
      * 设置信息
@@ -65,7 +67,7 @@ public abstract class SessionUtil {
      * @param request
      */
     public static void setSessionAuthIdLt(HttpServletRequest request, List<Long> authIdLt) {
-        set(request, SESSION_AUTH_ID_LT, authIdLt);
+        set(request, SESSION_AUTH_ID_LIST, authIdLt);
     }
     /**
      * 获取授权编号列表
@@ -74,7 +76,27 @@ public abstract class SessionUtil {
      * @return List<Long>
      */
     public static List<Long> getSessionAuthIdLt(HttpServletRequest request) {
-        List<Long> permissionIdLt = get(request, SESSION_AUTH_ID_LT);
+        List<Long> permissionIdLt = get(request, SESSION_AUTH_ID_LIST);
         return permissionIdLt;
+    }
+
+    /**
+     * 设置菜单信息
+     *
+     * @param request
+     * @param menuInfo
+     */
+    public static void setSessionMenuInfo(HttpServletRequest request, String menuInfo) {
+        set(request, SESSION_MENU_INFO, menuInfo);
+    }
+    /**
+     * 获取菜单信息
+     *
+     * @param request
+     * @return String
+     */
+    public static String getSessionMenuInfo(HttpServletRequest request) {
+        String menuInfo  = get(request, SESSION_MENU_INFO);
+        return menuInfo;
     }
 }

@@ -51,8 +51,8 @@ public class UserController {
 
         PageList<UserBaseEO> ubEOLt = userService.getUserPageLt(StringUtils.trimToNull(ubLoginName), Integer.valueOf(pageNo), Integer.valueOf(pageSize));
         model.put("ubEOLt", ubEOLt);
-        model.put("pageNo", ubEOLt.getPaginator().getLimit());
-        model.put("pageSize", ubEOLt.getPaginator().getPage());
+        model.put("pageNo", ubEOLt.getPaginator().getPage());
+        model.put("pageSize", ubEOLt.getPaginator().getLimit());
         model.put("totalCount", ubEOLt.getPaginator().getTotalCount());
         return model;
     }
