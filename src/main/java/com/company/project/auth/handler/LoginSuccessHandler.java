@@ -34,12 +34,12 @@ public class LoginSuccessHandler extends SavedRequestAwareAuthenticationSuccessH
         UsernamePasswordAuthenticationToken token = (UsernamePasswordAuthenticationToken) authentication;
         CustomUserDetails userDetails = (CustomUserDetails) token.getPrincipal();
 
-        //获取
+        //获取用户功能列表
         SessionUserInfo userInfo = userDetails.getUserInfo();
         List<PopedomFunctionEO> pfEOLt = userInfo.getUserFuncLt();
 
         SessionUtil.setSessionUserInfo(request, userInfo);
-        SessionUtil.setPermissionIdLt(request, getPermissionIdLt(pfEOLt));
+        SessionUtil.setSessionAuthIdLt(request, getAuthIdLt(pfEOLt));
         SessionUtil.set(request, "SESSION_USER_INFO", JsonUtil.toJson(toMenu(pfEOLt)));
 
         //执行父逻辑
@@ -69,12 +69,14 @@ public class LoginSuccessHandler extends SavedRequestAwareAuthenticationSuccessH
         }
         return zTreeLt;
     }
-
-    private List<Long> getPermissionIdLt(List<PopedomFunctionEO> pfEOLt) {
-        List<Long> permissionIdLt = new ArrayList<>();
+    /**
+     * 获取授权编号列表
+     */
+    private List<Long> getAuthIdLt(List<PopedomFunctionEO> pfEOLt) {
+        List<Long> authIdLt = new ArrayList<>();
         for (PopedomFunctionEO pfEO : pfEOLt) {
-            permissionIdLt.add(pfEO.getPfId());
+            authIdLt.add(pfEO.getPfId());
         }
-        return permissionIdLt;
+        return authIdLt;
     }
 }

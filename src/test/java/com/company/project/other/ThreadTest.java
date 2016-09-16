@@ -1,3 +1,5 @@
+package com.company.project.other;
+
 import org.junit.Test;
 
 import java.util.Vector;

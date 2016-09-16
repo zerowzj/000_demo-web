@@ -115,7 +115,7 @@
     <!-- ======================================== -->
     <!--                自定义过滤器              -->
     <!-- ======================================== -->
-    <bean id="sessionTimeoutFilter" class="com.company.project.auth.filter.SessionTimeoutFilter">
+    <bean id="sessionTimeoutFilter" class="com.company.project.auth.filter.WatchDogFilter">
         <property name="sessionKeyLt">
             <list>
             </list>

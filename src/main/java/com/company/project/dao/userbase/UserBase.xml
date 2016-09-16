@@ -92,4 +92,15 @@
         WHERE UB.UB_LOGIN_NAME = #{ubLoginName}
     </select>
 
+    <select id="getUserPageLt" parameterType="java.util.Map" resultMap="userBaseEO">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM USER_BASE UB
+        <where>
+            <if test="ubLoginName != null">
+                UB.UB_LOGIN_NAME = #{ubLoginName}
+            </if>
+        </where>
+        ORDER BY UB.UB_ID DESC
+    </select>
 </mapper>

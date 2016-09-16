@@ -38,6 +38,9 @@ public abstract class ServletUtil {
         } catch (Exception ex) {
             ex.printStackTrace();
         } finally {
+            if(out != null){
+                out.close();
+            }
         }
     }
 
@@ -78,7 +81,7 @@ public abstract class ServletUtil {
      */
     public static boolean isSync(HttpServletRequest request) {
         checkNull(request);
-        String xRequested = request.getHeader("x-requested-with");
+        String xRequested = request.getHeader("X-Requested-With");
         if(xRequested == null){
             return true;
         }

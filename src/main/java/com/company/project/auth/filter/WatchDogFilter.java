@@ -12,13 +12,13 @@ import java.io.IOException;
 import java.util.List;
 
 /**
- * 会话过期过滤器
+ * 看门狗
  *
  * @author wangzhj
  */
-public class SessionTimeoutFilter extends OncePerRequestFilter {
+public class WatchDogFilter extends OncePerRequestFilter {
 
-    private static final Logger logger = LoggerFactory.getLogger(SessionTimeoutFilter.class);
+    private static final Logger logger = LoggerFactory.getLogger(WatchDogFilter.class);
 
     /** Session Key列表 */
     private List<String> sessionKeyLt = null;

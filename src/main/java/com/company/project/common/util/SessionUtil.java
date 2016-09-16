@@ -64,7 +64,7 @@ public abstract class SessionUtil {
      *
      * @param request
      */
-    public static void setAuthIdLt(HttpServletRequest request, List<Long> authIdLt) {
+    public static void setSessionAuthIdLt(HttpServletRequest request, List<Long> authIdLt) {
         set(request, SESSION_AUTH_ID_LT, authIdLt);
     }
     /**
@@ -73,7 +73,7 @@ public abstract class SessionUtil {
      * @param request
      * @return List<Long>
      */
-    public static List<Long> getAuthIdLt(HttpServletRequest request) {
+    public static List<Long> getSessionAuthIdLt(HttpServletRequest request) {
         List<Long> permissionIdLt = get(request, SESSION_AUTH_ID_LT);
         return permissionIdLt;
     }

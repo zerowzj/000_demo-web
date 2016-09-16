@@ -16,4 +16,12 @@ public class UserBaseDaoImpl extends BaseDaoImpl<UserBaseEO> implements UserBase
     public UserBaseEO getUserByLoginName(String ubLoginName) {
         return getSqlSession().selectOne(getSqlId("getUserByLoginName"), ubLoginName);
     }
+
+    @Override
+    public PageList<UserBaseEO> getUserPageLt(String ubLoginName, int pageNo, int pageSize) {
+        Map<String, Object> params = new HashMap<>();
+        params.put("ubLoginName", ubLoginName);
+        PageBounds pageBounds = new PageBounds(pageNo, pageSize);
+        return (PageList) getSqlSession().selectList(getSqlId("getUserPageLt"), params, pageBounds);
+    }
 }

@@ -1,0 +1,80 @@
+<?xml version="1.0" ?>
+<project name="deploy-to-tomcat" default="test" basedir=".">
+    <property environment="env"/>
+
+    <!-- ==================== -->
+    <!--          SSH         -->
+    <!-- ==================== -->
+    <target name="test">
+        <echo message="compile classpath: ${env.ANT_HOME}"/>
+        <path id="jsch.path">
+            <pathelement location="${env.ANT_HOME}\lib\ant-jsch.jar" />
+            <pathelement location="${env.ANT_HOME}\lib\jsch-0.1.53.jar" />
+        </path>
+        <!--
+        <taskdef name="scp" classname="org.apache.tools.ant.taskdefs.optional.ssh.Scp" classpathref="jsch.path" />
+        -->
+        <taskdef name="sshexec" classname="org.apache.tools.ant.taskdefs.optional.ssh.SSHExec" classpathref="jsch.path" />
+        <sshexec host="10.60.0.62"
+                 username="root"
+                 password="1a2s3dqwe"
+                 trust="true"
+                 command="cd /xdfapp/admin-web/webapps/;ls"/>
+    </target>
+
+    <property name="server" value="119.255.44.75"/>
+    <property name="user" value="root"/>
+    <property name="pwd" value="123123"/>
+
+    <target name="ssh2">
+        <sshexec host="119.255.44.75"
+                 username="administrator"
+                 password="kaliankeji123"
+                 port="22"
+                 trust="true"
+                 command="c:\"/>
+    </target>
+    <!-- ==================== -->
+    <!--          SSH         -->
+    <!-- ==================== -->
+    <target name="ssh">
+        <sshexec host="10.60.0.62"
+                 username="root"
+                 password="1a2s3dqwe"
+                 trust="true"
+                 command="cd /xdfapp/admin-web/webapps/;ls"/>
+        <scp password="1a2s3dqwe" file="root@10.60.0.62:/xdfapp/admin-web/webapps/ROOT.war"
+             todir="C:/"
+             trust="true"/>
+    </target>
+    <!-- ==================== -->
+    <!--          FTP         -->
+    <!-- ==================== -->
+    <!-- <target name="upload">
+         <echo>======开始======</echo>
+         <ftp action="put"
+              server="${server}"
+              userid="${user}"
+              password="${pwd}"
+              port="21"
+              remotedir="/tomcat7/webapps" verbose="yes" passive="yes">
+             <fileset dir="c:\" >
+                 <include name="*.txt"/>
+             </fileset>
+         </ftp>
+         <echo>======结束======</echo>
+     </target>
+     <target name="delete">
+         <echo>======开始======</echo>
+         <ftp action="delete"
+              server="119.255.44.75"
+              remotedir="/tomcat7/webapps"
+              userid="root"
+              password="123123" passive="yes">
+             <fileset>
+                 <include name="test.txt"/>
+             </fileset>
+         </ftp>
+         <echo>======结束======</echo>
+     </target>-->
+</project>

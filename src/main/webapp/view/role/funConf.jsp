@@ -12,8 +12,6 @@
     </div>
     <input type="button" id="_submit" value="提交">
 </form>
-<%--<script type="text/javascript" src="<%=request.getContextPath()%>/static/ztree/jquery.ztree.core.min.js"></script>
-<script type="text/javascript" src="<%=request.getContextPath()%>/static/ztree/jquery.ztree.excheck.min.js"></script>--%>
 <script type="text/javascript" src="/static/lib/jquery.min.js"></script>
 <script type="text/javascript" src="/static/ztree/jquery.ztree.core.min.js"></script>
 <script type="text/javascript" src="/static/ztree/jquery.ztree.excheck.min.js"></script>

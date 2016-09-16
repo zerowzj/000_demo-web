@@ -9,6 +9,7 @@ import com.company.project.service.function.FunctionService;
 import com.company.project.service.role.RoleService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.miemiedev.mybatis.paginator.domain.PageList;
+import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -37,25 +38,33 @@ public class RoleController {
     @Autowired
     private FunctionService functionService = null;
 
-    @RequestMapping("/toList")
-    public ModelAndView toList(HttpServletRequest request, HttpServletResponse response) {
-        //
-        return new ModelAndView("/role/roleList");
-    }
-
     @RequestMapping("/list")
     public ModelAndView list(HttpServletRequest request, HttpServletResponse response) {
         Map<String, Object> model = new HashMap();
-        PageList<PopedomRoleEO> pageLt = roleService.getRolePageLt(null, 1, 10);
+
+        String pageNo = request.getParameter("pageNo");
+        if(StringUtils.trimToNull(pageNo) == null){
+            pageNo = "1";
+        }
+        String pageSize = request.getParameter("pageSize");
+        if(StringUtils.trimToNull(pageSize) == null){
+            pageSize = "10";
+        }
+        PageList<PopedomRoleEO> pageLt = roleService.getRolePageLt(null, Integer.valueOf(pageNo), Integer.valueOf(pageSize));
         //
-        model.put("dataLt", pageLt);
-        model.put("page", pageLt.getPaginator());
+        model.put("prEOLt", pageLt);
         //
-        return new ModelAndView("role/roleList", model);
+        model.put("pageNo", pageLt.getPaginator().getPage());
+        model.put("pageSize", pageLt.getPaginator().getLimit());
+        model.put("totalCount", pageLt.getPaginator().getTotalCount());
+        //
+        return new ModelAndView("/role/roleList", model);
     }
 
     @RequestMapping("/toAdd")
     public ModelAndView toAdd(HttpServletRequest request, HttpServletResponse response) {
+//        String str = null;
+//        str.toString();
         return new ModelAndView("/role/roleAdd");
     }
 
@@ -160,7 +169,6 @@ public class RoleController {
         for(Integer i : pfIdLt){
             ids.add(Long.parseLong(i.toString()));
         }
-
         //
         roleService.addFunction(Long.valueOf(prId), ids);
         //

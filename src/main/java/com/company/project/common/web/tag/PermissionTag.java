@@ -17,7 +17,7 @@ public class PermissionTag extends BaseTag {
 
     @Override
     public int doStartTag() throws JspException {
-        List<Long> permissionIdLt = SessionUtil.getPermissionIdLt(getHttpServletRequest());
+        List<Long> permissionIdLt = SessionUtil.getSessionAuthIdLt(getHttpServletRequest());
         if (permissionIdLt.contains(pId)) {
 
             return EVAL_BODY_INCLUDE;

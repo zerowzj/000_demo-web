@@ -1,3 +1,5 @@
+package com.company.project.other;
+
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import org.junit.Test;
