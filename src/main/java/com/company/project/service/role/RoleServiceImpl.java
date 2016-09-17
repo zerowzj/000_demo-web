@@ -26,14 +26,15 @@ public class RoleServiceImpl implements RoleService {
 
     @Override
     public void addRole(PopedomRoleEO prEO) {
-
+        popedomRoleDao.insert(prEO);
     }
 
     @Override
     public void addFunction(Long prId, List<Long> pfIdLt) {
-        //删除
+        //TODO 删除
         popedomRoleFunctionDao.deleteBatch(prId, null);
-        //生成
+
+        //
         List<Long> rootIdLt = new ArrayList<>();
         List<PopedomRoleFunctionEO> prfEOLt = new ArrayList<>();
         PopedomRoleFunctionEO prfEO = null;
@@ -43,12 +44,13 @@ public class RoleServiceImpl implements RoleService {
             prfEO.setPrfPfId(pfId);
             prfEOLt.add(prfEO);
 
-            Long t = (pfId / 1000) * 1000;
-            if (!rootIdLt.contains(t)) {
-                rootIdLt.add(t);
+            //生成1级功能编号列表
+            Long rootId = (pfId / 1000) * 1000;
+            if (!rootIdLt.contains(rootId)) {
+                rootIdLt.add(rootId);
             }
         }
-
+        //
         for (Long rootId : rootIdLt) {
             prfEO = new PopedomRoleFunctionEO();
             prfEO.setPrfPrId(prId);
@@ -56,6 +58,7 @@ public class RoleServiceImpl implements RoleService {
             prfEOLt.add(prfEO);
         }
 
+        //TODO 新增
         popedomRoleFunctionDao.insertBatch(prfEOLt);
     }
 }

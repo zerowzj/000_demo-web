@@ -22,7 +22,7 @@
         </tr>
         <tr>
             <td><input type="button" value="返回"></td>
-            <td><p:permission authId="1110"><input type="submit" value="新增"></p:permission></td>
+            <td><p:permission authId="1210"><input type="submit" value="新增"></p:permission></td>
         </tr>
     </table>
 </form>

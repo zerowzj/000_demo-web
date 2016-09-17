@@ -70,5 +70,13 @@
                       expression="execution(public * com.company.project.service..*.*(..))"/>
         <aop:advisor advice-ref="transactionAdvice" pointcut-ref="transactionPointcut"/>
     </aop:config>
-
+    <!-- ======================================== -->
+    <!--                    缓存                   -->
+    <!-- ======================================== -->
+    <bean id="cacheManager" class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean">
+        <property name="configLocation" value="classpath:ehcache.xml" />
+    </bean>
+    <bean id="cache" class="org.springframework.cache.ehcache.EhCacheFactoryBean">
+        <property name="cacheManager" ref="cacheManager"/>
+    </bean>
 </beans>
