@@ -6,7 +6,7 @@ import com.github.miemiedev.mybatis.paginator.domain.PageList;
 import java.util.List;
 
 /**
- * 角色信息服务
+ * 角色服务
  *
  * @author wangzhj
  */
@@ -33,7 +33,7 @@ public interface RoleService {
      * 添加功能
      *
      * @param prId 角色编号
-     * @param pfIdLt 功能编号
+     * @param pfIdLt 功能编号列表
      */
     public void addFunction(Long prId, List<Long> pfIdLt);
 }
