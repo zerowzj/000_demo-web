@@ -44,19 +44,17 @@
 <script type="text/javascript" src="/static/jsrender/jsrender.min.js"></script>
 <script type="text/javascript" src="/static/form/jquery.form.min.js"></script>
 <script id="theTmpl" type="text/x-jsrender">
-            {{for ubEOLt}}
-                <tr>
-                    <td>{{:ubId}}</td>
-                    <td>{{:ubLoginName}}</td>
-                    <td>{{:ubName}}</td>
-                    <td>{{:ubStatus}}</td>
-                    <td>{{:ubType}}</td>
-                    <td>{{:ubType}}</td>
-                    <td>
-                    12
-                    </td>
-                </tr>
-            {{/for}}
+    {{for ubEOLt}}
+        <tr>
+            <td>{{:ubId}}</td>
+            <td>{{:ubLoginName}}</td>
+            <td>{{:ubName}}</td>
+            <td>{{:ubStatus}}</td>
+            <td>{{:ubType}}</td>
+            <td>{{:ubType}}</td>
+            <td></td>
+        </tr>
+    {{/for}}
  </script>
 <script type="text/javascript">
     $(document).ready(function () {
@@ -73,7 +71,7 @@
             showInfo: true,
             infoFormat: '共{total}条',
             noInfoText: '查询结果为空',
-            showJump: true,
+            showJump: false,
             jumpBtnText: '跳转',
             showPageSizes: true,
             pageSizeItems: [5, 10, 15, 20],
@@ -105,9 +103,9 @@
         $("#_button").click(function(){
             //设置当前页
             $("#page").pagination('setPageIndex', 0);
-            //设置参数
+            //设置查询参数
             $("#page").pagination('setParams', $('form').serialize());
-            //
+            //请求
             $("#page").pagination('remote');
         });
     });

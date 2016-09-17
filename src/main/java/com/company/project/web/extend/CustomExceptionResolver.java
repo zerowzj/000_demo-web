@@ -17,13 +17,16 @@ public class CustomExceptionResolver implements HandlerExceptionResolver {
     @Override
     public ModelAndView resolveException(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) {
         ex.printStackTrace();
-        if (ex instanceof IllegalArgumentException) { //自定义异常
-            if (ServletUtil.isSync(request)) { //同步
-                return null;
-            } else {
+        //自定义异常
+        if (ex instanceof IllegalArgumentException) {
+            //同步请求
+            if (ServletUtil.isSync(request)) {
+                return new ModelAndView();
+            } else { //非同步请求
+                ServletUtil.write(response, "");
                 return null;
             }
-        } else {
+        } else { //其他异常
             ServletUtil.sendError(response, 500);
             return null;
         }

@@ -39,7 +39,7 @@
                 <td>${prEO.prStatus}</td>
                 <td>${prEO.prStatus}</td>
                 <td>${prEO.prDesc}</td>
-                <td><p:permission pId="1310"><a href="#" role-id="${prEO.prId}"
+                <td><p:permission authId="1310"><a href="#" role-id="${prEO.prId}"
                                                 role-name="${prEO.prName}">分配功能</a></p:permission></td>
             </tr>
         </c:forEach>
@@ -62,7 +62,7 @@
             pageSize: ${pageSize},
             total: ${totalCount},
             pageBtnCount: 11,
-            showFirstLastBtn: false,
+            showFirstLastBtn: true,
             firstBtnText: "首页",
             lastBtnText: "尾页",
             prevBtnText: "上一页",
@@ -72,7 +72,7 @@
             showInfo: true,
             infoFormat: '共{total}条',
             noInfoText: '查询结果为空',
-            showJump: true,
+            showJump: false,
             jumpBtnText: '跳转',
             showPageSizes: true,
             pageSizeItems: [5, 10, 15, 20],
