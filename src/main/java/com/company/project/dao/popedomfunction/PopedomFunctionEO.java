@@ -23,6 +23,9 @@ public class PopedomFunctionEO extends BaseEO {
     /** 功能路径 */
     private String pfPath = null;
 
+    /** 功能路径 */
+    private String pfIsDef = null;
+
     public Long getPfId() {
         return pfId;
     }
@@ -69,5 +72,13 @@ public class PopedomFunctionEO extends BaseEO {
 
     public void setPfPath(String pfPath) {
         this.pfPath = pfPath;
+    }
+
+    public String getPfIsDef() {
+        return pfIsDef;
+    }
+
+    public void setPfIsDef(String pfIsDef) {
+        this.pfIsDef = pfIsDef;
     }
 }

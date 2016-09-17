@@ -1,7 +1,9 @@
 package com.company.project.common.web.menu;
 
 /**
- * Created by wangzhj on 2016/9/16.
+ * 菜单对象
+ *
+ * @author wangzhj
  */
 public class Menu {
 

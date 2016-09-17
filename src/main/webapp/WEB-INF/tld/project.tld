@@ -10,11 +10,11 @@
     <uri>http://www.company.com/tag</uri>
     <tag>
         <name>permission</name>
-        <tag-class>com.company.project.common.web.tag.PermissionTag</tag-class>
+        <tag-class>com.company.project.common.web.tag.AuthTag</tag-class>
         <body-content>JSP</body-content>
         <attribute>
             <description></description>
-            <name>pId</name>
+            <name>authId</name>
             <required>true</required>
             <rtexprvalue>false</rtexprvalue>
             <type>java.lang.Long</type>

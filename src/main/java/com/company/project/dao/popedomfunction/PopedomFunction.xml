@@ -9,6 +9,7 @@
         <result property="pfStatus" column="PF_STATUS"/>
         <result property="pfLevel" column="PF_LEVEL"/>
         <result property="pfPath" column="PF_PATH"/>
+        <result property="pfIsDef" column="PF_IS_DEF"/>
     </resultMap>
     <sql id="Base_Column_List">
         PF.PF_ID,
@@ -16,7 +17,8 @@
         PF.PF_NAME,
         PF.PF_STATUS,
         PF.PF_LEVEL,
-        PF.PF_PATH
+        PF.PF_PATH,
+        PF.PF_IS_DEF
     </sql>
     <resultMap id="roleFuntionConfVO" type="com.company.project.dao.popedomfunction.RoleFunctionConfVO"
                extends="popedomFuntionEO">

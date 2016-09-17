@@ -103,7 +103,7 @@ public class RoleController {
                 zTree.setChecked(true);
 
             }
-            if(id == 9001){
+            if("Y".equals(confVO.getPfIsDef())){
                 zTree.setChecked(true);
                 zTree.setDoCheck(false);
             }

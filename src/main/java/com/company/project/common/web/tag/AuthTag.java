@@ -6,19 +6,19 @@ import javax.servlet.jsp.JspException;
 import java.util.List;
 
 /**
- * 许可标签
+ * 授权标签
  *
  * @author wangzhj
  */
-public class PermissionTag extends BaseTag {
+public class AuthTag extends BaseTag {
 
-    /** 许可ID */
-    private Long pId = null;
+    /** 授权编号 */
+    private Long authId = null;
 
     @Override
     public int doStartTag() throws JspException {
         List<Long> permissionIdLt = SessionUtil.getSessionAuthIdLt(getHttpServletRequest());
-        if (permissionIdLt.contains(pId)) {
+        if (permissionIdLt.contains(authId)) {
 
             return EVAL_BODY_INCLUDE;
         } else {
@@ -27,7 +27,7 @@ public class PermissionTag extends BaseTag {
         }
     }
 
-    public void setpId(Long pId) {
-        this.pId = pId;
+    public void setAuthId(Long authId) {
+        this.authId = authId;
     }
 }

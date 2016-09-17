@@ -8,8 +8,7 @@
 </head>
 <body>
 <form id="_form" action="#" method="post">
-    <div id="fun_tree" class="ztree">
-    </div>
+    <div id="fun_tree" class="ztree"> </div>
     <input type="button" id="_submit" value="提交">
 </form>
 <script type="text/javascript" src="/static/lib/jquery.min.js"></script>

@@ -70,7 +70,7 @@
     <!--                  注销过滤器              -->
     <!-- ======================================== -->
     <bean id="customLogoutFilter" class="com.company.project.auth.filter.CustomLogoutFilter">
-        <property name="filterProcessesUrl" value="/logout.html"/>
+        <property name="filterProcessesUrl" value="/logout"/>
         <constructor-arg index="0" value="/login.jsp?msg=logout_success"/>
         <constructor-arg index="1">
             <array>
