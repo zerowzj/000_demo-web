@@ -1,6 +1,7 @@
 package com.company.project.web.extend;
 
 import com.company.project.common.util.ServletUtil;
+import com.company.project.exception.BaseException;
 import org.springframework.web.servlet.HandlerExceptionResolver;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -18,7 +19,10 @@ public class CustomExceptionResolver implements HandlerExceptionResolver {
     public ModelAndView resolveException(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) {
         ex.printStackTrace();
         //自定义异常
-        if (ex instanceof IllegalArgumentException) {
+        if (ex instanceof BaseException) {
+            //获取异常信息
+
+
             //同步请求
             if (ServletUtil.isSync(request)) {
                 return new ModelAndView();
