@@ -13,6 +13,11 @@
             <span>
                 <form id="_form" action="#">
                     登录名：<input type="text" name="ubLoginName" style="width: 120px;">
+                    <div id="city_china">所在地区
+                        <select class="province" data-first-title="选择省份" disabled="disabled" name="province"></select>
+                        <select class="city" disabled="disabled" data-first-title="选择城市" name="city"></select>
+                        <select class="area" disabled="disabled" data-first-title="选择地区" name="area"></select>
+                    </div>
                     <input value="查询" id="_button" type="button"/>
                 </form>
             </span>
@@ -43,6 +48,7 @@
 <script type="text/javascript" src="/static/layer/layer.js"></script>
 <script type="text/javascript" src="/static/jsrender/jsrender.min.js"></script>
 <script type="text/javascript" src="/static/form/jquery.form.min.js"></script>
+<script type="text/javascript" src="/static/cxselect/jquery.cxselect.min.js"></script>
 <script id="theTmpl" type="text/x-jsrender">
     {{for ubEOLt}}
         <tr>
@@ -55,9 +61,16 @@
             <td></td>
         </tr>
     {{/for}}
- </script>
+
+</script>
 <script type="text/javascript">
     $(document).ready(function () {
+        //
+        $('#city_china').cxSelect({
+            url: '/static/cxselect/cityData.json',
+            selects: ['province', 'city', 'area'],
+            emptyStyle: 'none'
+        });
         //分页
         $("#page").pagination({
             pageBtnCount: 11,
@@ -100,7 +113,7 @@
             }
         });
         //查询
-        $("#_button").click(function(){
+        $("#_button").click(function () {
             //设置当前页
             $("#page").pagination('setPageIndex', 0);
             //设置查询参数

@@ -3,6 +3,7 @@ package com.company.project.other;
 import org.junit.Test;
 
 import java.util.Vector;
+import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
@@ -78,6 +79,7 @@ public class ThreadTest {
 
     @Test
     public void test4() throws Exception{
+        final CountDownLatch lock = new CountDownLatch(2);
 
         Thread t1 = new Thread(new Runnable() {
             @Override
@@ -85,21 +87,30 @@ public class ThreadTest {
                 for (int i = 0; i < 1000; i++) {
                     System.out.println("子线程" + Thread.currentThread() + "执行完毕");
                 }
+                lock.countDown();
             }
         });
         t1.start();
+//        lock.countDown();
         Thread t2 = new Thread(new Runnable() {
             @Override
             public void run() {
                 for (int i = 0; i < 1000; i++) {
                     System.out.println("子线程" + Thread.currentThread() + "执行完毕");
                 }
+                lock.countDown();
             }
         });
         t2.start();
+//        lock.countDown();
 
-        t1.join();
-        t2.join();
+//        t1.join();
+//        t2.join();
+        try {
+            lock.await();
+        } catch (Exception ex) {
+
+        }
 
         System.out.println("主线执行。");
     }
