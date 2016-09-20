@@ -5,6 +5,7 @@ import com.company.project.common.tree.ZTree;
 import com.company.project.common.util.JsonUtil;
 import com.company.project.dao.popedomfunction.RoleFunctionConfVO;
 import com.company.project.dao.popedomrole.PopedomRoleEO;
+import com.company.project.exception.ParamEmptyValueException;
 import com.company.project.service.function.FunctionService;
 import com.company.project.service.role.RoleService;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -63,6 +64,10 @@ public class RoleController {
 
     @RequestMapping("/toAdd")
     public ModelAndView toAdd(HttpServletRequest request, HttpServletResponse response) {
+
+        if(true){
+            throw new ParamEmptyValueException("name");
+        }
 //        String str = null;
 //        str.toString();
         return new ModelAndView("/role/roleAdd");

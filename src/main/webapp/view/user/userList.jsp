@@ -102,13 +102,18 @@
                 pageSizeName: 'pageSize',
                 totalName: 'totalCount',
                 traditional: false,
-                success: function (data) {
+                success: function (data, textStatue) {
+                    alert(data.result_code);
+                    alert(data.result_desc);
+                    alert(data.textStatue);
+//                    return;
                     //渲染数据
                     $("#dataLt").html($.templates("#theTmpl").render(data));
                 },
                 beforeSend: function () {
                 },
-                complete: function () {
+                complete: function (XMLHttpRequest, textStatue) {
+                    alert(textStatue);
                 }
             }
         });

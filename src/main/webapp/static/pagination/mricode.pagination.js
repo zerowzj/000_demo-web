@@ -215,7 +215,8 @@
         ajaxCallBack: function (result) {
             var total = utility.mapObjectNameRecursion(result, this.options.remote.totalName);
             if (total == null || total == undefined)
-                throw new Error("the response of totalName :  '" + this.options.remote.totalName + "'  not found.");
+            total=0;
+                //throw new Error("the response of totalName :  '" + this.options.remote.totalName + "'  not found.");
             total = utility.convertInt(total);
             this.total = total;
             var lastPageNum = this.getLastPageNum();

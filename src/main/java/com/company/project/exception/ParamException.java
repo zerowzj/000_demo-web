@@ -7,18 +7,17 @@ package com.company.project.exception;
  */
 public class ParamException extends BaseException {
 
-
     /** 参数名称 */
     private String paramName = null;
 
     /** 参数值 */
-    private String paramValue = null;
+    private Object paramValue = null;
 
     public ParamException(String errorCode, String errorDesc, String paramName){
         this(errorCode, errorDesc, paramName, null);
     }
 
-    public ParamException(String errorCode, String errorDesc, String paramName, String paramValue){
+    public ParamException(String errorCode, String errorDesc, String paramName, Object paramValue){
         super(errorCode, errorDesc);
         this.paramName = paramName;
         this.paramValue = paramValue;
@@ -28,7 +27,7 @@ public class ParamException extends BaseException {
         return paramName;
     }
 
-    public String getParamValue() {
+    public Object getParamValue() {
         return paramValue;
     }
 }

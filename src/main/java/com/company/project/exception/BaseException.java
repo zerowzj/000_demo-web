@@ -32,4 +32,13 @@ public class BaseException extends RuntimeException {
     public BaseException(String message, Throwable cause){
         super(message, cause);
     }
+
+    public String getErrorDesc() {
+        return errorDesc;
+    }
+
+    public String getErrorCode() {
+        return errorCode;
+    }
+
 }

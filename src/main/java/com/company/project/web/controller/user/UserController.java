@@ -1,6 +1,7 @@
 package com.company.project.web.controller.user;
 
 import com.company.project.dao.userbase.UserBaseEO;
+import com.company.project.exception.ParamEmptyValueException;
 import com.company.project.service.user.UserService;
 import com.github.miemiedev.mybatis.paginator.domain.PageList;
 import org.apache.commons.lang.StringUtils;
@@ -35,6 +36,9 @@ public class UserController {
     @RequestMapping("/list")
     @ResponseBody
     public Map<String, Object> list(HttpServletRequest request, HttpServletResponse response){
+        if(true){
+            throw new ParamEmptyValueException("ID");
+        }
 
         Map<String, Object> model = new HashMap<>();
 
