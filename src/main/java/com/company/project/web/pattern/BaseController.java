@@ -18,7 +18,7 @@ public abstract class BaseController implements MyController {
     @Override
     @RequestMapping
     @ResponseBody
-    public Map<String, Object> doExecute(HttpServletRequest request, HttpServletResponse response) {
+    public final Map<String, Object> doExecute(HttpServletRequest request, HttpServletResponse response) {
         Map<String, Object> model = new HashMap<>();
         try {
             RequestContext requestContext = new RequestContext(request, response);
@@ -59,5 +59,5 @@ public abstract class BaseController implements MyController {
      * @param requestContext
      * @param dataMap
      */
-    public abstract void editData(RequestContext requestContext, Map<String, Object> dataMap);
+    public void editData(RequestContext requestContext, Map<String, Object> dataMap){}
 }

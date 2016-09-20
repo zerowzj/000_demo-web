@@ -7,7 +7,7 @@ package com.company.project.exception;
  */
 public class ParamFormatErrorException extends ParamException {
 
-    public ParamFormatErrorException(String paramName, String paramValue){
+    public ParamFormatErrorException(String paramName, Object paramValue){
         super("1002", "参数格式错误", paramName, paramValue);
     }
 }

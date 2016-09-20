@@ -1,7 +1,6 @@
 package com.company.project.web.controller.user;
 
 import com.company.project.dao.userbase.UserBaseEO;
-import com.company.project.exception.ParamEmptyValueException;
 import com.company.project.exception.ParamFormatErrorException;
 import com.company.project.service.user.UserService;
 import com.company.project.web.pattern.BaseController;
@@ -52,9 +51,5 @@ public class UserListController extends BaseController{
         data.put("pageSize", ubEOLt.getPaginator().getLimit());
         data.put("totalCount", ubEOLt.getPaginator().getTotalCount());
         return data;
-    }
-
-    @Override
-    public void editData(RequestContext requestContext, Map<String, Object> dataMap) {
     }
 }
