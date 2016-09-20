@@ -35,8 +35,8 @@ public class CustomExceptionResolver implements HandlerExceptionResolver {
                 return new ModelAndView("message", model);
             } else { //非同步请求
                 Map<String, Object> model = new HashMap<>();
-//                model.put("result_code", baseEx.getErrorCode());
-                model.put("result_desc", baseEx.getErrorDesc());
+                model.put("result_code", baseEx.getErrorCode());
+                model.put("result_desc", ExceptionUtil.parseParamException(baseEx));
                 ServletUtil.write(response, JsonUtil.toJson(model));
                 return null;
             }

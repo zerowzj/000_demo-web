@@ -33,8 +33,8 @@ public class UserController {
         return new ModelAndView("/user/userList");
     }
 
-    @RequestMapping("/list")
-    @ResponseBody
+/*    @RequestMapping("/list")
+    @ResponseBody*/
     public Map<String, Object> list(HttpServletRequest request, HttpServletResponse response){
         if(true){
             throw new ParamEmptyValueException("ID");

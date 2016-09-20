@@ -98,22 +98,25 @@
                         pageSize: data.pageSize
                     };
                 },
-                pageIndexName: 'pageNo',
-                pageSizeName: 'pageSize',
-                totalName: 'totalCount',
+                pageIndexName: 'data.pageNo',
+                pageSizeName: 'data.pageSize',
+                totalName: 'data.totalCount',
                 traditional: false,
-                success: function (data, textStatue) {
-                    alert(data.result_code);
-                    alert(data.result_desc);
-                    alert(data.textStatue);
-//                    return;
+                success: function (data) {
+                    if(data.result_code != '0000') {
+                        layer.msg(data.result_desc, {icon: 5});
+                        return;
+                    }
                     //渲染数据
-                    $("#dataLt").html($.templates("#theTmpl").render(data));
+                    $("#dataLt").html($.templates("#theTmpl").render(data.data));
                 },
                 beforeSend: function () {
                 },
                 complete: function (XMLHttpRequest, textStatue) {
                     alert(textStatue);
+                    if(textStatue == 'error'){
+                        layer.msg("系统异常", {icon: 2});
+                    }
                 }
             }
         });

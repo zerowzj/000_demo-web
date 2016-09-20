@@ -34,7 +34,7 @@ public abstract class SessionUtil {
      *
      * @param request
      * @param key
-     * @return T
+     * @return MyController
      */
     public static <T> T get(HttpServletRequest request, String key){
         T obj = (T) request.getSession().getAttribute(key);
