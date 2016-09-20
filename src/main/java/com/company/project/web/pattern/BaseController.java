@@ -46,7 +46,7 @@ public abstract class BaseController implements MyController {
     public abstract void checkData(RequestContext requestContext);
 
     /**
-     * 执行
+     * 执行逻辑
      *
      * @param requestContext
      * @return Map<String, Object>

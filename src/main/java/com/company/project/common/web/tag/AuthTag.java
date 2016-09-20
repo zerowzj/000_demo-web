@@ -19,7 +19,6 @@ public class AuthTag extends BaseTag {
     public int doStartTag() throws JspException {
         List<Long> permissionIdLt = SessionUtil.getSessionAuthIdLt(getHttpServletRequest());
         if (permissionIdLt.contains(authId)) {
-
             return EVAL_BODY_INCLUDE;
         } else {
             write("禁止访问");

@@ -2,6 +2,7 @@ package com.company.project.web.controller.user;
 
 import com.company.project.dao.userbase.UserBaseEO;
 import com.company.project.exception.ParamEmptyValueException;
+import com.company.project.exception.ParamFormatErrorException;
 import com.company.project.service.user.UserService;
 import com.company.project.web.pattern.BaseController;
 import com.company.project.web.pattern.RequestContext;
@@ -26,11 +27,9 @@ public class UserListController extends BaseController{
 
     @Override
     public void checkData(RequestContext requestContext) {
-    /*    if(true){
-            throw new ParamEmptyValueException("ID");
-        }*/
-        String str = null;
-        str.trim();
+        if(true){
+            throw new ParamFormatErrorException("ubLoginName", "wangzhj");
+        }
     }
 
     @Override
