@@ -13,6 +13,7 @@
             <span>
                 <form id="_form" action="#">
                     登录名：<input type="text" name="ubLoginName" style="width: 120px;">
+
                     <div id="city_china">所在地区
                         <select class="province" data-first-title="选择省份" disabled="disabled" name="province"></select>
                         <select class="city" disabled="disabled" data-first-title="选择城市" name="city"></select>
@@ -62,10 +63,11 @@
         </tr>
     {{/for}}
 
+
 </script>
 <script type="text/javascript">
     $(document).ready(function () {
-        //
+        //级联
         $('#city_china').cxSelect({
             url: '/static/cxselect/cityData.json',
             selects: ['province', 'city', 'area'],
@@ -103,7 +105,7 @@
                 totalName: 'data.totalCount',
                 traditional: false,
                 success: function (data) {
-                    if(data.result_code != '0000') {
+                    if (data.result_code != '0000') {
                         layer.msg(data.result_desc, {icon: 5});
                         return;
                     }
@@ -112,10 +114,11 @@
                 },
                 beforeSend: function () {
                 },
-                complete: function (XMLHttpRequest, textStatue) {
-                    alert(textStatue);
-                    if(textStatue == 'error'){
-                        layer.msg("系统异常", {icon: 2});
+                complete: function (xmlhttp, textStatue) {
+                    var status = xmlhttp.status;
+                    //
+                    if (status != 200) {
+                        layer.msg("系统异常[" + status + "]", {icon: 2});
                     }
                 }
             }

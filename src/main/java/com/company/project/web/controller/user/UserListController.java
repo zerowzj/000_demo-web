@@ -29,8 +29,8 @@ public class UserListController extends BaseController{
     /*    if(true){
             throw new ParamEmptyValueException("ID");
         }*/
-/*        String str = null;
-        str.trim();*/
+        String str = null;
+        str.trim();
     }
 
     @Override
