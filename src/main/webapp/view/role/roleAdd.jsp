@@ -14,11 +14,11 @@
     <table>
         <tr>
             <td>角色名称</td>
-            <td><input type="text" name=""></td>
+            <td><input type="text" name="prName"></td>
         </tr>
         <tr>
-            <td>角色名称</td>
-            <td><textarea name=""></textarea></td>
+            <td>角色描述</td>
+            <td><textarea name="prDesc"></textarea></td>
         </tr>
         <tr>
             <td><input type="button" value="返回"></td>
@@ -26,14 +26,29 @@
         </tr>
     </table>
 </form>
-
-<script type="text/javascript" src="/static/form/jquery.form.min.js"></script>
-<script type="text/javascript" src="/static/layer/layer.js"></script>
-<script type="text/javascript" src="/static/js/global.js"></script>
-<script type="text/javascript" src="/static/js/role.js"></script>
+<script type="text/javascript" src="<%=baseUrl %>/static/form/jquery.form.min.js"></script>
+<script type="text/javascript" src="<%=baseUrl %>/static/layer/layer.js"></script>
+<%--<script type="text/javascript" src="/static/js/global.js"></script>
+<script type="text/javascript" src="/static/js/role.js"></script>--%>
 <script type="text/javascript">
     $(document).ready(function () {
-        latte.role.add();
+//        latte.role.add();
+        var loading;
+        $('#_form').ajaxForm({
+            target: '',
+            url: '/role/add',
+            type: 'POST',
+            clearForm: false,
+            beforeSubmit: function (formData, jqForm, options) {
+                loading = layer.load(1);
+                //loading = layer.msg('加载中', {icon: 16});
+                return true;
+            },
+            success: function (responseText, statusText, xhr, $form) {
+                layer.close(loading);
+                layer.msg('成功', {icon: 0});
+            }
+        });
     });
 </script>
 </body>

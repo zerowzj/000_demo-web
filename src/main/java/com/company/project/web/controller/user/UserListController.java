@@ -3,8 +3,8 @@ package com.company.project.web.controller.user;
 import com.company.project.dao.userbase.UserBaseEO;
 import com.company.project.exception.ParamFormatErrorException;
 import com.company.project.service.user.UserService;
-import com.company.project.web.pattern.BaseController;
-import com.company.project.web.pattern.RequestContext;
+import com.company.project.web.pattern.controller.BaseController;
+import com.company.project.web.pattern.context.RequestContext;
 import com.github.miemiedev.mybatis.paginator.domain.PageList;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +19,7 @@ import java.util.Map;
  */
 @Controller
 @RequestMapping("/user/list")
-public class UserListController extends BaseController{
+public class UserListController extends BaseController {
 
     @Autowired
     private UserService userService = null;

@@ -1,4 +1,4 @@
-package com.company.project.web.pattern;
+package com.company.project.web.pattern.controller;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -9,10 +9,10 @@ import java.util.Map;
  *
  * @author wangzhj
  */
-public interface MyController {
+public interface Controller {
 
     /**
-     *
+     * 模板方法
      *
      * @param request
      * @param response

@@ -1,4 +1,4 @@
-package com.company.project.web.pattern;
+package com.company.project.web.pattern.context;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

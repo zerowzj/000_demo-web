@@ -79,4 +79,9 @@
     <bean id="cache" class="org.springframework.cache.ehcache.EhCacheFactoryBean">
         <property name="cacheManager" ref="cacheManager"/>
     </bean>
+    <!-- ======================================== -->
+    <!--                    其他                  -->
+    <!-- ======================================== -->
+    <bean class="com.company.project.common.SpringContext">
+    </bean>
 </beans>

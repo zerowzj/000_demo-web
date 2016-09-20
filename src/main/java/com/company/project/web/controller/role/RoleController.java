@@ -5,9 +5,9 @@ import com.company.project.common.tree.ZTree;
 import com.company.project.common.util.JsonUtil;
 import com.company.project.dao.popedomfunction.RoleFunctionConfVO;
 import com.company.project.dao.popedomrole.PopedomRoleEO;
-import com.company.project.exception.ParamEmptyValueException;
 import com.company.project.service.function.FunctionService;
 import com.company.project.service.role.RoleService;
+import com.company.project.web.pattern.action.ActionExecutor;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.miemiedev.mybatis.paginator.domain.PageList;
 import org.apache.commons.lang.StringUtils;
@@ -44,11 +44,11 @@ public class RoleController {
         Map<String, Object> model = new HashMap();
 
         String pageNo = request.getParameter("pageNo");
-        if(StringUtils.trimToNull(pageNo) == null){
+        if (StringUtils.trimToNull(pageNo) == null) {
             pageNo = "1";
         }
         String pageSize = request.getParameter("pageSize");
-        if(StringUtils.trimToNull(pageSize) == null){
+        if (StringUtils.trimToNull(pageSize) == null) {
             pageSize = "10";
         }
         PageList<PopedomRoleEO> pageLt = roleService.getRolePageLt(null, Integer.valueOf(pageNo), Integer.valueOf(pageSize));
@@ -64,21 +64,13 @@ public class RoleController {
 
     @RequestMapping("/toAdd")
     public ModelAndView toAdd(HttpServletRequest request, HttpServletResponse response) {
-
-        if(true){
-            throw new ParamEmptyValueException("name");
-        }
-//        String str = null;
-//        str.toString();
         return new ModelAndView("/role/roleAdd");
     }
 
     @RequestMapping("/add")
     @ResponseBody
     public Map<String, Object> add(HttpServletRequest request, HttpServletResponse response, PopedomRoleEO prEO) {
-        Map<String, Object> model = new HashMap();
-        model.put("success", "okkkkkkkkkkkk");
-        return model;
+        return ActionExecutor.execute(request, response, "Action_role_add", prEO);
     }
 
     @RequestMapping("/toConf")
@@ -104,11 +96,11 @@ public class RoleController {
             zTree.setName(confVO.getPfName());
 
             Long c = confVO.getPrfPfId();
-            if(c != null){
+            if (c != null) {
                 zTree.setChecked(true);
 
             }
-            if("Y".equals(confVO.getPfIsDef())){
+            if ("Y".equals(confVO.getPfIsDef())) {
                 zTree.setChecked(true);
                 zTree.setDoCheck(false);
             }
@@ -144,7 +136,7 @@ public class RoleController {
 
             Long c = confVO.getPrfPfId();
             JSTree.State state = new JSTree.State();
-            if(c != null){
+            if (c != null) {
                 state.setSelected(true);
                 state.setOpened(true);
 //                state.setDisabled(true);
@@ -175,7 +167,7 @@ public class RoleController {
         String prId = params.get("prId").toString();
         List<Integer> pfIdLt = (List) params.get("pfIds");
         List<Long> ids = new ArrayList<>();
-        for(Integer i : pfIdLt){
+        for (Integer i : pfIdLt) {
             ids.add(Long.parseLong(i.toString()));
         }
         //

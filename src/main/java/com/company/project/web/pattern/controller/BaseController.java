@@ -1,5 +1,6 @@
-package com.company.project.web.pattern;
+package com.company.project.web.pattern.controller;
 
+import com.company.project.web.pattern.context.RequestContext;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -13,7 +14,7 @@ import java.util.Map;
  *
  * @author wangzhj
  */
-public abstract class BaseController implements MyController {
+public abstract class BaseController implements Controller {
 
     @Override
     @RequestMapping
@@ -59,5 +60,6 @@ public abstract class BaseController implements MyController {
      * @param requestContext
      * @param dataMap
      */
-    public void editData(RequestContext requestContext, Map<String, Object> dataMap){}
+    public void editData(RequestContext requestContext, Map<String, Object> dataMap) {
+    }
 }
