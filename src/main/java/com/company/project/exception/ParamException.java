@@ -9,7 +9,6 @@ public class ParamException extends BaseException {
 
     /** 参数名称 */
     private String paramName = null;
-
     /** 参数值 */
     private Object paramValue = null;
 
