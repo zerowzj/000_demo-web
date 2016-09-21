@@ -8,6 +8,6 @@ package com.company.project.exception;
 public class ParamEmptyValueException extends ParamException {
 
     public ParamEmptyValueException(String paramName){
-        super("10001", "参数为空", paramName);
+        super("10001", "参数为空[{0}]", paramName);
     }
 }
