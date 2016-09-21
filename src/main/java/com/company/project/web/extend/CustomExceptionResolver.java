@@ -21,7 +21,7 @@ public class CustomExceptionResolver implements HandlerExceptionResolver {
 
     @Override
     public ModelAndView resolveException(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) {
-//        ex.printStackTrace();
+        ex.printStackTrace();
         //自定义异常
         if (ex instanceof BaseException) {
             //获取异常信息

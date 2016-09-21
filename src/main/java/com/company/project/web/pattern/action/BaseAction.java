@@ -1,6 +1,9 @@
 package com.company.project.web.pattern.action;
 
+import com.company.project.common.util.JsonUtil;
 import com.company.project.web.pattern.context.RequestContext;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -14,8 +17,13 @@ import java.util.Map;
  */
 public abstract class BaseAction<T> implements Action<T> {
 
+    private static final Logger logger = LoggerFactory.getLogger(BaseAction.class);
+
     @Override
     public final Map<String, Object> doExecute(HttpServletRequest request, HttpServletResponse response, T param) {
+        logger.info("==========>");
+        logger.info("==========>{}", JsonUtil.toJson(param));
+        logger.info("==========>");
         Map<String, Object> model = new HashMap<>();
         try {
             RequestContext requestContext = new RequestContext(request, response);
@@ -32,6 +40,9 @@ public abstract class BaseAction<T> implements Action<T> {
         } catch (Exception ex) {
             throw ex;
         }
+        logger.info("<==========");
+        logger.info("<=========={}", JsonUtil.toJson(model));
+        logger.info("<==========");
         return model;
     }
     /**

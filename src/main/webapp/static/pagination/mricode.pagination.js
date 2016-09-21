@@ -215,7 +215,7 @@
         ajaxCallBack: function (result) {
             var total = utility.mapObjectNameRecursion(result, this.options.remote.totalName);
             if (total == null || total == undefined)
-            total=0;
+                total=0;
             //throw new Error("the response of totalName :  '" + this.options.remote.totalName + "'  not found.");
             total = utility.convertInt(total);
             this.total = total;
