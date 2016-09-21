@@ -27,4 +27,10 @@ public class ExceptionUtil {
 
         return value;
     }
+
+    public static void main(String[] args) {
+        float i = 0.000f;
+        String str = "0.0";
+        System.out.println(Float.valueOf(str) > 0);
+    }
 }
