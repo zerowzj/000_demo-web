@@ -45,6 +45,7 @@ public abstract class BaseAction<T> implements Action<T> {
         logger.info("<==========");
         return model;
     }
+
     /**
      * 验证参数
      *

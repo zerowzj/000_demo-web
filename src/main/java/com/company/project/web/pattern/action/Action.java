@@ -5,14 +5,14 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.Map;
 
 /**
- * Action执行器
+ * Action
  *
  * @author wangzhj
  */
 public interface Action<T> {
 
     /**
-     *
+     * 执行
      *
      * @param request
      * @param response
