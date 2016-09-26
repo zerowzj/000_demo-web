@@ -13,7 +13,8 @@
 		</layout>
 	</appender>
 
-	<appender name="DEBUG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+	<!-- 文件 -->
+	<appender name="FILE_DEBUG" class="ch.qos.logback.core.rolling.RollingFileAppender">
 		<file>${LOG_HOME}/web-debug.log</file>
 		<encoder>
 			<pattern>%d{yyyy-MM-dd HH:mm:ss} [%thread] [%level] [%class:%line] [%X{id}] - %m%n</pattern>
@@ -34,6 +35,6 @@
 
 	<root level="DEBUG">
 		<appender-ref ref="STDOUT" />
-		<appender-ref ref="DEBUG" />
+		<appender-ref ref="FILE_DEBUG" />
 	</root>
 </configuration>

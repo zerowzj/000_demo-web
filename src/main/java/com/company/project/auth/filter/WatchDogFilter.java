@@ -27,7 +27,7 @@ public class WatchDogFilter extends OncePerRequestFilter {
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
-        //设置跟踪NO
+        //设置日志跟踪编号
         MDC.put("id", String.valueOf(UUID.randomUUID().hashCode() & 0x7fffffff));
 
         logger.info("{}", request.getRequestURI());
