@@ -5,9 +5,12 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 /**
- * Created by wangzhj on 2016/9/27.
+ * 基本Dao测试
+ *
+ * @author wangzhj
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration({"file:src/main/webapp/WEB-INF/spring/spring-context.xml"})
 public class BaseDaoTest {
+
 }
