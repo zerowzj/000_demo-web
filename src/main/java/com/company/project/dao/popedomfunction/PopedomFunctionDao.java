@@ -20,6 +20,14 @@ public interface PopedomFunctionDao extends BaseDao<PopedomFunctionEO> {
     public List<PopedomFunctionEO> getFunctionLt(Integer pfLevel);
 
     /**
+     * 获取功能列表
+     *
+     * @param pfParentId
+     * @return List<PopedomFunctionEO>
+     */
+    public List<PopedomFunctionEO> getFunctionChildLt(Long pfParentId);
+
+    /**
      * 获取角色的功能配置列表
      *
      * @param prId 角色编号

@@ -62,4 +62,15 @@
         </where>
         ORDER BY PF.PF_ID
     </select>
+
+    <select id="getFunctionChildLt" parameterType="java.util.Map" resultMap="popedomFuntionEO">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM POPEDOM_FUNCTION PF
+        <where>
+            <if test="pfParentId != null">
+                PF.PF_PARENT_ID = #{pfParentId}
+            </if>
+        </where>
+    </select>
 </mapper>
