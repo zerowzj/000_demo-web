@@ -70,6 +70,8 @@
                       expression="execution(public * com.company.project.service..*.*(..))"/>
         <aop:advisor advice-ref="transactionAdvice" pointcut-ref="transactionPointcut"/>
     </aop:config>
+
+    <bean id="" class="com.company.project.aspect."/>
     <!-- ======================================== -->
     <!--                    缓存                   -->
     <!-- ======================================== -->

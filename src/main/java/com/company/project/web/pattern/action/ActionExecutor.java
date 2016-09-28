@@ -41,10 +41,10 @@ public class ActionExecutor {
      * @return Map<String, Object>
      */
     public static Map<String, Object> execute(HttpServletRequest request, HttpServletResponse response, Class<? extends Action> clazz, Object param) {
-        Action action = SpringContext.getBean(clazz);
-        if (action == null) {
+        if (!SpringContext.containsBean(clazz)) {
             throw new IllegalStateException("ssssssssssssssss");
         }
+        Action action = SpringContext.getBean(clazz);
         return action.doExecute(request, response, param);
     }
 
@@ -72,10 +72,10 @@ public class ActionExecutor {
      * @return Map<String, Object>
      */
     public static Map<String, Object> execute(HttpServletRequest request, HttpServletResponse response, Class<? extends Action> clazz) {
-        Action action = SpringContext.getBean(clazz);
-        if (action == null) {
+        if (!SpringContext.containsBean(clazz)) {
             throw new IllegalStateException("ssssssssssssssss");
         }
+        Action action = SpringContext.getBean(clazz);
         return action.doExecute(request, response, ServletUtil.extractParam(request));
     }
 

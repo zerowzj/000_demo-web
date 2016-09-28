@@ -49,4 +49,18 @@ public class SpringContext implements ApplicationContextAware {
     public static boolean containsBean(String name) {
         return context.containsBean(name);
     }
+
+    /**
+     * 是否存在Bean
+     *
+     * @param clazz
+     * @return boolean
+     */
+    public static boolean containsBean(Class<?> clazz) {
+        boolean isExist = false;
+        if(context.getBean(clazz) != null){
+            isExist = true;
+        }
+        return isExist;
+    }
 }
