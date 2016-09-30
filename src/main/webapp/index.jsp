@@ -1,86 +1,20 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
 <head>
-    <%
-        String baseUrl = request.getContextPath();
-    %>
-    <title><sitemesh:write property='title'/></title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <link type="text/css" href="<%=baseUrl%>/static/ztree/css/zTreeStyle/zTreeStyle.css" rel="stylesheet"/>
-    <script type="text/javascript" src="<%=baseUrl%>/static/lib/jquery.min.js"></script>
-    <script type="text/javascript" src="<%=baseUrl%>/static/ztree/jquery.ztree.core.min.js"></script>
-    <script type="text/javascript" src="<%=baseUrl%>/static/ztree/jquery.ztree.excheck.min.js"></script>
-    <sitemesh:write property='head'/>
+    <meta http-equiv=content-type content="text/html; charset=utf-8"/>
+    <meta http-equiv=pragma content=no-cache/>
+    <meta http-equiv=cache-control content=no-cache/>
+    <meta http-equiv=expires content=-1000/>
+    <title>管理中心 v1.0</title>
 </head>
-<body>
-<!-- 北部 -->
-<div class="ui-layout-north">
-    北
-</div>
-<!-- 西部 -->
-<div class="ui-layout-west">
-    <ul id="menu_ztree" class="ztree"></ul>
-</div>
-<!-- 中部 -->
-<div class="ui-layout-center">
-    <sitemesh:write property='body'/>
-</div>
-<!-- 东部
-<div class="ui-layout-east">
-    东
-</div>
--->
-<!-- 南部
-<div class="ui-layout-south">
-    南
-</div>
--->
-
-<script type="text/javascript" src="<%=baseUrl%>/static/layout/jquery-ui.min.js"></script>
-<script type="text/javascript" src="<%=baseUrl%>/static/layout/jquery.layout-latest.js"></script>
-<script type="text/javascript">
-    $(document).ready(function () {
-        //菜单
-        var menuZTreeSetting = {
-            data: {
-                simpleData: {
-                    enable: true
-                }
-            },
-            view: {
-                showIcon: true,
-                fontCss: {'font-size':'20'}
-            }
-        };
-        var menuZTreeNode = ${SESSION_MENU_INFO};
-        $.fn.zTree.init($("#menu_ztree"), menuZTreeSetting, menuZTreeNode);
-        //布局
-        $('body').layout({
-            applyDefaultStyles: true,
-            scrollToBookmarkOnLoad: true,
-            defaults: {},
-            north: {
-                applyDefaultStyles: true,
-                size: "auto",
-                spacing_open: 0,
-                closable: false,
-                resizable: false
-            },
-            west: {
-                applyDefaultStyles: true,
-                size: 250,
-                spacing_closed: 22,
-                togglerLength_open: 200,
-                togglerLength_closed: 200,
-                togglerAlign_open: "center",
-                togglerAlign_closed: "center",
-                togglerContent_closed: "你好",
-                togglerTip_closed: "Open Pin Contents",
-                sliderTip: "Slide Open Contents"
-            }
-        });
-    });
-</script>
-</body>
+<frameset border=0 framespacing=0 rows="60, *" frameborder=0>
+    <frame name=head src="/view/common/head.jsp" frameborder=0 noresize scrolling=no>
+    <frameset cols="170, *">
+        <frame name=left src="/view/common/left.jsp" frameborder=0 noresize/>
+        <frame name=right src="/view/common/right.jsp" frameborder=0 noresize scrolling=yes id="main"/>
+    </frameset>
+</frameset>
+<noframes>
+</noframes>
 </html>

@@ -71,7 +71,7 @@
         <aop:advisor advice-ref="transactionAdvice" pointcut-ref="transactionPointcut"/>
     </aop:config>
 
-    <bean id="" class="com.company.project.aspect."/>
+    <bean id="logAspect" class="com.company.project.aspect.LogAspect"/>
     <!-- ======================================== -->
     <!--                    缓存                   -->
     <!-- ======================================== -->

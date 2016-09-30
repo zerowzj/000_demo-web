@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.noriental.jobweb.dao.jobschedulelog">
+    <resultMap id="jobScheduleLogEO" type="JobScheduleLogEO">
+        <result property="jslId" column="jsl_id"/>
+        <result property="jslJbId" column="jsl_jb_id"/>
+        <result property="jslJsId" column="jsl_js_id"/>
+        <result property="jslFireTime" column="jsl_fire_time"/>
+        <result property="jslPreFireTime" column="jsl_pre_fire_time"/>
+        <result property="jslNextFireTime" column="jsl_next_fire_time"/>
+        <result property="jslBeginTime" column="jsl_begin_time"/>
+        <result property="jslEndTime" column="jsl_end_time"/>
+        <result property="jslTimeConsume" column="jsl_time_consume"/>
+        <result property="jslExeResult" column="jsl_exe_result"/>
+        <result property="jslExeRemark" column="jsl_exe_remark"/>
+        <result property="jslNotifyInfo" column="jsl_notify_info"/>
+        <result property="jslNotifyTime" column="jsl_notify_time"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+		jsl.jsl_id,
+		jsl.jsl_jb_id,
+		jsl.jsl_js_id,
+		jsl.jsl_fire_time,
+		jsl.jsl_pre_fire_time,
+		jsl.jsl_next_fire_time,
+		jsl.jsl_begin_time,
+		jsl.jsl_end_time,
+		jsl.jsl_time_consume,
+		jsl.jsl_exe_result,
+		jsl.jsl_exe_remark,
+		jsl.jsl_notify_info,
+		jsl.jsl_notify_time
+	</sql>
+    <resultMap id="jobScheduleLogVO" type="com.noriental.jobweb.dao.jobschedulelog.JobScheduleLogVO" extends="jobScheduleLogEO">
+        <result property="jbName" column="jb_name"/>
+    </resultMap>
+
+    <insert id="insert" useGeneratedKeys="true" keyProperty="jslId" parameterType="JobScheduleLogEO">
+        INSERT INTO job_schedule_log (jsl_jb_id, jsl_js_id
+        <if test="jslFireTime != null">
+            ,jsl_fire_time
+        </if>
+        <if test="jslPreFireTime != null">
+            ,jsl_pre_fire_time
+        </if>
+        <if test="jslNextFireTime != null">
+            ,jsl_next_fire_time
+        </if>
+        <if test="jslBeginTime != null">
+            ,jsl_begin_time
+        </if>
+        ) VALUES (#{jslJbId}, #{jslJsId}
+        <if test="jslFireTime != null">
+            ,#{jslFireTime}
+        </if>
+        <if test="jslPreFireTime != null">
+            ,#{jslPreFireTime}
+        </if>
+        <if test="jslNextFireTime != null">
+            ,#{jslNextFireTime}
+        </if>
+        <if test="jslBeginTime != null">
+            ,#{jslBeginTime}
+        </if>
+        )
+        <selectKey keyProperty="jslId" resultType="java.lang.Long" order="AFTER">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+    </insert>
+
+    <update id="update" parameterType="JobScheduleLogEO">
+        UPDATE job_schedule_log
+        <set>
+            <if test="jslEndTime != null">
+                jsl_end_time = #{jslEndTime},
+            </if>
+            <if test="jslTimeConsume != null">
+                jsl_time_consume = #{jslTimeConsume},
+            </if>
+            <if test="jslExeResult != null">
+                jsl_exe_result = #{jslExeResult},
+            </if>
+            <if test="jslExeRemark != null">
+                jsl_exe_remark = #{jslExeRemark},
+            </if>
+            <if test="jslNotifyInfo != null">
+                jsl_notify_info = #{jslNotifyInfo},
+            </if>
+            <if test="jslNotifyTime != null">
+                jsl_notify_time = #{jslNotifyTime},
+            </if>
+        </set>
+        WHERE jsl_id = #{jslId}
+    </update>
+
+    <select id="get" parameterType="java.lang.Long" resultMap="jobScheduleLogVO">
+        SELECT <include refid="Base_Column_List"/>
+          FROM job_schedule_log jsl
+         WHERE jsl.jsl_id = #{jsId}
+    </select>
+
+    <select id="getScheduleLogLtWithJob" parameterType="java.lang.Long" resultMap="jobScheduleLogVO">
+        SELECT <include refid="Base_Column_List"/>,
+                jb.jb_name
+        FROM job_schedule_log jsl
+        JOIN job_base jb ON jb.jb_id = jsl.jsl_jb_id
+        JOIN job_schedule js ON js.js_id = jsl.jsl_js_id
+        <where>
+            <if test="jbName != null">
+                jb.jb_name = #{jbName}
+            </if>
+            <if test="beginTime != null">
+                AND jsl.jsl_begin_time >= #{beginTime}
+            </if>
+            <if test="endTime != null">
+                AND #{endTime} >= jsl.jsl_begin_time
+            </if>
+        </where>
+        ORDER BY jsl.jsl_id DESC
+    </select>
+
+    <select id="getScheduleLogWithJob" parameterType="java.util.Map" resultMap="jobScheduleLogVO">
+        SELECT <include refid="Base_Column_List"/>,
+                jb.jb_name
+        FROM job_schedule_log jsl
+        JOIN job_base jb ON jb.jb_id = jsl.jsl_jb_id
+        JOIN job_schedule js ON js.js_id = jsl.jsl_js_id
+        WHERE jsl.jsl_id = #{jsId}
+    </select>
+</mapper>

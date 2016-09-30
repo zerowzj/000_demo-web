@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.2.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
+		http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+    <!-- =================== -->
+    <!--       扫描Bean      -->
+    <!-- =================== -->
+    <context:component-scan base-package="com.noriental.jobweb.*">
+    </context:component-scan>
+    <!-- =================== -->
+    <!--    加载Properties   -->
+    <!-- =================== -->
+    <context:property-placeholder location="classpath*:*.properties" ignore-unresolvable="true"/>
+    <!-- =================== -->
+    <!--       数据访问      -->
+    <!-- =================== -->
+    <!-- 数据源 -->
+    <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
+        <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+        <property name="username"         value="${ds.druid.username}"/>
+        <property name="password"         value="${ds.druid.password}"/>
+        <property name="url"               value="${ds.druid.url}"/>
+        <property name="initialSize" value="${ds.druid.initialSize}"/>
+        <property name="minIdle"      value="${ds.druid.minIdle}"/>
+        <property name="maxActive"   value="${ds.druid.maxActive}"/>
+        <property name="maxWait"     value="${ds.druid.maxWait}"/>
+        <property name="timeBetweenEvictionRunsMillis" value="${ds.druid.timeBetweenEvictionRunsMillis}"/>
+        <property name="minEvictableIdleTimeMillis"     value="${ds.druid.minEvictableIdleTimeMillis}"/>
+        <property name="filters" value="${ds.druid.filters}"/>
+        <property name="proxyFilters">
+            <list>
+                <ref bean="statFilter"/>
+            </list>
+        </property>
+    </bean>
+    <bean id="statFilter" class="com.alibaba.druid.filter.stat.StatFilter">
+        <property name="slowSqlMillis" value="10000" />
+        <property name="logSlowSql" value="true" />
+    </bean>
+    <!-- 会话工厂 -->
+    <bean id="sessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="configLocation" value="classpath:mybatis-cfg.xml"/>
+    </bean>
+    <!-- 事务管理器 -->
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+    <!-- 事务通知 -->
+    <tx:advice id="transactionAdvice" transaction-manager="transactionManager">
+        <tx:attributes>
+            <tx:method name="find*" propagation="SUPPORTS" read-only="true"/>
+            <tx:method name="get*"  propagation="SUPPORTS" read-only="true"/>
+            <tx:method name="add*"    propagation="REQUIRED" />
+            <tx:method name="modify*" propagation="REQUIRED" />
+            <tx:method name="delete*" propagation="SUPPORTS" />
+            <tx:method name="*" propagation="REQUIRED"/>
+        </tx:attributes>
+    </tx:advice>
+    <!-- =================== -->
+    <!--         AOP         -->
+    <!-- =================== -->
+    <aop:config>
+        <aop:pointcut id="transactionPointcut" expression="execution(public * com.noriental.jobweb.manage.service..*.*(..))"/>
+        <aop:advisor advice-ref="transactionAdvice" pointcut-ref="transactionPointcut" />
+    </aop:config>
+    <!-- =================== -->
+    <!--        其他         -->
+    <!-- =================== -->
+    <bean class="com.noriental.jobweb.common.SpringContext"/>
+    <bean id="sendEmail" class="com.noriental.jobweb.common.email.SendEmailImpl">
+        <property name="hostName" value="${email.hostname}"/>
+        <property name="userName" value="${email.username}"/>
+        <property name="password" value="${email.password}"/>
+        <property name="from"     value="${email.from}"/>
+        <property name="to"       value="${email.to}"/>
+    </bean>
+    <!-- =================== -->
+    <!--      Dubbo配置      -->
+    <!-- =================== -->
+    <dubbo:application name="cosumer-job-web"/>
+    <dubbo:registry protocol="dubbo" address="zookeeper://${server.zk.url}" file="${server.dubbo.registry.file}"/>
+</beans>

@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.noriental.jobweb.dao.jobbase">
+    <resultMap id="jobBaseEO" type="JobBaseEO">
+        <result property="jbId" column="jb_id"/>
+        <result property="jbName" column="jb_name"/>
+        <result property="jbJobName" column="jb_job_name"/>
+        <result property="jbJobGroup" column="jb_job_group"/>
+        <result property="jbExeObject" column="jb_exe_object"/>
+        <result property="jbExeMethod" column="jb_exe_method"/>
+        <result property="jbExeMode" column="jb_exe_mode"/>
+        <result property="jbIsConcurrent" column="jb_is_concurrent"/>
+        <result property="jbBeginTime" column="jb_begin_time"/>
+        <result property="jbDesc" column="jb_desc"/>
+    </resultMap>
+    <resultMap id="jobBaseVO" type="com.noriental.jobweb.dao.jobbase.JobBaseVO" extends="jobBaseEO">
+        <result property="scheduleNum" column="schedule_num"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+		jb.jb_id,
+		jb.jb_name,
+		jb.jb_job_name,
+		jb.jb_job_group,
+		jb.jb_exe_object,
+		jb.jb_exe_method,
+		jb.jb_exe_mode,
+		jb.jb_is_concurrent,
+		jb.jb_begin_time,
+		jb.jb_desc
+	</sql>
+
+    <insert id="insert" useGeneratedKeys="true" keyProperty="jbId" parameterType="JobBaseEO">
+        INSERT INTO job_base (
+        <trim prefix="" prefixOverrides=",">
+            <if test="jbName != null">
+                ,jb_name
+            </if>
+            <if test="jbJobGroup != null">
+                ,jb_job_group
+            </if>
+            <if test="jbJobName != null">
+                ,jb_job_name
+            </if>
+            <if test="jobExeObject != null">
+                ,jb_exe_object
+            </if>
+            <if test="jbExeMethod != null">
+                ,jb_exe_method
+            </if>
+            <if test="jbExeMode != null">
+                ,jb_exe_mode
+            </if>
+            <if test="jbIsConcurrent != null">
+                ,jb_is_concurrent
+            </if>
+            <if test="jbBeginTime != null">
+                ,jb_begin_time
+            </if>
+            <if test="jbDesc != null">
+                ,jb_desc
+            </if>
+        </trim>
+        ) VALUES (
+        <trim prefix="" prefixOverrides=",">
+            <if test="jbName != null">
+                ,#{jbName}
+            </if>
+            <if test="jbJobGroup != null">
+                ,#{jbJobGroup}
+            </if>
+            <if test="jbJobName != null">
+                ,#{jbJobName}
+            </if>
+            <if test="jbExeObject != null">
+                ,#{jbExeObject}
+            </if>
+            <if test="jbExeMethod != null">
+                ,#{jbExeMethod}
+            </if>
+            <if test="jbExeMode != null">
+                ,#{jbExeMode}
+            </if>
+            <if test="jbIsConcurrent != null">
+                ,#{jbIsConcurrent}
+            </if>
+            <if test="jbBeginTime != null">
+                ,#{jbBeginTime}
+            </if>
+            <if test="jbDesc != null">
+                ,#{jbDesc}
+            </if>
+        </trim>
+        )
+        <selectKey keyProperty="jbId" resultType="java.lang.Long" order="AFTER">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+    </insert>
+
+    <select id="get" parameterType="java.lang.Long" resultMap="jobBaseEO">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM job_base jb
+        WHERE jb.jb_id = #{jbId}
+    </select>
+
+    <select id="getJobLtWithSchedule" parameterType="java.lang.Long" resultMap="jobBaseVO">
+        SELECT<include refid="Base_Column_List"/>,
+        js.schedule_num
+        FROM job_base jb
+        LEFT JOIN ( SELECT js_jb_id,
+        COUNT(1) schedule_num
+        FROM job_schedule
+        GROUP BY js_jb_id) js
+        ON jb.jb_id = js.js_jb_id
+        <where>
+            <if test="jbName != null">
+                jb.jb_name = #{jbName}
+            </if>
+        </where>
+        ORDER BY jb.jb_id DESC
+    </select>
+
+    <select id="getJobLt" parameterType="java.util.Map" resultMap="jobBaseEO">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM job_base jb
+        <where>
+            <if test="jbName != null">
+                jb.jb_name = #{jbName}
+            </if>
+            <if test="jbJobGroup != null">
+                AND jb.jb_job_group = #{jbJobGroup}
+            </if>
+            <if test="jbJobName != null">
+                AND jb.jb_job_name = #{jbJobName}
+            </if>
+            <if test="jbJobObject != null">
+                AND jb.jb_job_object = #{jbJobObject}
+            </if>
+            <if test="jbJobMethod != null">
+                AND jb.jb_job_method = #{jbJobMethod}
+            </if>
+        </where>
+    </select>
+</mapper>

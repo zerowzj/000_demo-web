@@ -1,37 +1,57 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" buffer="128kb" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>用户登录</title>
-    <link href="<%=request.getContextPath()%>/static/css/login.css" type="text/css" rel="stylesheet"/>
+    <link href="static/css/login.css" type="text/css" rel="stylesheet"/>
 </head>
-<body>
-<section class="container">
-    <div class="login">
-        <h1>用户登录</h1>
-
-        <form action="login.html" method="post">
-            <p><input type="text" name="loginName" value="" placeholder="用户名"></p>
-
-            <p><input type="password" name="loginPwd" value="" placeholder="密码"></p>
-
-            <p class="remember_me">
-                <label>
-                    <input type="checkbox" name="remember_me">
-                    记住密码
-                </label>
-            </p>
-
-            <p class="submit"><input type="submit" value="登录"></p>
-        </form>
-    </div>
-    <div class="login-help">
-        <p>忘记密码? <a href="index.html">点击修改</a>.</p>
-    </div>
-</section>
-<div style="text-align:center;">
-    <p>来源:<a href="http://www.mycodes.net/" target="_blank">源码之家</a></p>
+<body id="userlogin_body">
+<div id="user_login">
+    <dl>
+        <dd id="user_top">
+            <ul>
+                <li class="user_top_l"></li>
+                <li class="user_top_c"></li>
+                <li class="user_top_r"></li>
+            </ul>
+        </dd>
+        <dd id="user_main">
+            <form action="/login.html" method="post">
+                <ul>
+                    <li class="user_main_l"></li>
+                    <li class="user_main_c">
+                        <div class="user_main_box">
+                            <ul>
+                                <li class="user_main_text">用户名：</li>
+                                <li class="user_main_input"><input type="text" name="loginName" maxlength="20"
+                                                                   class="txtusernamecssclass"></li>
+                            </ul>
+                            <ul>
+                                <li class="user_main_text">密 码：</li>
+                                <li class="user_main_input"><input type="password" name="loginPwd"
+                                                                   class="txtpasswordcssclass"></li>
+                            </ul>
+                            <ul>
+                                <li class="user_main_text"></li>
+                                <li class="user_main_input"><font color="red">${msg}</font></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="user_main_r"><input type="image" src="static/img/user_botton.gif"
+                                                   class="ibtnentercssclass"></li>
+                </ul>
+            </form>
+        </dd>
+        <dd id="user_bottom">
+            <ul>
+                <li class="user_bottom_l"></li>
+                <li class="user_bottom_c"></li>
+                <li class="user_bottom_r"></li>
+            </ul>
+        </dd>
+    </dl>
 </div>
 </body>
 </html>

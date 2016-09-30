@@ -118,7 +118,6 @@ public abstract class ServletUtil {
             } else {
                 map.put(key, Arrays.asList(value));
             }
-
         }
         return map;
     }
