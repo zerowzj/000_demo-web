@@ -62,5 +62,6 @@ public abstract class BaseController implements Controller {
      * @param dataMap
      */
     public void editData(RequestContext requestContext, Map<String, Object> paramMap, Map<String, Object> dataMap) {
+
     }
 }
