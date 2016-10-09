@@ -18,5 +18,5 @@ public interface Controller {
      * @param response
      * @return Map<String, Object>
      */
-    public Map<String, Object> doExecute(HttpServletRequest request, HttpServletResponse response);
+    public Map<String, Object> doExecute(HttpServletRequest request, HttpServletResponse response, Map<String, Object> params);
 }

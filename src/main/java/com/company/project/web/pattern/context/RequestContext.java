@@ -10,9 +10,10 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class RequestContext {
 
-    private HttpServletRequest request;
+    private HttpServletRequest request = null;
 
-    private HttpServletResponse response;
+    private HttpServletResponse response = null;
+
 
     public RequestContext(HttpServletRequest request, HttpServletResponse response) {
         this.request = request;

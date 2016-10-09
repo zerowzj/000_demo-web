@@ -1,6 +1,7 @@
 package com.company.project.web.pattern.controller;
 
 import com.company.project.web.pattern.context.RequestContext;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -19,16 +20,16 @@ public abstract class BaseController implements Controller {
     @Override
     @RequestMapping
     @ResponseBody
-    public final Map<String, Object> doExecute(HttpServletRequest request, HttpServletResponse response) {
+    public final Map<String, Object> doExecute(HttpServletRequest request, HttpServletResponse response, @RequestBody Map<String, Object> paramMap) {
         Map<String, Object> model = new HashMap<>();
         try {
             RequestContext requestContext = new RequestContext(request, response);
 
-            checkData(requestContext);
+            checkData(requestContext, paramMap);
 
-            Map<String, Object> dataMap = execute(requestContext);
+            Map<String, Object> dataMap = execute(requestContext, paramMap);
 
-            editData(requestContext, dataMap);
+            editData(requestContext, paramMap, dataMap);
 
             model.put("result_code", "0000");
             model.put("result_desc", "成功");
@@ -44,7 +45,7 @@ public abstract class BaseController implements Controller {
      *
      * @param requestContext
      */
-    public abstract void checkData(RequestContext requestContext);
+    public abstract void checkData(RequestContext requestContext, Map<String, Object> paramMap);
 
     /**
      * 执行逻辑
@@ -52,7 +53,7 @@ public abstract class BaseController implements Controller {
      * @param requestContext
      * @return Map<String, Object>
      */
-    public abstract Map<String, Object> execute(RequestContext requestContext);
+    public abstract Map<String, Object> execute(RequestContext requestContext, Map<String, Object> paramMap);
 
     /**
      * 编辑数据
@@ -60,6 +61,6 @@ public abstract class BaseController implements Controller {
      * @param requestContext
      * @param dataMap
      */
-    public void editData(RequestContext requestContext, Map<String, Object> dataMap) {
+    public void editData(RequestContext requestContext, Map<String, Object> paramMap, Map<String, Object> dataMap) {
     }
 }
