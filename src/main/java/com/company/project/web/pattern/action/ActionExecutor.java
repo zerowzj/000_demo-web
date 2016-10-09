@@ -20,7 +20,7 @@ public class ActionExecutor {
      * @param request
      * @param response
      * @param actionName
-     * @param param
+     * @param param 参数
      * @return Map<String, Object>
      */
     public static Map<String, Object> execute(HttpServletRequest request, HttpServletResponse response, String actionName, Object param) {
@@ -30,14 +30,13 @@ public class ActionExecutor {
         Action action = SpringContext.getBean(actionName);
         return action.doExecute(request, response, param);
     }
-
     /**
      * 执行Action
      *
      * @param request
      * @param response
      * @param clazz
-     * @param param
+     * @param param 参数
      * @return Map<String, Object>
      */
     public static Map<String, Object> execute(HttpServletRequest request, HttpServletResponse response, Class<? extends Action> clazz, Object param) {
@@ -47,6 +46,7 @@ public class ActionExecutor {
         Action action = SpringContext.getBean(clazz);
         return action.doExecute(request, response, param);
     }
+
 
     /**
      * 执行Action
