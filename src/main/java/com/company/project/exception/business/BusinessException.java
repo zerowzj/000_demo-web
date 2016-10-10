@@ -1,4 +1,6 @@
-package com.company.project.exception;
+package com.company.project.exception.business;
+
+import com.company.project.exception.BaseException;
 
 /**
  * 业务异常
