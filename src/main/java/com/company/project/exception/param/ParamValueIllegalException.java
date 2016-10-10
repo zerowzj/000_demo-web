@@ -1,4 +1,4 @@
-package com.company.project.exception;
+package com.company.project.exception.param;
 
 /**
  * 参数值非法异常

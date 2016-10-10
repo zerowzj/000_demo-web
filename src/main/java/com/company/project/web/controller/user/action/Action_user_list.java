@@ -1,7 +1,6 @@
 package com.company.project.web.controller.user.action;
 
 import com.company.project.dao.userbase.UserBaseEO;
-import com.company.project.exception.ParamEmptyValueException;
 import com.company.project.service.user.UserService;
 import com.company.project.web.pattern.action.BaseAction;
 import com.company.project.web.pattern.context.RequestContext;
