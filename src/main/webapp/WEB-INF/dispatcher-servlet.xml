@@ -8,7 +8,7 @@
 	<!-- =================== -->
 	<!--      扫描Bean       -->
 	<!-- =================== -->
-	<context:component-scan base-package="com">
+	<context:component-scan base-package="com.noriental.jobweb.manage.web.controller">
 	</context:component-scan>
 	<!-- =================== -->
 	<!--     映射处理器      -->
@@ -31,8 +31,7 @@
 	<!-- =================== -->
 	<!--     异常解析器    -->
 	<!-- =================== -->
-	<bean class="com.company.project.web.extend.CustomExceptionResolver">
-	</bean>
+	<bean class="com.noriental.jobweb.manage.web.extend.CustomHandlerExceptionResolver"/>
 	<!-- =================== -->
 	<!--     视图解析器      -->
 	<!-- =================== -->
