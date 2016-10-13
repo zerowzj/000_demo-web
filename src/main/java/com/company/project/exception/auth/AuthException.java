@@ -3,9 +3,8 @@ package com.company.project.exception.auth;
 import com.company.project.exception.BaseException;
 
 /**
- * 未登录异常
- *
- * @author wangzhj
+ * Created by wangzhj on 2016/10/13.
  */
-public class NotLoginException extends AuthException {
+public class AuthException extends BaseException {
+
 }
