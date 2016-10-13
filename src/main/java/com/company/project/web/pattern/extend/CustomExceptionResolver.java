@@ -1,4 +1,4 @@
-package com.company.project.web.extend;
+package com.company.project.web.pattern.extend;
 
 import com.company.project.common.util.JsonUtil;
 import com.company.project.common.util.ServletUtil;
