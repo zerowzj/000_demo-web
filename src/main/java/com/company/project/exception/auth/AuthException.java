@@ -3,7 +3,9 @@ package com.company.project.exception.auth;
 import com.company.project.exception.BaseException;
 
 /**
- * Created by wangzhj on 2016/10/13.
+ * 认证/授权基础异常
+ *
+ * @author wangzhj
  */
 public class AuthException extends BaseException {
 
