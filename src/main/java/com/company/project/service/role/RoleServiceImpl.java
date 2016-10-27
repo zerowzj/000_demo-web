@@ -20,8 +20,6 @@ public class RoleServiceImpl implements RoleService {
     private PopedomRoleDao popedomRoleDao = null;
     @Autowired
     private PopedomRoleFunctionDao popedomRoleFunctionDao = null;
-    @Autowired
-    private Cache cache = null;
 
     @Override
     public PageList<PopedomRoleEO> getRolePageLt(String prName, int pageNo, int pageSize) {
@@ -31,9 +29,6 @@ public class RoleServiceImpl implements RoleService {
     @Override
     public void addRole(PopedomRoleEO prEO) {
         popedomRoleDao.insert(prEO);
-
-        Element ele = new Element(prEO.getPrId(), prEO);
-        cache.put(ele);
     }
 
     @Override

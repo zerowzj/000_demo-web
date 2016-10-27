@@ -5,9 +5,10 @@
     <!--        别名           -->
     <!-- ===================== -->
     <typeAliases>
-        <typeAlias type="com.noriental.jobweb.dao.jobbase.JobBaseEO" alias="JobBaseEO"/>
-        <typeAlias type="com.noriental.jobweb.dao.jobschedule.JobScheduleEO" alias="JobScheduleEO"/>
-        <typeAlias type="com.noriental.jobweb.dao.jobschedulelog.JobScheduleLogEO" alias="JobScheduleLogEO"/>
+        <typeAlias type="com.company.project.dao.popedomfunction.PopedomFunctionEO" alias="PopedomFunctionEO"/>
+        <typeAlias type="com.company.project.dao.popedomrole.PopedomRoleEO" alias="PopedomRoleEO"/>
+        <typeAlias type="com.company.project.dao.popedomrolefunction.PopedomRoleFunctionEO" alias="PopedomRoleFunctionEO"/>
+        <typeAlias type="com.company.project.dao.userbase.UserBaseEO" alias="UserBaseEO"/>
     </typeAliases>
     <!-- ===================== -->
     <!--        插件           -->
@@ -21,8 +22,9 @@
     <!--        映射           -->
     <!-- ===================== -->
     <mappers>
-        <mapper resource="com/noriental/jobweb/dao/jobbase/JobBase.xml"/>
-        <mapper resource="com/noriental/jobweb/dao/jobschedule/JobSchedule.xml"/>
-        <mapper resource="com/noriental/jobweb/dao/jobschedulelog/JobScheduleLog.xml"/>
+        <mapper resource="com/company/project/dao/popedomfunction/PopedomFunction.xml"/>
+        <mapper resource="com/company/project/dao/popedomrole/PopedomRole.xml"/>
+        <mapper resource="com/company/project/dao/popedomrolefunction/PopedomRoleFunction.xml"/>
+        <mapper resource="com/company/project/dao/userbase/UserBase.xml"/>
     </mappers>
 </configuration>

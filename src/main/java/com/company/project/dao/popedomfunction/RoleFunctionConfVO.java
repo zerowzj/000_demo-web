@@ -1,7 +1,5 @@
 package com.company.project.dao.popedomfunction;
 
-import com.company.project.common.db.BaseEO;
-
 /**
  * 功能信息EO
  *
