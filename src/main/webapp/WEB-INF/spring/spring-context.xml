@@ -47,11 +47,6 @@
     <bean id="sessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="dataSource"/>
         <property name="configLocation" value="classpath:mybatis-cfg.xml"/>
-        <property name="plugins">
-            <list>
-                <bean class="com.company.db.interceptor.MyInterceptor"/>
-            </list>
-        </property>
     </bean>
     <!-- 事务管理器 -->
     <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
