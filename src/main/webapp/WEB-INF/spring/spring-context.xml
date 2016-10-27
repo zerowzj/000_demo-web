@@ -10,7 +10,8 @@
     <!-- ======================================== -->
     <!--                   扫描Bean               -->
     <!-- ======================================== -->
-    <context:component-scan base-package="com">
+    <context:component-scan base-package="com.company.project.service, com.company.project.dao"
+                            use-default-filters="true">
     </context:component-scan>
     <!-- ======================================== -->
     <!--               加载Properties             -->
@@ -66,21 +67,12 @@
     <!--                    AOP                   -->
     <!-- ======================================== -->
     <aop:config>
-        <aop:pointcut id="transactionPointcut"
-                      expression="execution(public * com.company.project.service..*.*(..))"/>
+        <aop:pointcut id="transactionPointcut" expression="execution(public * com.company.project.service..*.*(..))"/>
         <aop:advisor advice-ref="transactionAdvice" pointcut-ref="transactionPointcut"/>
     </aop:config>
 
     <bean id="logAspect" class="com.company.project.aspect.LogAspect"/>
-    <!-- ======================================== -->
-    <!--                    缓存                   -->
-    <!-- ======================================== -->
-    <bean id="cacheManager" class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean">
-        <property name="configLocation" value="classpath:ehcache.xml" />
-    </bean>
-    <bean id="cache" class="org.springframework.cache.ehcache.EhCacheFactoryBean">
-        <property name="cacheManager" ref="cacheManager"/>
-    </bean>
+
     <!-- ======================================== -->
     <!--                    其他                  -->
     <!-- ======================================== -->
