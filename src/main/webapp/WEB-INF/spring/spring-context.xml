@@ -7,19 +7,19 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.2.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
-    <!-- ======================================== -->
-    <!--                   扫描Bean               -->
-    <!-- ======================================== -->
+    <!-- ==================== -->
+    <!--        扫描Bean      -->
+    <!-- ==================== -->
     <context:component-scan base-package="com.company.project.service, com.company.project.dao"
                             use-default-filters="true">
     </context:component-scan>
-    <!-- ======================================== -->
-    <!--               加载Properties             -->
-    <!-- ======================================== -->
+    <!-- ==================== -->
+    <!--      加载Properties  -->
+    <!-- ==================== -->
     <context:property-placeholder location="classpath*:*.properties" ignore-unresolvable="true"/>
-    <!-- ======================================== -->
-    <!--                  数据访问                -->
-    <!-- ======================================== -->
+    <!-- ==================== -->
+    <!--         数据访问      -->
+    <!-- ==================== -->
     <!-- DataSource -->
     <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
         <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
@@ -49,7 +49,7 @@
         <property name="configLocation" value="classpath:mybatis-cfg.xml"/>
         <property name="plugins">
             <list>
-                <bean class="com.company.db.interceptor.MyInterceptor" />
+                <bean class="com.company.db.interceptor.MyInterceptor"/>
             </list>
         </property>
     </bean>
@@ -68,17 +68,17 @@
             <tx:method name="*" read-only="true"/>
         </tx:attributes>
     </tx:advice>
-    <!-- ======================================== -->
-    <!--                    AOP                   -->
-    <!-- ======================================== -->
+    <!-- ==================== -->
+    <!--          AOP         -->
+    <!-- ==================== -->
     <aop:config>
         <aop:pointcut id="transactionPointcut" expression="execution(public * com.company.project.service..*.*(..))"/>
         <aop:advisor advice-ref="transactionAdvice" pointcut-ref="transactionPointcut"/>
     </aop:config>
 
-    <!-- ======================================== -->
-    <!--                    其他                  -->
-    <!-- ======================================== -->
+    <!-- ==================== -->
+    <!--        其他          -->
+    <!-- ==================== -->
     <bean class="com.company.project.common.SpringContext">
     </bean>
 </beans>
