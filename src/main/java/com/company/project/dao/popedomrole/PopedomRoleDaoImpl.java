@@ -1,6 +1,6 @@
 package com.company.project.dao.popedomrole;
 
-import com.company.project.common.db.BaseDaoImpl;
+import com.company.db.dao.BaseDaoImpl;
 import com.github.miemiedev.mybatis.paginator.domain.PageBounds;
 import com.github.miemiedev.mybatis.paginator.domain.PageList;
 import org.springframework.stereotype.Repository;

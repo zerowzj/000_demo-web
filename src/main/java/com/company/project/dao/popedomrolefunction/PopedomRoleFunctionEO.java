@@ -1,6 +1,6 @@
 package com.company.project.dao.popedomrolefunction;
 
-import com.company.project.common.db.BaseEO;
+import com.company.db.dao.BaseEO;
 
 /**
  * 角色功能EO

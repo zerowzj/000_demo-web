@@ -1,6 +1,7 @@
 package com.company.project.dao.popedomfunction;
 
-import com.company.project.common.db.BaseDao;
+
+import com.company.db.dao.BaseDao;
 
 import java.util.List;
 

@@ -1,6 +1,6 @@
 package com.company.project.dao.popedomfunction;
 
-import com.company.project.common.db.BaseDaoImpl;
+import com.company.db.dao.BaseDaoImpl;
 import org.springframework.stereotype.Repository;
 
 import java.util.HashMap;

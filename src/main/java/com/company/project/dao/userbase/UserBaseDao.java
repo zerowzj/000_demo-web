@@ -1,6 +1,6 @@
 package com.company.project.dao.userbase;
 
-import com.company.project.common.db.BaseDao;
+import com.company.db.dao.BaseDao;
 import com.github.miemiedev.mybatis.paginator.domain.PageList;
 
 /**

@@ -1,6 +1,6 @@
 package com.company.project.dao.popedomrolefunction;
 
-import com.company.project.common.db.BaseDao;
+import com.company.db.dao.BaseDao;
 
 import java.util.List;
 

@@ -1,6 +1,6 @@
 package com.company.project.dao.userbase;
 
-import com.company.project.common.db.BaseEO;
+import com.company.db.dao.BaseEO;
 
 import java.util.Date;
 
