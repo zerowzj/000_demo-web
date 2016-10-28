@@ -1,4 +1,4 @@
-package com.company.project.common.util;
+package com.company.project.common.web.session;
 
 import com.company.project.common.web.session.SessionUserInfo;
 

@@ -1,6 +1,6 @@
 package com.company.project.common.web.tag;
 
-import com.company.project.common.util.SessionUtil;
+import com.company.project.common.web.session.SessionUtil;
 
 import javax.servlet.jsp.JspException;
 import java.util.List;

@@ -2,7 +2,7 @@ package com.company.project.auth.handler;
 
 import com.company.project.auth.user.CustomUserDetails;
 import com.company.project.common.util.JsonUtil;
-import com.company.project.common.util.SessionUtil;
+import com.company.project.common.web.session.SessionUtil;
 import com.company.project.common.web.menu.Menu;
 import com.company.project.common.web.session.SessionUserInfo;
 import com.company.project.dao.popedomfunction.PopedomFunctionEO;
@@ -18,7 +18,6 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 /**
  * 认证成功处理器
