@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * 角色信息控制器
+ * 角色信息路由器
  *
  * @author wangzhj
  */

@@ -27,7 +27,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * 角色控制器
+ * 角色路由器
  *
  * @author wangzhj
  */

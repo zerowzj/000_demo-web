@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.Map;
 
 /**
- * 用户信息控制器
+ * 用户信息路由器
  *
  * @author wangzhj
  */
