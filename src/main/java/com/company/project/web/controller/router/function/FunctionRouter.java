@@ -1,4 +1,4 @@
-package com.company.project.web.controller.function;
+package com.company.project.web.controller.router.function;
 
 import com.company.project.dao.popedomfunction.PopedomFunctionEO;
 import com.company.project.service.function.FunctionService;
@@ -21,7 +21,7 @@ import java.util.Map;
  */
 @Controller
 @RequestMapping("/function")
-public class FunctionController {
+public class FunctionRouter {
 
     @Autowired
     private FunctionService functionService = null;

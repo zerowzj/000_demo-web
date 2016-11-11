@@ -1,4 +1,4 @@
-package com.company.project.web.action.user;
+package com.company.project.web.controller.action.user;
 
 import com.company.project.dao.userbase.UserBaseEO;
 import com.company.project.service.user.UserService;

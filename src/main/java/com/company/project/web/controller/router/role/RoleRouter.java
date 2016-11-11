@@ -1,4 +1,4 @@
-package com.company.project.web.controller.role;
+package com.company.project.web.controller.router.role;
 
 import com.company.project.common.tree.JSTree;
 import com.company.project.common.tree.ZTree;
@@ -6,7 +6,7 @@ import com.company.project.dao.popedomfunction.RoleFunctionConfVO;
 import com.company.project.dao.popedomrole.PopedomRoleEO;
 import com.company.project.service.function.FunctionService;
 import com.company.project.service.role.RoleService;
-import com.company.project.web.action.role.Action_role_add;
+import com.company.project.web.controller.action.role.Action_role_add;
 import com.company.project.web.pattern.action.ActionExecutor;
 import com.company.util.JsonUtil;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -33,7 +33,7 @@ import java.util.Map;
  */
 @Controller
 @RequestMapping("/role")
-public class RoleController {
+public class RoleRouter {
 
     @Autowired
     private RoleService roleService = null;
@@ -71,7 +71,7 @@ public class RoleController {
     @RequestMapping("/add")
     @ResponseBody
     public Map<String, Object> add(HttpServletRequest request, HttpServletResponse response, PopedomRoleEO prEO) {
-        return ActionExecutor.execute(request, response, Action_role_add.class, prEO);
+        return ActionExecutor.execute(request, response, Action_role_add.class);
     }
 
     @RequestMapping("/toConf")

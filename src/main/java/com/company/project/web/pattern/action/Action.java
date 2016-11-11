@@ -9,15 +9,15 @@ import java.util.Map;
  *
  * @author wangzhj
  */
-public interface Action<T> {
+public interface Action {
 
     /**
      * 执行
      *
      * @param request
      * @param response
-     * @param params
+     * @param paramMap 参数Map
      * @return Map<String, Object>
      */
-    public Map<String, Object> doExecute(HttpServletRequest request, HttpServletResponse response, T params);
+    public Map<String, Object> doExecute(HttpServletRequest request, HttpServletResponse response, Map<String, Object> paramMap);
 }

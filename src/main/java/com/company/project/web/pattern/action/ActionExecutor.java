@@ -20,24 +20,6 @@ public abstract class ActionExecutor {
      * @param request
      * @param response
      * @param clazz 执行类
-     * @param param 请求参数
-     * @return Map<String, Object>
-     */
-    public static <T> T execute(HttpServletRequest request, HttpServletResponse response,
-                                              Class<? extends Action> clazz, Object param) {
-        if (!SpringWebContext.containsBean(clazz)) {
-            throw new IllegalStateException("");
-        }
-        Action action = SpringWebContext.getBean(clazz);
-        return (T) action.doExecute(request, response, param);
-    }
-
-    /**
-     * 执行Action
-     *
-     * @param request
-     * @param response
-     * @param clazz 执行类
      * @return Map<String, Object>
      */
     public static Map<String, Object> execute(HttpServletRequest request, HttpServletResponse response,
@@ -46,7 +28,8 @@ public abstract class ActionExecutor {
             throw new IllegalStateException("");
         }
         Action action = SpringWebContext.getBean(clazz);
-        return action.doExecute(request, response, HttpRequestUtil.extractParam(request));
+        Map<String, Object> paramMap = HttpRequestUtil.extractParam(request);
+        return action.doExecute(request, response, paramMap);
     }
 
 }

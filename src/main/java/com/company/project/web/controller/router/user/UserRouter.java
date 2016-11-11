@@ -1,7 +1,7 @@
-package com.company.project.web.controller.user;
+package com.company.project.web.controller.router.user;
 
 import com.company.project.service.user.UserService;
-import com.company.project.web.action.user.Action_user_list;
+import com.company.project.web.controller.action.user.Action_user_list;
 import com.company.project.web.pattern.action.ActionExecutor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,7 +20,7 @@ import java.util.Map;
  */
 @Controller
 @RequestMapping("/user")
-public class UserController {
+public class UserRouter {
 
     @Autowired
     private UserService userService = null;

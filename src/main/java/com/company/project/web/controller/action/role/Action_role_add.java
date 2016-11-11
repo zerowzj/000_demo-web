@@ -1,4 +1,4 @@
-package com.company.project.web.action.role;
+package com.company.project.web.controller.action.role;
 
 import com.company.project.dao.popedomrole.PopedomRoleEO;
 import com.company.project.service.role.RoleService;
