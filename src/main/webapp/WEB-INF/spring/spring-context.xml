@@ -74,6 +74,6 @@
     <!-- ==================== -->
     <!--        其他          -->
     <!-- ==================== -->
-    <bean class="com.company.project.common.SpringContext">
+    <bean class="com.company.project.common.SpringRootContext">
     </bean>
 </beans>

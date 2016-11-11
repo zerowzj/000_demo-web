@@ -1,8 +1,9 @@
 package com.company.project.web.pattern.extend;
 
-import com.company.exception.base.BaseException;
-import com.company.project.common.util.JsonUtil;
-import com.company.project.common.util.ServletUtil;
+import com.company.exception.BaseException;
+import com.company.util.HttpRequestUtil;
+import com.company.util.HttpWriteUtil;
+import com.company.util.JsonUtil;
 import org.springframework.web.servlet.HandlerExceptionResolver;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -28,7 +29,7 @@ public class CustomExceptionResolver implements HandlerExceptionResolver {
             baseEx.getErrorCode();
             baseEx.getErrorDesc();
             //同步请求
-            if (ServletUtil.isSync(request)) {
+            if (HttpRequestUtil.isSync(request)) {
                 Map<String, Object> model = new HashMap<>();
 //                model.put("message", ExceptionUtil.parseParamException(baseEx));
                 return new ModelAndView("message", model);
@@ -36,11 +37,11 @@ public class CustomExceptionResolver implements HandlerExceptionResolver {
                 Map<String, Object> model = new HashMap<>();
                 model.put("result_code", baseEx.getErrorCode());
 //                model.put("result_desc", ExceptionUtil.parseParamException(baseEx));
-                ServletUtil.write(response, JsonUtil.toJson(model));
+                HttpWriteUtil.write(response, JsonUtil.toJson(model));
                 return null;
             }
         } else { //其他异常
-            ServletUtil.sendError(response, 500);
+//            ServletUtil.sendError(response, 500);
             return null;
         }
     }

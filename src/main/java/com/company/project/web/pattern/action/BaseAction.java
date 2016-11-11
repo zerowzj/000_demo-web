@@ -1,6 +1,5 @@
 package com.company.project.web.pattern.action;
 
-import com.company.project.common.util.JsonUtil;
 import com.company.project.web.pattern.context.RequestContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -21,9 +20,6 @@ public abstract class BaseAction<T> implements Action<T> {
 
     @Override
     public final Map<String, Object> doExecute(HttpServletRequest request, HttpServletResponse response, T param) {
-        logger.info("==========>");
-        logger.info("==========>{}", JsonUtil.toJson(param));
-        logger.info("==========>");
         Map<String, Object> model = new HashMap<>();
         try {
             RequestContext requestContext = new RequestContext(request, response);
@@ -34,15 +30,12 @@ public abstract class BaseAction<T> implements Action<T> {
 
             editData(requestContext, dataMap);
 
-            model.put("result_code", "0000");
-            model.put("result_desc", "成功");
+            model.put("code", "0000");
+            model.put("desc", "成功");
             model.put("data", dataMap);
         } catch (Exception ex) {
             throw ex;
         }
-        logger.info("<==========");
-        logger.info("<=========={}", JsonUtil.toJson(model));
-        logger.info("<==========");
         return model;
     }
 

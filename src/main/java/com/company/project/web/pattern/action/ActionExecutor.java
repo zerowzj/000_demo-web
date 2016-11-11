@@ -1,7 +1,7 @@
 package com.company.project.web.pattern.action;
 
-import com.company.project.common.SpringContext;
-import com.company.project.common.util.ServletUtil;
+import com.company.project.common.SpringWebContext;
+import com.company.util.HttpRequestUtil;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -12,71 +12,41 @@ import java.util.Map;
  *
  * @author wangzhj
  */
-public class ActionExecutor {
+public abstract class ActionExecutor {
 
     /**
      * 执行Action
      *
      * @param request
      * @param response
-     * @param actionName
-     * @param param 参数
+     * @param clazz 执行类
+     * @param param 请求参数
      * @return Map<String, Object>
      */
-    public static Map<String, Object> execute(HttpServletRequest request, HttpServletResponse response, String actionName, Object param) {
-        if (!SpringContext.containsBean(actionName)) {
-            throw new IllegalStateException("ssssssssssssssss");
+    public static <T> T execute(HttpServletRequest request, HttpServletResponse response,
+                                              Class<? extends Action> clazz, Object param) {
+        if (!SpringWebContext.containsBean(clazz)) {
+            throw new IllegalStateException("");
         }
-        Action action = SpringContext.getBean(actionName);
-        return action.doExecute(request, response, param);
-    }
-    /**
-     * 执行Action
-     *
-     * @param request
-     * @param response
-     * @param clazz
-     * @param param 参数
-     * @return Map<String, Object>
-     */
-    public static Map<String, Object> execute(HttpServletRequest request, HttpServletResponse response, Class<? extends Action> clazz, Object param) {
-        if (!SpringContext.containsBean(clazz)) {
-            throw new IllegalStateException("ssssssssssssssss");
-        }
-        Action action = SpringContext.getBean(clazz);
-        return action.doExecute(request, response, param);
+        Action action = SpringWebContext.getBean(clazz);
+        return (T) action.doExecute(request, response, param);
     }
 
-
     /**
      * 执行Action
      *
      * @param request
      * @param response
-     * @param actionName
+     * @param clazz 执行类
      * @return Map<String, Object>
      */
-    public static Map<String, Object> execute(HttpServletRequest request, HttpServletResponse response, String actionName) {
-        if (!SpringContext.containsBean(actionName)) {
-            throw new IllegalStateException("ssssssssssssssss");
+    public static Map<String, Object> execute(HttpServletRequest request, HttpServletResponse response,
+                                              Class<? extends Action> clazz) {
+        if (!SpringWebContext.containsBean(clazz)) {
+            throw new IllegalStateException("");
         }
-        Action action = SpringContext.getBean(actionName);
-        return action.doExecute(request, response, ServletUtil.extractParam(request));
-    }
-    /**
-     * 执行Action
-     *
-     * @param request
-     * @param response
-     * @param clazz
-     * @return Map<String, Object>
-     */
-    public static Map<String, Object> execute(HttpServletRequest request, HttpServletResponse response, Class<? extends Action> clazz) {
-        if (!SpringContext.containsBean(clazz)) {
-            throw new IllegalStateException("ssssssssssssssss");
-        }
-        Action action = SpringContext.getBean(clazz);
-        return action.doExecute(request, response, ServletUtil.extractParam(request));
+        Action action = SpringWebContext.getBean(clazz);
+        return action.doExecute(request, response, HttpRequestUtil.extractParam(request));
     }
 
 }

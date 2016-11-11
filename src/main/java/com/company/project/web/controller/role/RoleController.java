@@ -2,12 +2,13 @@ package com.company.project.web.controller.role;
 
 import com.company.project.common.tree.JSTree;
 import com.company.project.common.tree.ZTree;
-import com.company.project.common.util.JsonUtil;
 import com.company.project.dao.popedomfunction.RoleFunctionConfVO;
 import com.company.project.dao.popedomrole.PopedomRoleEO;
 import com.company.project.service.function.FunctionService;
 import com.company.project.service.role.RoleService;
+import com.company.project.web.action.role.Action_role_add;
 import com.company.project.web.pattern.action.ActionExecutor;
+import com.company.util.JsonUtil;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.miemiedev.mybatis.paginator.domain.PageList;
 import org.apache.commons.lang.StringUtils;
@@ -70,7 +71,7 @@ public class RoleController {
     @RequestMapping("/add")
     @ResponseBody
     public Map<String, Object> add(HttpServletRequest request, HttpServletResponse response, PopedomRoleEO prEO) {
-        return ActionExecutor.execute(request, response, "Action_role_add", prEO);
+        return ActionExecutor.execute(request, response, Action_role_add.class, prEO);
     }
 
     @RequestMapping("/toConf")
