@@ -5,33 +5,25 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>用户登录</title>
-    <link href="static/css/login.css" type="text/css" rel="stylesheet"/>
 </head>
 <body>
 <form action="/login.html" method="post">
-    <ul>
-        <li class="user_main_l"></li>
-        <li class="user_main_c">
-            <div class="user_main_box">
-                <ul>
-                    <li class="user_main_text">用户名：</li>
-                    <li class="user_main_input"><input type="text" name="loginName" maxlength="20"
-                                                       class="txtusernamecssclass"></li>
-                </ul>
-                <ul>
-                    <li class="user_main_text">密 码：</li>
-                    <li class="user_main_input"><input type="password" name="loginPwd"
-                                                       class="txtpasswordcssclass"></li>
-                </ul>
-                <ul>
-                    <li class="user_main_text"></li>
-                    <li class="user_main_input"><font color="red">${msg}</font></li>
-                </ul>
-            </div>
-        </li>
-        <li class="user_main_r"><input type="image" src="static/img/user_botton.gif"
-                                       class="ibtnentercssclass"></li>
-    </ul>
+    <div align="center" style="margin-top: 60px">
+        <table>
+            <tr>
+                <td>用户名：</td>
+                <td><input type="text" name="loginName" maxlength="20"></td>
+            </tr>
+            <tr>
+                <td>密码：</td>
+                <td><input type="password" name="loginPwd"></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><input type="submit" value="提交"></td>
+            </tr>
+        </table>
+    </div>
 </form>
 </body>
 </html>
