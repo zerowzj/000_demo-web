@@ -71,7 +71,7 @@ public class RoleRouter {
     @RequestMapping("/add")
     @ResponseBody
     public Map<String, Object> add(HttpServletRequest request, HttpServletResponse response, PopedomRoleEO prEO) {
-        return ActionExecutor.execute(request, response, Action_role_add.class);
+        return ActionExecutor.execute(request, response, Action_role_add.class, prEO);
     }
 
     @RequestMapping("/toConf")

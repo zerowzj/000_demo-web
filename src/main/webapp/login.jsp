@@ -7,51 +7,31 @@
     <title>用户登录</title>
     <link href="static/css/login.css" type="text/css" rel="stylesheet"/>
 </head>
-<body id="userlogin_body">
-<div id="user_login">
-    <dl>
-        <dd id="user_top">
-            <ul>
-                <li class="user_top_l"></li>
-                <li class="user_top_c"></li>
-                <li class="user_top_r"></li>
-            </ul>
-        </dd>
-        <dd id="user_main">
-            <form action="/login.html" method="post">
+<body>
+<form action="/login.html" method="post">
+    <ul>
+        <li class="user_main_l"></li>
+        <li class="user_main_c">
+            <div class="user_main_box">
                 <ul>
-                    <li class="user_main_l"></li>
-                    <li class="user_main_c">
-                        <div class="user_main_box">
-                            <ul>
-                                <li class="user_main_text">用户名：</li>
-                                <li class="user_main_input"><input type="text" name="loginName" maxlength="20"
-                                                                   class="txtusernamecssclass"></li>
-                            </ul>
-                            <ul>
-                                <li class="user_main_text">密 码：</li>
-                                <li class="user_main_input"><input type="password" name="loginPwd"
-                                                                   class="txtpasswordcssclass"></li>
-                            </ul>
-                            <ul>
-                                <li class="user_main_text"></li>
-                                <li class="user_main_input"><font color="red">${msg}</font></li>
-                            </ul>
-                        </div>
-                    </li>
-                    <li class="user_main_r"><input type="image" src="static/img/user_botton.gif"
-                                                   class="ibtnentercssclass"></li>
+                    <li class="user_main_text">用户名：</li>
+                    <li class="user_main_input"><input type="text" name="loginName" maxlength="20"
+                                                       class="txtusernamecssclass"></li>
                 </ul>
-            </form>
-        </dd>
-        <dd id="user_bottom">
-            <ul>
-                <li class="user_bottom_l"></li>
-                <li class="user_bottom_c"></li>
-                <li class="user_bottom_r"></li>
-            </ul>
-        </dd>
-    </dl>
-</div>
+                <ul>
+                    <li class="user_main_text">密 码：</li>
+                    <li class="user_main_input"><input type="password" name="loginPwd"
+                                                       class="txtpasswordcssclass"></li>
+                </ul>
+                <ul>
+                    <li class="user_main_text"></li>
+                    <li class="user_main_input"><font color="red">${msg}</font></li>
+                </ul>
+            </div>
+        </li>
+        <li class="user_main_r"><input type="image" src="static/img/user_botton.gif"
+                                       class="ibtnentercssclass"></li>
+    </ul>
+</form>
 </body>
 </html>

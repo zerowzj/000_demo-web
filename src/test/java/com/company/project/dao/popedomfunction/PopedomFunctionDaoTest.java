@@ -1,7 +1,7 @@
 package com.company.project.dao.popedomfunction;
 
-import com.company.project.common.util.JsonUtil;
 import com.company.project.dao.BaseDaoTest;
+import com.company.util.JsonUtil;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -14,18 +14,18 @@ import java.util.Map;
  *
  * @author wangzhj
  */
-public abstract class BaseAction implements Action {
+public abstract class BaseAction<T> implements Action<T> {
 
     private static final Logger logger = LoggerFactory.getLogger(BaseAction.class);
 
     @Override
-    public final Map<String, Object> doExecute(HttpServletRequest request, HttpServletResponse response, Map<String, Object> paramMap) {
+    public final Map<String, Object> doExecute(HttpServletRequest request, HttpServletResponse response, T param) {
         Map<String, Object> model = new HashMap<>();
         try {
             RequestContext requestContext = new RequestContext(request, response);
-            checkData(requestContext, paramMap);
+            checkData(requestContext, param);
 
-            Map<String, Object> dataMap = execute(requestContext, paramMap);
+            Map<String, Object> dataMap = execute(requestContext, param);
 
             model.put("code", "0000");
             model.put("desc", "成功");
@@ -40,16 +40,16 @@ public abstract class BaseAction implements Action {
      * 验证参数
      *
      * @param requestContext
-     * @param paramMap
+     * @param param
      */
-    public abstract void checkData(RequestContext requestContext, Map<String, Object> paramMap);
+    public abstract void checkData(RequestContext requestContext, T param);
 
     /**
      * 执行逻辑
      *
      * @param requestContext
-     * @param paramMap
+     * @param param
      * @return Map<String, Object>
      */
-    public abstract Map<String, Object> execute(RequestContext requestContext, Map<String, Object> paramMap);
+    public abstract Map<String, Object> execute(RequestContext requestContext, T param);
 }

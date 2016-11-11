@@ -1,11 +1,11 @@
 package com.company.project.auth.handler;
 
 import com.company.project.auth.user.CustomUserDetails;
-import com.company.project.common.util.JsonUtil;
 import com.company.project.common.web.session.SessionUtil;
 import com.company.project.common.web.menu.Menu;
 import com.company.project.common.web.session.SessionUserInfo;
 import com.company.project.dao.popedomfunction.PopedomFunctionEO;
+import com.company.util.JsonUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
