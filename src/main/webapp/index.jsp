@@ -6,15 +6,7 @@
     <meta http-equiv=pragma content=no-cache/>
     <meta http-equiv=cache-control content=no-cache/>
     <meta http-equiv=expires content=-1000/>
-    <title>管理中心 v1.0</title>
+    <title>管理平台</title>
 </head>
-<frameset border=0 framespacing=0 rows="60, *" frameborder=0>
-    <frame name=head src="/view/common/head.jsp" frameborder=0 noresize scrolling=no>
-    <frameset cols="170, *">
-        <frame name=left src="/view/common/left.jsp" frameborder=0 noresize/>
-        <frame name=right src="/view/common/right.jsp" frameborder=0 noresize scrolling=yes id="main"/>
-    </frameset>
-</frameset>
-<noframes>
-</noframes>
+
 </html>

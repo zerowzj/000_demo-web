@@ -11,15 +11,16 @@
             /WEB-INF/spring/*.xml
         </param-value>
     </context-param>
-    <!-- =================== -->
-    <!--      Listener       -->
-    <!-- =================== -->
+    <!-- ==================== -->
+    <!--       Listener       -->
+    <!-- ==================== -->
     <listener>
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
     </listener>
-    <!-- =================== -->
-    <!--         Filter      -->
-    <!-- =================== -->
+    <!-- ==================== -->
+    <!--          Filter      -->
+    <!-- ==================== -->
+    <!-- Spring Security -->
     <filter>
         <filter-name>springSecurityFilterChain</filter-name>
         <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
@@ -28,6 +29,7 @@
         <filter-name>springSecurityFilterChain</filter-name>
         <url-pattern>/*</url-pattern>
     </filter-mapping>
+    <!-- Character Encoding -->
     <filter>
         <filter-name>characterEncodingFilter</filter-name>
         <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
@@ -45,9 +47,18 @@
         <filter-name>characterEncodingFilter</filter-name>
         <url-pattern>/*</url-pattern>
     </filter-mapping>
-    <!-- =================== -->
-    <!--        Servlet      -->
-    <!-- =================== -->
+    <!-- Sitemesh-->
+    <filter>
+        <filter-name>sitemesh</filter-name>
+        <filter-class>org.sitemesh.config.ConfigurableSiteMeshFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>sitemesh</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+    <!-- ==================== -->
+    <!--         Servlet      -->
+    <!-- ==================== -->
     <servlet>
         <servlet-name>dispatcher</servlet-name>
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
