@@ -29,10 +29,8 @@ public class FunctionMapFactoryBean implements FactoryBean<LinkedHashMap<Request
     public LinkedHashMap<RequestMatcher, Collection<ConfigAttribute>> getObject() throws Exception {
         //初始化
         LinkedHashMap<RequestMatcher, Collection<ConfigAttribute>> funMap = new LinkedHashMap<>();
-
         //获取受保护功能列表
         List<PopedomFunctionEO> pfEOLt = popedomFunctionDao.getFunctionLt(null);
-
         //生成映射
         AntPathRequestMatcher matcher = null;
         List<ConfigAttribute> configAttrLt = null;

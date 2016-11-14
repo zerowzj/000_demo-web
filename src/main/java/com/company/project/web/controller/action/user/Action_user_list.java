@@ -17,7 +17,7 @@ import java.util.Map;
  *
  * @author wangzhj
  */
-@Component("Action_user_list")
+@Component
 public class Action_user_list extends BaseAction<Map<String, Object>> {
 
     @Autowired
@@ -50,5 +50,10 @@ public class Action_user_list extends BaseAction<Map<String, Object>> {
         data.put("pageSize", ubEOLt.getPaginator().getLimit());
         data.put("totalCount", ubEOLt.getPaginator().getTotalCount());
         return data;
+    }
+
+    public static void main(String[] args) {
+        Integer i = null;
+        System.out.println(1 == i);
     }
 }
