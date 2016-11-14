@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <sitemesh>
-    <mapping path="/user/*" decorator="/index.jsp"/>
-    <mapping path="/role/*" decorator="/index.jsp"/>
+    <!-- ==================== -->
+    <!--        装饰          -->
+    <!-- ==================== -->
+    <mapping path="/user/*"     decorator="/index.jsp"/>
+    <mapping path="/role/*"     decorator="/index.jsp"/>
     <mapping path="/function/*" decorator="/index.jsp"/>
-
-    <mapping path="/role/toConf*" exclue="true" />
+    <!-- ==================== -->
+    <!--        排除          -->
+    <!-- ==================== -->
+    <mapping path="/role/toConf*" exclue="true"/>
 </sitemesh>
