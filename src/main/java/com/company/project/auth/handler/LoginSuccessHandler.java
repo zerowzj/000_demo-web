@@ -46,22 +46,6 @@ public class LoginSuccessHandler extends SavedRequestAwareAuthenticationSuccessH
 
         //执行父逻辑
         super.onAuthenticationSuccess(request, response, authentication);
-
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                while(true){
-                    try {
-                        Thread.sleep(10*1000);
-                    } catch (Exception ex){
-                        ex.printStackTrace();
-                    }
-                    logger.error("this is a ERROR!");
-                    logger.info("this is a INFO!");
-                }
-
-            }
-        }).start();
     }
 
     /**
