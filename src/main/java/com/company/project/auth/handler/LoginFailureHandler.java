@@ -25,7 +25,7 @@ public class LoginFailureHandler extends SimpleUrlAuthenticationFailureHandler {
     public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response, AuthenticationException exception) throws IOException, ServletException {
 
         exception.printStackTrace();
-        logger.warn("登录失败...");
+        logger.warn("用户[{}]登录系统失败！", "");
        if(exception instanceof UsernameNotFoundException || exception instanceof BadCredentialsException){
             logger.error("用户名/密码错误");
 //           ServletUtil.setSessionObj(request, "msg", "用户名/密码错误！");

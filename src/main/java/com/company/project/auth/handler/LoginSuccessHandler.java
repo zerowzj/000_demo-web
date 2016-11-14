@@ -1,9 +1,9 @@
 package com.company.project.auth.handler;
 
 import com.company.project.auth.user.CustomUserDetails;
-import com.company.project.common.web.session.SessionUtil;
 import com.company.project.common.web.menu.Menu;
 import com.company.project.common.web.session.SessionUserInfo;
+import com.company.project.common.web.session.SessionUtil;
 import com.company.project.dao.popedomfunction.PopedomFunctionEO;
 import com.company.util.JsonUtil;
 import org.slf4j.Logger;
@@ -33,6 +33,8 @@ public class LoginSuccessHandler extends SavedRequestAwareAuthenticationSuccessH
         //获取认证信息
         UsernamePasswordAuthenticationToken token = (UsernamePasswordAuthenticationToken) authentication;
         CustomUserDetails userDetails = (CustomUserDetails) token.getPrincipal();
+
+        logger.info("用户[{}]登录系统成功!", userDetails.getUsername());
 
         //获取用户及功能列表
         SessionUserInfo userInfo = userDetails.getUserInfo();

@@ -17,8 +17,7 @@
         <plugin interceptor="com.github.miemiedev.mybatis.paginator.OffsetLimitInterceptor">
             <property name="dialectClass" value="com.github.miemiedev.mybatis.paginator.dialect.MySQLDialect"/>
         </plugin>
-        <plugin interceptor="com.company.db.interceptor.SqlCostInterceptor">
-        </plugin>
+        <plugin interceptor="com.company.db.interceptor.SqlCostInterceptor" />
     </plugins>
     <!-- ==================== -->
     <!--        映射           -->
