@@ -16,16 +16,15 @@ public abstract class ActionExecutor {
 
     /**
      * 执行Action
-     *
-     * @param clazz
-     *         执行类
+     * @param request
+     * @param response
+     * @param clazz 执行类
+     * @param param 参数
      * @return Map<String, Object>
      */
     public static Map<String, Object> execute(HttpServletRequest request, HttpServletResponse response,
                                               Class<? extends Action> clazz, Object param) {
-        if (!SpringWebContext.containsBean(clazz)) {
-            throw new IllegalStateException("未包含类型的" + clazz.getName() + "Bean");
-        }
+        check(clazz);
         Action action = SpringWebContext.getBean(clazz);
         return action.doExecute(request, response, param);
     }
@@ -40,11 +39,15 @@ public abstract class ActionExecutor {
      */
     public static Map<String, Object> execute(HttpServletRequest request, HttpServletResponse response,
                                               Class<? extends Action> clazz) {
-        if (!SpringWebContext.containsBean(clazz)) {
-            throw new IllegalStateException("");
-        }
+        check(clazz);
         Action action = SpringWebContext.getBean(clazz);
         Map<String, Object> paramMap = HttpRequestUtil.extractParam(request);
         return action.doExecute(request, response, paramMap);
+    }
+
+    private static void check(Class<? extends Action> clazz){
+        if (!SpringWebContext.containsBean(clazz)) {
+            throw new IllegalStateException("未包含类型的" + clazz.getName() + "Bean");
+        }
     }
 }
