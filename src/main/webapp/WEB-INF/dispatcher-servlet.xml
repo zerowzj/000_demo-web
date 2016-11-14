@@ -29,10 +29,6 @@
 		</property>
 	</bean>
 	<!-- =================== -->
-	<!--     异常解析器    -->
-	<!-- =================== -->
-	<!--<bean class="com.noriental.jobweb.manage.web.extend.CustomHandlerExceptionResolver"/>-->
-	<!-- =================== -->
 	<!--     视图解析器      -->
 	<!-- =================== -->
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -43,4 +39,12 @@
 	<!--      静态资源       -->
 	<!-- =================== -->
 	<mvc:resources mapping="/static/**" location="/static/"/>
+	<!-- =================== -->
+	<!--     异常解析器    -->
+	<!-- =================== -->
+	<bean class="com.company.project.web.pattern.extend.CustomExceptionResolver"/>
+	<!-- ==================== -->
+	<!--        其他          -->
+	<!-- ==================== -->
+	<bean class="com.company.project.common.SpringWebContext" />
 </beans>

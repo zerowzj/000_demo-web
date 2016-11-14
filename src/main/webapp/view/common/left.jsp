@@ -6,6 +6,6 @@
 <body>
 <a href="/function/list" >功能列表</a><br/>
 <a href="/function/list" >功能列表</a><br/>
-<a href="/user/list" >用户列表</a><br/>
+<a href="/user/toList" >用户列表</a><br/>
 </body>
 </html>
