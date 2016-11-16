@@ -24,7 +24,7 @@ public abstract class ActionExecutor {
      */
     public static Map<String, Object> execute(HttpServletRequest request, HttpServletResponse response,
                                               Class<? extends Action> clazz, Object param) {
-        check(clazz);
+        checkExist(clazz);
         Action action = SpringWebContext.getBean(clazz);
         return action.doExecute(request, response, param);
     }
@@ -39,15 +39,18 @@ public abstract class ActionExecutor {
      */
     public static Map<String, Object> execute(HttpServletRequest request, HttpServletResponse response,
                                               Class<? extends Action> clazz) {
-        check(clazz);
+        checkExist(clazz);
         Action action = SpringWebContext.getBean(clazz);
         Map<String, Object> paramMap = HttpRequestUtil.extractParam(request);
         return action.doExecute(request, response, paramMap);
     }
 
-    private static void check(Class<? extends Action> clazz){
+    private static void checkExist(Class<? extends Action> clazz){
+        if (clazz == null) {
+            throw new IllegalStateException("Bean Class不能为空！");
+        }
         if (!SpringWebContext.containsBean(clazz)) {
-            throw new IllegalStateException("未包含类型的" + clazz.getName() + "Bean");
+            throw new IllegalStateException("未包含类型[" + clazz.getName() + "]Bean！");
         }
     }
 }
