@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.company.project.dao.useradmin">
-    <resultMap id="userBaseEO" type="UserBaseEO">
+    <resultMap id="userAdminEO" type="UserAdminEO">
         <result property="uaId" column="UA_ID"/>
         <result property="uaLoginName" column="UA_LOGIN_NAME"/>
         <result property="uaLoginPwd" column="UA_LOGIN_PWD"/>
@@ -64,10 +64,10 @@
         WHERE UA.UA_ID = #{uaId}
     </select>
 
-    <select id="getAdminByLoginName" parameterType="java.lang.String" resultMap="userBaseEO">
+    <select id="getAdminByLoginName" parameterType="java.lang.String" resultMap="userAdminEO">
         SELECT
         <include refid="Base_Column_List"/>
-        FROM USER_BASE UA
+        FROM USER_ADMIN UA
         WHERE UA.UA_LOGIN_NAME = #{uaLoginName}
     </select>
 

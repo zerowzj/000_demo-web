@@ -12,8 +12,8 @@ import java.util.Map;
 public class UserAdminDaoImpl extends BaseDaoImpl<UserAdminEO> implements UserAdminDao {
 
     @Override
-    public UserAdminEO getAdminByLoginName(String ubLoginName) {
-        return getSqlSession().selectOne(getSqlId("getAdminByLoginName"), ubLoginName);
+    public UserAdminEO getAdminByLoginName(String uaLoginName) {
+        return getSqlSession().selectOne(getSqlId("getAdminByLoginName"), uaLoginName);
     }
 
     @Override
