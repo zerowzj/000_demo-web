@@ -5,10 +5,10 @@
     <!--        别名           -->
     <!-- ==================== -->
     <typeAliases>
-        <typeAlias type="com.company.project.dao.popedomfunction.PopedomFunctionEO" alias="PopedomFunctionEO"/>
-        <typeAlias type="com.company.project.dao.popedomrole.PopedomRoleEO" alias="PopedomRoleEO"/>
+        <typeAlias type="com.company.project.dao.popedomfunction.PopedomFunctionEO"         alias="PopedomFunctionEO"/>
+        <typeAlias type="com.company.project.dao.popedomrole.PopedomRoleEO"                 alias="PopedomRoleEO"/>
         <typeAlias type="com.company.project.dao.popedomrolefunction.PopedomRoleFunctionEO" alias="PopedomRoleFunctionEO"/>
-        <typeAlias type="com.company.project.dao.useradmin.UserAdminEO" alias="UserAdminEO"/>
+        <typeAlias type="com.company.project.dao.useradmin.UserAdminEO"                     alias="UserAdminEO"/>
     </typeAliases>
     <!-- ==================== -->
     <!--        插件           -->
