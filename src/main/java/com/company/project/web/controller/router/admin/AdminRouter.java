@@ -1,9 +1,7 @@
 package com.company.project.web.controller.router.admin;
 
 import com.company.project.service.admin.AdminService;
-import com.company.project.service.user.UserService;
 import com.company.project.web.controller.action.admin.Action_admin_list;
-import com.company.project.web.controller.action.user.Action_user_list;
 import com.company.project.web.pattern.action.ActionExecutor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
