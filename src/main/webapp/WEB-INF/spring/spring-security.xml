@@ -6,17 +6,17 @@
             http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
             http://www.springframework.org/schema/security
             http://www.springframework.org/schema/security/spring-security.xsd">
-    <!-- ======================================== -->
+    <!-- ==================== -->
     <!--                认证及授权入口            -->
-    <!-- ======================================== -->
+    <!-- ==================== -->
     <security:http entry-point-ref="loginEntryPoint">
-        <security:intercept-url pattern="/login.jsp*" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
-        <security:intercept-url pattern="/static/**" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
-        <security:intercept-url pattern="/**" access="IS_AUTHENTICATED_FULLY"/>
+        <security:intercept-url pattern="/login.jsp**" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
+        <security:intercept-url pattern="/static/**"   access="IS_AUTHENTICATED_ANONYMOUSLY"/>
+        <security:intercept-url pattern="/**"          access="IS_AUTHENTICATED_FULLY"/>
 
         <security:custom-filter ref="customLoginFilter" before="FORM_LOGIN_FILTER"/>
         <security:custom-filter ref="customLogoutFilter" before="LOGOUT_FILTER"/>
-        <security:custom-filter ref="sessionTimeoutFilter" after="FORM_LOGIN_FILTER"/>
+        <security:custom-filter ref="watchDogFilter" after="FORM_LOGIN_FILTER"/>
 
         <security:custom-filter ref="customFilterSecurityInterceptor" before="FILTER_SECURITY_INTERCEPTOR" />
         <security:access-denied-handler ref="accessDeniedHandler"/>
@@ -29,9 +29,9 @@
     <bean id="loginEntryPoint" class="org.springframework.security.web.authentication.LoginUrlAuthenticationEntryPoint">
         <constructor-arg value="/login.jsp?msg=please_login"/>
     </bean>
-    <!-- ======================================== -->
+    <!-- ==================== -->
     <!--               认证管理器                 -->
-    <!-- ======================================== -->
+    <!-- ==================== -->
     <security:authentication-manager alias="authenticationManager">
         <security:authentication-provider ref="daoAuthenticationProvider"/>
     </security:authentication-manager>
@@ -45,9 +45,9 @@
     <bean id="md5PasswordEncoder" class="org.springframework.security.authentication.encoding.Md5PasswordEncoder">
         <property name="encodeHashAsBase64" value="true"/>
     </bean>
-    <!-- ======================================== -->
-    <!--                    认证过滤器            -->
-    <!-- ======================================== -->
+    <!-- ==================== -->
+    <!--      认证过滤器       -->
+    <!-- ==================== -->
     <bean id="customLoginFilter" class="com.company.project.auth.filter.CustomLoginFilter">
         <constructor-arg value=""/>
         <property name="authenticationManager" ref="authenticationManager"/>
@@ -115,7 +115,7 @@
     <!-- ======================================== -->
     <!--                自定义过滤器              -->
     <!-- ======================================== -->
-    <bean id="sessionTimeoutFilter" class="com.company.project.auth.filter.WatchDogFilter">
+    <bean id="watchDogFilter" class="com.company.project.auth.filter.WatchDogFilter">
         <property name="sessionKeyLt">
             <list>
             </list>
