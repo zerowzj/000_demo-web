@@ -12,7 +12,7 @@ import java.util.Map;
 /**
  * Created by wangzhj on 2016/9/20.
  */
-@Component("Action_role_add")
+@Component
 public class Action_role_add extends BaseAction<PopedomRoleEO> {
 
     @Autowired
