@@ -18,6 +18,8 @@ public abstract class BaseAction<T> implements Action<T> {
 
     private static final Logger logger = LoggerFactory.getLogger(BaseAction.class);
 
+    private HttpServletRequest request = null;
+
     @Override
     public final Map<String, Object> doExecute(HttpServletRequest request, HttpServletResponse response, T param) {
         Map<String, Object> model = new HashMap<>();

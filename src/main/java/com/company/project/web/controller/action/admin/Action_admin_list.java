@@ -1,9 +1,7 @@
 package com.company.project.web.controller.action.admin;
 
 import com.company.project.dao.useradmin.UserAdminEO;
-import com.company.project.dao.userbase.UserBaseEO;
 import com.company.project.service.admin.AdminService;
-import com.company.project.service.user.UserService;
 import com.company.project.web.pattern.action.BaseAction;
 import com.company.project.web.pattern.context.RequestContext;
 import com.github.miemiedev.mybatis.paginator.domain.PageList;
