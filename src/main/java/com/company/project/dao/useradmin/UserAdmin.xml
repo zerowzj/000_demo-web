@@ -64,7 +64,7 @@
         WHERE UA.UA_ID = #{uaId}
     </select>
 
-    <select id="getUserByLoginName" parameterType="java.lang.String" resultMap="userBaseEO">
+    <select id="getAdminByLoginName" parameterType="java.lang.String" resultMap="userBaseEO">
         SELECT
         <include refid="Base_Column_List"/>
         FROM USER_BASE UA
