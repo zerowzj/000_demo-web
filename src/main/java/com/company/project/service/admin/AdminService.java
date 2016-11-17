@@ -1,6 +1,6 @@
-package com.company.project.service.user;
+package com.company.project.service.admin;
 
-import com.company.project.dao.popedomrole.PopedomRoleEO;
+import com.company.project.dao.useradmin.UserAdminEO;
 import com.company.project.dao.userbase.UserBaseEO;
 import com.github.miemiedev.mybatis.paginator.domain.PageList;
 
@@ -9,7 +9,7 @@ import com.github.miemiedev.mybatis.paginator.domain.PageList;
  *
  * @author wangzhj
  */
-public interface UserService {
+public interface AdminService {
 
     /**
      * 查询角色
@@ -19,5 +19,5 @@ public interface UserService {
      * @param pageSize 页大小
      * @return PageList<PopedomRoleEO>
      */
-    public PageList<UserBaseEO> getUserPageLt(String ubLoginName, int pageNo, int pageSize);
+    public PageList<UserAdminEO> getAdminPageLt(String ubLoginName, int pageNo, int pageSize);
 }

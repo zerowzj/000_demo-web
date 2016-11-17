@@ -1,12 +1,13 @@
-package com.company.project.web.controller.router.user;
+package com.company.project.web.controller.router.admin;
 
+import com.company.project.service.admin.AdminService;
 import com.company.project.service.user.UserService;
+import com.company.project.web.controller.action.admin.Action_admin_list;
 import com.company.project.web.controller.action.user.Action_user_list;
 import com.company.project.web.pattern.action.ActionExecutor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -20,11 +21,11 @@ import java.util.Map;
  * @author wangzhj
  */
 @Controller
-@RequestMapping("/user")
-public class UserRouter {
+@RequestMapping("/admin")
+public class AdminRouter {
 
     @Autowired
-    private UserService userService = null;
+    private AdminService adminService = null;
 
     @RequestMapping("/toList")
     public ModelAndView toList(HttpServletRequest request, HttpServletResponse response) {
@@ -34,6 +35,6 @@ public class UserRouter {
     @RequestMapping("/list")
     @ResponseBody
     public Map<String, Object> list(HttpServletRequest request, HttpServletResponse response) {
-        return ActionExecutor.execute(request, response, Action_user_list.class);
+        return ActionExecutor.execute(request, response, Action_admin_list.class);
     }
 }

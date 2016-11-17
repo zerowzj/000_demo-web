@@ -16,7 +16,7 @@ public interface UserBaseDao extends BaseDao<UserBaseEO> {
      * @param ubLoginName 登录名
      * @return UserBaseEO
      */
-    public UserBaseEO getUserByLoginName(String ubLoginName);
+//    public UserBaseEO getUserByLoginName(String ubLoginName);
 
     /**
      * 获取用户信息
@@ -24,5 +24,5 @@ public interface UserBaseDao extends BaseDao<UserBaseEO> {
      * @param ubLoginName 登录名
      * @return UserBaseEO
      */
-    public PageList<UserBaseEO> getUserPageLt(String ubLoginName, int pageNo, int pageSize);
+//    public PageList<UserBaseEO> getUserPageLt(String ubLoginName, int pageNo, int pageSize);
 }

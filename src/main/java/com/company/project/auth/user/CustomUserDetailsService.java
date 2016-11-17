@@ -3,6 +3,8 @@ package com.company.project.auth.user;
 import com.company.project.common.web.session.SessionUserInfo;
 import com.company.project.dao.popedomfunction.PopedomFunctionDao;
 import com.company.project.dao.popedomfunction.PopedomFunctionEO;
+import com.company.project.dao.useradmin.UserAdminDao;
+import com.company.project.dao.useradmin.UserAdminEO;
 import com.company.project.dao.userbase.UserBaseDao;
 import com.company.project.dao.userbase.UserBaseEO;
 import org.slf4j.Logger;
@@ -26,29 +28,29 @@ public class CustomUserDetailsService implements UserDetailsService {
     private static final Logger logger = LoggerFactory.getLogger(CustomUserDetailsService.class);
 
     @Autowired
-    private UserBaseDao userBaseDao = null;
+    private UserAdminDao userAdminDao = null;
     @Autowired
     private PopedomFunctionDao popedomFunctionDao = null;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         //获取用户信息
-        UserBaseEO ubEO = userBaseDao.getUserByLoginName(username);
-        if (ubEO == null) {
+        UserAdminEO uaEO = userAdminDao.getAdminByLoginName(username);
+        if (uaEO == null) {
             throw new UsernameNotFoundException("用户名/密码错误");
         }
 
         //获取角色功能列表
-        Long prId = ubEO.getUbPrId();
+        Long prId = uaEO.getUaPrId();
         List<PopedomFunctionEO> pfEOLt = popedomFunctionDao.getRoleFunctionLt(prId, null);
 
         //生成用户详情
-        CustomUserDetails userDetails = new CustomUserDetails(username, ubEO.getUbLoginPwd(), this.toGrantedAuthority(pfEOLt));
+        CustomUserDetails userDetails = new CustomUserDetails(username, uaEO.getUaLoginPwd(), this.toGrantedAuthority(pfEOLt));
 
         //设置SessionUserInfo
         SessionUserInfo userInfo = new SessionUserInfo();
-        userInfo.setUbId(ubEO.getUbId());     //用户编号
-        userInfo.setUbName(ubEO.getUbName()); //用户姓名
+        userInfo.setUbId(uaEO.getUaId());     //用户编号
+        userInfo.setUbName(uaEO.getUaName()); //用户姓名
         userInfo.setUserFuncLt(pfEOLt);       //用户功能列表
         userDetails.setUserInfo(userInfo);
 

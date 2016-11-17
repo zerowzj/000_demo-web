@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.company.project.dao.useradmin">
+    <resultMap id="userBaseEO" type="UserBaseEO">
+        <result property="uaId" column="UA_ID"/>
+        <result property="uaLoginName" column="UA_LOGIN_NAME"/>
+        <result property="uaLoginPwd" column="UA_LOGIN_PWD"/>
+        <result property="uaStatus" column="UA_STATUS"/>
+        <result property="uaName" column="UA_NAME"/>
+        <result property="uaBeginTime" column="UA_BEGIN_TIME"/>
+        <result property="uaPrId" column="UA_PR_ID"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        UA.UA_ID,
+        UA.UA_LOGIN_NAME,
+        UA.UA_LOGIN_PWD,
+        UA.UA_STATUS,
+        UA.UA_NAME,
+        UA.UA_BEGIN_TIME,
+        UA.UA_PR_ID
+    </sql>
+
+    <insert id="insert" useGeneratedKeys="true" keyProperty="uaId" parameterType="UserAdminEO">
+        INSERT INTO USER_ADMIN (UA_LOGIN_NAME, UA_LOGIN_PWD
+        <if test="uaStatus != null">
+            ,UA_STATUS
+        </if>
+        <if test="uaName != null">
+            ,UA_NAME
+        </if>
+        <if test="uaBeginTime != null">
+            ,UA_BEGIN_TIME
+        </if>
+        <if test="uaPrId != null">
+            ,UA_PR_ID
+        </if>
+        ) VALUES (#{uaLoginName}, #{uaLoginPwd}
+        <if test="uaType != null">
+            ,#{uaType}
+        </if>
+        <if test="uaStatus != null">
+            ,#{uaStatus}
+        </if>
+        <if test="uaName != null">
+            ,#{uaName}
+        </if>
+        <if test="uaBeginTime != null">
+            ,#{uaBeginTime}
+        </if>
+        <if test="uaPrId != null">
+            ,#{uaPrId}
+        </if>
+        )
+        <selectKey keyProperty="uaId" resultType="java.lang.Long" order="AFTER">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+    </insert>
+
+    <select id="get" parameterType="java.lang.Long" resultMap="userAdminEO">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM USER_ADMIN UA
+        WHERE UA.UA_ID = #{uaId}
+    </select>
+
+    <select id="getUserByLoginName" parameterType="java.lang.String" resultMap="userBaseEO">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM USER_BASE UA
+        WHERE UA.UA_LOGIN_NAME = #{uaLoginName}
+    </select>
+
+    <select id="getAdminPageLt" parameterType="java.util.Map" resultMap="userAdminEO">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM USER_ADMIN UA
+        <where>
+            <if test="uaLoginName != null">
+                UA.UA_LOGIN_NAME LIKE CONCAT('%', #{uaLoginName}, '%')
+            </if>
+        </where>
+        ORDER BY UA.UA_ID DESC
+    </select>
+</mapper>
