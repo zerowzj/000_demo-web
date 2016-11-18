@@ -60,7 +60,7 @@ public class LoginSuccessHandler extends SavedRequestAwareAuthenticationSuccessH
         List<Menu> menuLt = new ArrayList<>();
         Menu menu = null;
         for (PopedomFunctionEO pfEO : pfEOLt) {
-            //过滤掉非1、2级
+            //仅将1、2级功能作为菜单
             int pfLevel = pfEO.getPfLevel();
             if (pfLevel != 1 && pfLevel != 2) {
                 continue;
