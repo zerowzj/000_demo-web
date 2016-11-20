@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * 角色信息路由器
+ * 功能路由器
  *
  * @author wangzhj
  */
@@ -27,7 +27,6 @@ public class FunctionRouter {
     private FunctionService functionService = null;
 
     @RequestMapping("/list")
-    @ResponseBody
     public ModelAndView list(HttpServletRequest request, HttpServletResponse response) {
         Map<String, Object> model = new HashMap();
 
