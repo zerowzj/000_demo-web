@@ -39,7 +39,7 @@
                 <td>${prEO.prStatus}</td>
                 <td>${prEO.prStatus}</td>
                 <td>${prEO.prDesc}</td>
-                <td><p:permission authId="1310"><a href="#" role-id="${prEO.prId}"
+                <td><p:permission authId="8310"><a href="#" role-id="${prEO.prId}"
                                                 role-name="${prEO.prName}">分配功能</a></p:permission></td>
             </tr>
         </c:forEach>
