@@ -7,6 +7,8 @@ import org.apache.curator.framework.recipes.cache.NodeCache;
 import org.apache.curator.framework.recipes.cache.NodeCacheListener;
 import org.apache.curator.retry.ExponentialBackoffRetry;
 
+import java.util.concurrent.TimeUnit;
+
 /**
  * @author wangzhj
  */
@@ -19,7 +21,8 @@ public class ZKUtil {
     static {
         String zkHost = "127.0.0.1:2181";
         RetryPolicy rp = new ExponentialBackoffRetry(1000, 3);
-        CuratorFrameworkFactory.Builder builder = CuratorFrameworkFactory.builder().connectString(zkHost)
+        CuratorFrameworkFactory.Builder builder = CuratorFrameworkFactory.builder()
+                .connectString(zkHost)
                 .connectionTimeoutMs(5000)
                 .sessionTimeoutMs(5000)
                 .retryPolicy(rp);
@@ -45,6 +48,18 @@ public class ZKUtil {
     }
 
     public static void print(){
-        System.out.println(data);
+        while(true) {
+            System.out.println(data);
+
+            try {
+                TimeUnit.SECONDS.sleep(10);
+            }catch (Exception ex) {
+                ex.printStackTrace();
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+        print();
     }
 }
