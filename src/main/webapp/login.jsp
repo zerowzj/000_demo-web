@@ -12,19 +12,18 @@
 <body>
 <div class="container">
     <div class="form row">
-        <form action="/login.html" method="post" class="form-horizontal col-sm-offset-6 col-md-offset-5"
-              id="login_form">
-            <h3 class="form-title">000000000</h3>
+        <form action="/login.html" method="post" class="form-horizontal col-sm-offset-6 col-md-offset-5">
+            <h3 class="form-title">用户登录</h3>
 
             <div class="col-sm-6 col-md-4">
                 <div class="form-group">
-                    <i class="fa fa-user fa-lg">1111111111</i>
+                    <i class="fa fa-user fa-lg"></i>
                     <input class="form-control required" type="text" placeholder="请输入用户名" name="loginName"
                            autofocus="autofocus" maxlength="20"/>
                 </div>
                 <div class="form-group">
-                    <i class="fa fa-lock fa-lg">22222222222</i>
-                    <input class="form-control required" type="password" placeholder="Password" name="loginPwd"
+                    <i class="fa fa-lock fa-lg"></i>
+                    <input class="form-control required" type="password" placeholder="请输入密码" name="loginPwd"
                            maxlength="8"/>
                 </div>
                 <div class="form-group">
