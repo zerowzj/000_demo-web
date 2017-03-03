@@ -1,4 +1,4 @@
-package com.company.project.web.controller.action.admin;
+package com.company.project.web.controller.admin;
 
 import com.company.project.dao.useradmin.UserAdminEO;
 import com.company.project.service.admin.AdminService;

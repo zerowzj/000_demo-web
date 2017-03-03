@@ -1,4 +1,4 @@
-package com.company.project.web.controller.router.function;
+package com.company.project.web.controller.function;
 
 import com.company.project.dao.popedomfunction.PopedomFunctionEO;
 import com.company.project.service.function.FunctionService;

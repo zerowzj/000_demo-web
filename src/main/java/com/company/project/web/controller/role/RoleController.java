@@ -1,4 +1,4 @@
-package com.company.project.web.controller.router.role;
+package com.company.project.web.controller.role;
 
 import com.company.project.common.tree.JSTree;
 import com.company.project.common.tree.ZTree;
@@ -6,9 +6,8 @@ import com.company.project.dao.popedomfunction.RoleFunctionConfVO;
 import com.company.project.dao.popedomrole.PopedomRoleEO;
 import com.company.project.service.function.FunctionService;
 import com.company.project.service.role.RoleService;
-import com.company.project.web.controller.action.role.Action_role_add;
+import com.company.project.web.controller.role.Action_role_add;
 import com.company.project.web.pattern.action.ActionExecutor;
-import com.company.util.JsonUtil;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.miemiedev.mybatis.paginator.domain.PageList;
 import org.apache.commons.lang.StringUtils;
@@ -33,7 +32,7 @@ import java.util.Map;
  */
 @Controller
 @RequestMapping("/role")
-public class RoleRouter {
+public class RoleController {
 
     @Autowired
     private RoleService roleService = null;
